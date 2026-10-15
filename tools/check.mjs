@@ -1,7 +1,8 @@
 // Plays every story start to finish in Chrome and checks the game end to end:
 // every story page and question plays, every clip it asks for loads, nothing falls back to the device voice,
 // every star lights, and there are no page errors. Also checks every clip exists on disk.
-//   node tools/check.mjs
+//   node tools/check.mjs                                          the local files
+//   node tools/check.mjs --url https://blaiseai.github.io/little-light/   the live site
 import { chromium } from 'playwright';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -18,7 +19,10 @@ await page.addInitScript(() => {
   const sp = speechSynthesis.speak.bind(speechSynthesis);
   speechSynthesis.speak = (u) => { window.__fallback++; return sp(u); };
 });
-await page.goto(pathToFileURL(join(ROOT, 'index.html')).href);
+const urlArg = process.argv.indexOf('--url');
+const target = urlArg > 0 ? process.argv[urlArg + 1] : pathToFileURL(join(ROOT, 'index.html')).href;
+console.log('checking', target);
+await page.goto(target);
 
 const n = await page.evaluate(() => STORIES.length);
 for (let si = 0; si < n; si++) {
