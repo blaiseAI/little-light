@@ -8,15 +8,23 @@ const Sound = (() => {
   try { on = localStorage.getItem('little-light-sound') !== 'off'; } catch {}
   function ensure() {
     if (!ctx) {
+      // iOS mutes sound made in code (Web Audio) when the ring/silent switch is on, but not audio files,
+      // so the narration played while the effects didn't. A "playback" session (iOS 17+) treats both alike.
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch {}
       const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
       ctx = new AC();
       const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 4;
       master = ctx.createGain(); master.gain.value = 0.55;
       master.connect(comp); comp.connect(ctx.destination);
+      // Older iOS only starts a context that has played something inside a tap: play one silent sample.
+      const b = ctx.createBuffer(1, 1, 22050), s = ctx.createBufferSource(); s.buffer = b; s.connect(ctx.destination); s.start(0);
     }
-    if (ctx.state === 'suspended') ctx.resume();
+    // iOS can also leave the context "interrupted" after an audio file plays (the narration), not just "suspended"
+    if (ctx.state !== 'running') ctx.resume();
     return ctx;
   }
+  // Wake the audio on the first touch anywhere, so the very first effect isn't lost while it starts up
+  document.addEventListener('pointerdown', () => { if (on) ensure(); }, { once: true, capture: true });
   // One voice: sine/triangle with an optional pitch glide and an octave partial, exponential decay.
   function tone({ f, f2 = f, type = 'sine', at = 0, dur = 0.3, gain = 0.15, attack = 0.006, harm = 0, pan = 0 }) {
     const t0 = ctx.currentTime + at, out = ctx.createGain(), pn = ctx.createStereoPanner ? ctx.createStereoPanner() : null;

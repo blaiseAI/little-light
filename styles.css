@@ -49,7 +49,11 @@ button { font: inherit; color: inherit; }
 .btn:disabled { --fill: var(--paper-2); --fg: #a99f8a; border-color: #d9c9ab; box-shadow: 0 var(--lip) 0 #d9c9ab; cursor: default; transform: none; }
 
 /* ---------- Top bar ---------- */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--paper); border-bottom: var(--stroke) solid var(--ink); }
+/* The bar sits at the very top and fills the notch / status-bar area with its own background,
+   so nothing scrolls visibly behind it (Safari draws the page under the status bar). */
+.top { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: var(--stroke) solid var(--ink);
+  padding-top: env(safe-area-inset-top, 0px); }
+.wrap { padding-left: max(var(--s5), env(safe-area-inset-left, 0px)); padding-right: max(var(--s5), env(safe-area-inset-right, 0px)); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .logo { display: flex; align-items: center; gap: var(--s2); color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 28px; text-decoration: none; letter-spacing: -0.01em; }
 .logo svg { width: 40px; height: 40px; }
