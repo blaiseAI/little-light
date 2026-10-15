@@ -1,0 +1,105 @@
+// Brave and kind. Page text is a simple retelling for ages 5 to 7; every "quote" is NIV, word for word
+// (checked against Bible Gateway, NIV 2011, on 2026-10-15).
+// After editing any text, run: node tools/record.mjs  (re-records only what changed)
+window.LL_WEEKS = window.LL_WEEKS || [];
+LL_WEEKS.push({ id: "week-3", title: "Brave and kind",
+  stories: [
+    { id: "joseph", title: "Joseph forgives his brothers", icon: "p-coat", verse: "Forgive as the Lord forgave you.", ref: "Colossians 3:13",
+      pages: [
+        {art: ["p-coat"], text: "Jacob loved his son Joseph very much, and he made him a beautiful, colorful robe. Joseph's brothers were jealous.", ref: "Genesis 37:3–4"},
+        {art: ["p-moon"], text: "One day the brothers did something very wrong. They sold Joseph to traders, who took him far away to Egypt.", ref: "Genesis 37:18–28"},
+        {art: ["p-crown", "p-star"], text: "In Egypt, God was with Joseph. He helped Joseph explain the king's dreams, and Joseph became a great leader.", ref: "Genesis 39:2; 41:14–41"},
+        {art: ["p-bread"], text: "When there was no food in the land, Joseph's brothers came to Egypt to buy some. They did not know it was Joseph!", ref: "Genesis 42:1–8"},
+        {art: ["p-heart"], text: "Joseph told them who he was, and he forgave them. He hugged his brothers and said:", quote: "You intended to harm me, but God intended it for good", qref: "Genesis 50:20", ref: "Genesis 45:1–15; 50:20"},
+      ],
+      ex: [
+        {type: "choose", q: "What did Jacob give Joseph?", options: [["A colorful robe", "p-coat"], ["A golden crown", "p-crown"], ["A sling", "p-sling"]], answer: 0},
+        {type: "choose", q: "Where did the traders take Joseph?", options: [["To Egypt"], ["To Bethlehem"], ["To Nineveh"]], answer: 0},
+        {type: "choose", q: "What did Joseph do when his brothers came?", say: "Joseph told them who he was...", options: [["He forgave them"], ["He sent them away"], ["He hid from them"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Colossians 3:13", words: ["Forgive", "as", "the", "Lord", "forgave", "you"], extra: ["robe", "Egypt"]},
+      ] },
+    { id: "moses", title: "Baby Moses in the basket", icon: "p-basket", verse: "When I am afraid, I put my trust in you.", ref: "Psalm 56:3",
+      pages: [
+        {art: ["p-crown"], text: "A cruel king of Egypt, called Pharaoh, gave an order that the baby boys of God's people must be thrown into the river.", ref: "Exodus 1:22"},
+        {art: ["p-heart", "pip"], text: "One mother had a baby boy. She loved him and hid him for three months.", ref: "Exodus 2:1–2"},
+        {art: ["p-basket"], text: "When she could not hide him any longer, she made a basket, coated it with tar so it would float, and laid it among the tall reeds by the river.", ref: "Exodus 2:3"},
+        {art: ["p-basket", "p-star"], text: "His big sister watched from nearby. Then Pharaoh's daughter came to the river, found the baby, and felt sorry for him.", ref: "Exodus 2:4–6"},
+        {art: ["p-heart"], text: "The sister bravely asked if she should find someone to care for the baby. She brought his own mother! The princess named him Moses.", ref: "Exodus 2:7–10"},
+      ],
+      ex: [
+        {type: "choose", q: "Where was baby Moses hidden?", options: [["In a basket", "p-basket"], ["In a palace", "p-palace"], ["In an ark", "p-ark"]], answer: 0},
+        {type: "choose", q: "Who watched over the basket?", options: [["His big sister"], ["A lion"], ["The king"]], answer: 0},
+        {type: "pairs", q: "Match the pairs", pairs: [["Moses", "Baby in the basket"], ["Sister", "Watched nearby"], ["Princess", "Found the baby"], ["Basket", "Floated in the reeds"]]},
+        {type: "build", q: "Build the verse", ref: "Psalm 56:3", words: ["When", "I", "am", "afraid", "I", "put", "my", "trust", "in", "you"], extra: ["river", "baby"]},
+      ] },
+    { id: "jericho", title: "The walls of Jericho", icon: "p-walls", verse: "Be strong and courageous.", ref: "Joshua 1:9",
+      pages: [
+        {art: ["p-walls"], text: "God's people came to the city of Jericho. It had huge, strong walls, and the gates were shut tight.", ref: "Joshua 6:1"},
+        {art: ["p-trumpet"], text: "God told Joshua to march around the city once a day for six days, with priests blowing trumpets.", ref: "Joshua 6:2–4"},
+        {art: ["p-sun", "p-walls"], text: "On the seventh day they marched around the city seven times. Then the priests blew a long blast on the trumpets.", ref: "Joshua 6:4–15"},
+        {art: ["p-trumpet", "p-star"], text: "Joshua called out to the people:", quote: "Shout! For the Lord has given you the city!", qref: "Joshua 6:16", ref: "Joshua 6:16"},
+        {art: ["p-walls", "p-heart"], text: "The people shouted, and the great walls fell down flat! God kept His promise because His people trusted and obeyed Him.", ref: "Joshua 6:20"},
+      ],
+      ex: [
+        {type: "choose", q: "What did the priests blow?", options: [["Trumpets", "p-trumpet"], ["Bubbles", "p-rain"], ["Candles", "p-lamp"]], answer: 0},
+        {type: "choose", q: "How many times did they march on the seventh day?", options: [["Once"], ["Seven times"], ["One hundred times"]], answer: 1},
+        {type: "choose", q: "What happened to the walls?", say: "The people shouted...", options: [["They fell down flat"], ["They grew taller"], ["Nothing happened"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Joshua 1:9", words: ["Be", "strong", "and", "courageous"], extra: ["walls", "shout"]},
+      ] },
+    { id: "esther", title: "Brave Queen Esther", icon: "p-crown", verse: "And who knows but that you have come to your royal position for such a time as this?", ref: "Esther 4:14",
+      pages: [
+        {art: ["p-crown"], text: "Esther was a young Jewish woman raised by her cousin Mordecai. The king of Persia chose her to be his queen.", ref: "Esther 2:7–17"},
+        {art: ["p-scroll"], text: "A proud man named Haman tricked the king into making a law to destroy all of Esther's people.", ref: "Esther 3:1–15"},
+        {art: ["p-heart"], text: "Mordecai asked Esther to go to the king and ask him to save her people.", quote: "And who knows but that you have come to your royal position for such a time as this?", qref: "Esther 4:14", ref: "Esther 4:8–14"},
+        {art: ["p-moon", "p-star"], text: "Going to the king without being called was very dangerous. Esther asked her people to pray and fast for her. Then she said:", quote: "And if I perish, I perish.", qref: "Esther 4:16", ref: "Esther 4:15–16"},
+        {art: ["p-crown", "p-sun"], text: "The king held out his golden scepter and listened to Esther. Haman's plan was stopped, and God's people were saved!", ref: "Esther 5:1–3; 7–8"},
+      ],
+      ex: [
+        {type: "choose", q: "Who became queen?", options: [["Esther"], ["Hannah"], ["Mary"]], answer: 0},
+        {type: "choose", q: "What did Esther ask her people to do before she went to the king?", options: [["Pray and fast"], ["Go to sleep"], ["Run away"]], answer: 0},
+        {type: "pairs", q: "Match the pairs", pairs: [["Esther", "Brave queen"], ["Mordecai", "Her cousin"], ["Haman", "Made a bad plan"], ["The king", "Held out his scepter"]]},
+        {type: "build", q: "Build the verse", ref: "Esther 4:14", words: ["for", "such", "a", "time", "as", "this"], extra: ["queen", "king"]},
+      ] },
+    { id: "storm", title: "Jesus calms the storm", icon: "p-boat", verse: "God is our refuge and strength, an ever-present help in trouble.", ref: "Psalm 46:1",
+      pages: [
+        {art: ["p-boat", "p-sunset"], text: "One evening, Jesus and His disciples got into a boat to cross a big lake.", ref: "Mark 4:35–36"},
+        {art: ["p-rain", "p-boat"], text: "A furious storm came. Big waves crashed over the boat, and it was filling with water!", ref: "Mark 4:37"},
+        {art: ["p-moon"], text: "Jesus was asleep on a cushion. The frightened disciples woke Him up and cried:", quote: "Teacher, don't you care if we drown?", qref: "Mark 4:38", ref: "Mark 4:38"},
+        {art: ["p-boat", "p-star"], text: "Jesus got up and spoke to the wind and the waves:", quote: "Quiet! Be still!", qref: "Mark 4:39", ref: "Mark 4:39"},
+        {art: ["p-sun", "p-boat"], text: "At once the wind stopped, and the lake was completely calm. The disciples were amazed.", quote: "Who is this? Even the wind and the waves obey him!", qref: "Mark 4:41", ref: "Mark 4:39–41"},
+      ],
+      ex: [
+        {type: "choose", q: "Where was Jesus sleeping?", options: [["In the boat", "p-boat"], ["Under a tree", "p-tree"], ["In a palace", "p-palace"]], answer: 0},
+        {type: "choose", q: "What did Jesus say to the storm?", say: "Jesus got up and said...", options: [["Quiet! Be still!"], ["Go faster!"], ["Make more waves!"]], answer: 0},
+        {type: "choose", q: "What obeyed Jesus?", options: [["The wind and the waves"], ["Only the fish"], ["Nothing"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Psalm 46:1", words: ["God", "is", "our", "refuge", "and", "strength"], extra: ["storm", "boat"]},
+      ] },
+    { id: "samaritan", title: "The Good Samaritan", icon: "p-donkey", verse: "Love your neighbor as yourself.", ref: "Luke 10:27",
+      pages: [
+        {art: ["p-scroll"], text: "A man asked Jesus, \"Who is my neighbor?\" So Jesus told a story.", ref: "Luke 10:25–29"},
+        {art: ["p-moon"], text: "A man was walking on the road to Jericho. Robbers attacked him, took everything, and left him hurt by the road.", ref: "Luke 10:30"},
+        {art: ["p-sun"], text: "A priest came by, but he walked past on the other side. Then a temple helper came by, and he walked past too.", ref: "Luke 10:31–32"},
+        {art: ["p-donkey", "p-heart"], text: "Then a Samaritan came. He felt sorry for the man. He bandaged his hurts, put him on his own donkey, and took him to an inn to rest.", ref: "Luke 10:33–35"},
+        {art: ["p-heart"], text: "Jesus asked who was a good neighbor. The answer was the one who showed kindness. Then Jesus said:", quote: "Go and do likewise.", qref: "Luke 10:37", ref: "Luke 10:36–37"},
+      ],
+      ex: [
+        {type: "choose", q: "Who stopped to help the hurt man?", options: [["The Samaritan"], ["The priest"], ["The robbers"]], answer: 0},
+        {type: "choose", q: "What did the Samaritan put the man on?", options: [["His donkey", "p-donkey"], ["A boat", "p-boat"], ["A basket", "p-basket"]], answer: 0},
+        {type: "pairs", q: "Match the pairs", pairs: [["Robbers", "Hurt the man"], ["Priest", "Walked past"], ["Samaritan", "Showed kindness"], ["Inn", "A place to rest"]]},
+        {type: "build", q: "Build the verse", ref: "Luke 10:27", words: ["Love", "your", "neighbor", "as", "yourself"], extra: ["donkey", "road"]},
+      ] },
+    { id: "children", title: "Jesus blesses the children", icon: "p-heart", verse: "Let the little children come to me, and do not hinder them", ref: "Mark 10:14",
+      pages: [
+        {art: ["pip", "p-heart"], text: "Mothers and fathers brought their little children to Jesus, so He could put His hands on them and bless them.", ref: "Mark 10:13"},
+        {art: ["p-moon"], text: "But the disciples told the families to go away. They thought Jesus was too busy for children.", ref: "Mark 10:13"},
+        {art: ["p-heart"], text: "Jesus was not pleased with the disciples. He said:", quote: "Let the little children come to me, and do not hinder them", qref: "Mark 10:14", ref: "Mark 10:14"},
+        {art: ["p-heart", "p-star"], text: "Then Jesus showed how much He loved them.", quote: "And he took the children in his arms, placed his hands on them and blessed them.", qref: "Mark 10:16", ref: "Mark 10:16"},
+        {art: ["p-sun", "pip"], text: "Jesus loves children. You can come to Him any time, by praying and talking to Him.", ref: "Mark 10:13–16"},
+      ],
+      ex: [
+        {type: "choose", q: "Who did the families bring to Jesus?", options: [["Their little children"], ["Their sheep"], ["Their donkeys"]], answer: 0},
+        {type: "choose", q: "What did the disciples tell the families?", options: [["To go away"], ["To sing"], ["To sit down"]], answer: 0},
+        {type: "choose", q: "What did Jesus do with the children?", say: "He took them in his arms and...", options: [["He blessed them"], ["He sent them home"], ["He told them to wait"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Mark 10:14", words: ["Let", "the", "little", "children", "come", "to", "me"], extra: ["busy", "away"]},
+      ] },
+  ] });

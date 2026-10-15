@@ -1,0 +1,105 @@
+// God hears and helps. Page text is a simple retelling for ages 5 to 7; every "quote" is NIV, word for word
+// (checked against Bible Gateway, NIV 2011, on 2026-10-15).
+// After editing any text, run: node tools/record.mjs  (re-records only what changed)
+window.LL_WEEKS = window.LL_WEEKS || [];
+LL_WEEKS.push({ id: "week-2", title: "God hears and helps",
+  stories: [
+    { id: "commandments", title: "God's Ten Commandments", icon: "p-tablets", verse: "If you love me, keep my commands.", ref: "John 14:15",
+      pages: [
+        {art: ["p-mountain"], text: "God led His people to a tall mountain called Sinai. Thunder rumbled, and a thick cloud covered the top of the mountain.", ref: "Exodus 19:16–20"},
+        {art: ["p-tablets"], text: "God spoke to His people. He gave them ten good rules to show them how to love Him and love each other.", quote: "You shall have no other gods before me.", qref: "Exodus 20:3", ref: "Exodus 20:1–6"},
+        {art: ["p-sunset"], text: "One commandment is about a special day. God made the world in six days and rested on the seventh, so we rest on the Sabbath too.", quote: "Remember the Sabbath day by keeping it holy.", qref: "Exodus 20:8", ref: "Exodus 20:8–11"},
+        {art: ["p-heart", "pip"], text: "Other commandments teach us to love people: to be kind, tell the truth, and listen to our parents.", quote: "Honor your father and your mother,", qref: "Exodus 20:12", ref: "Exodus 20:12–17"},
+        {art: ["p-tablets"], text: "God wrote His commandments on two tablets of stone with His own finger, so His people would always remember them.", ref: "Exodus 31:18"},
+      ],
+      ex: [
+        {type: "choose", q: "How many commandments did God give?", options: [["Ten"], ["Three"], ["Twelve"]], answer: 0},
+        {type: "choose", q: "What did God write the commandments on?", options: [["Stone tablets", "p-tablets"], ["A scroll", "p-scroll"], ["A tree", "p-tree"]], answer: 0},
+        {type: "pairs", q: "Match the pairs", pairs: [["Mount Sinai", "Where God spoke"], ["Stone tablets", "Where God wrote"], ["Sabbath", "Keep it holy"], ["Father and mother", "Honor them"]]},
+        {type: "build", q: "Build the verse", ref: "John 14:15", words: ["If", "you", "love", "me", "keep", "my", "commands"], extra: ["stone", "ten"]},
+      ] },
+    { id: "samuel", title: "Samuel hears God", icon: "p-lamp", verse: "Speak, for your servant is listening.", ref: "1 Samuel 3:10",
+      pages: [
+        {art: ["p-heart"], text: "Hannah prayed for a baby, and God gave her a son named Samuel. When he was older, Samuel lived at God's house to help Eli the priest.", ref: "1 Samuel 1:20–28"},
+        {art: ["p-lamp", "p-moon"], text: "One night, while the lamp of God was still burning, Samuel was lying down. Then he heard a voice call, \"Samuel!\"", ref: "1 Samuel 3:3–4"},
+        {art: ["p-lamp"], text: "Samuel ran to Eli and said, \"Here I am; you called me.\" But Eli said, \"I did not call; go back and lie down.\" It happened three times!", ref: "1 Samuel 3:5–8"},
+        {art: ["p-star"], text: "Then Eli understood that God was calling Samuel. He told Samuel what to say if he heard the voice again.", ref: "1 Samuel 3:8–9"},
+        {art: ["p-lamp", "p-heart"], text: "God called, \"Samuel! Samuel!\" And this time Samuel answered God.", quote: "Speak, for your servant is listening.", qref: "1 Samuel 3:10", ref: "1 Samuel 3:10"},
+      ],
+      ex: [
+        {type: "choose", q: "Who was calling Samuel in the night?", options: [["God"], ["Eli"], ["His mother"]], answer: 0},
+        {type: "choose", q: "How many times did Samuel run to Eli?", options: [["One"], ["Three"], ["Ten"]], answer: 1},
+        {type: "choose", q: "What was still burning when Samuel lay down?", say: "It was night in God's house...", options: [["The lamp of God", "p-lamp"], ["A big fire", "p-sun"], ["A star", "p-star"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "1 Samuel 3:10", words: ["Speak", "for", "your", "servant", "is", "listening"], extra: ["Eli", "lamp"]},
+      ] },
+    { id: "elijah", title: "Elijah and the ravens", icon: "p-raven", verse: "Give us today our daily bread.", ref: "Matthew 6:11",
+      pages: [
+        {art: ["p-sun"], text: "Elijah told King Ahab that God would send no rain for a long time. The land became very dry.", ref: "1 Kings 17:1"},
+        {art: ["p-tree"], text: "God told Elijah to go and hide by a little brook, far away from the king.", ref: "1 Kings 17:2–3"},
+        {art: ["p-raven"], text: "God promised to take care of him.", quote: "You will drink from the brook, and I have directed the ravens to supply you with food there.", qref: "1 Kings 17:4", ref: "1 Kings 17:4"},
+        {art: ["p-raven", "p-bread"], text: "And God kept His promise.", quote: "The ravens brought him bread and meat in the morning and bread and meat in the evening, and he drank from the brook.", qref: "1 Kings 17:6", ref: "1 Kings 17:5–6"},
+        {art: ["p-heart"], text: "Every day God took care of Elijah. God takes care of us every day too.", ref: "Matthew 6:25–26"},
+      ],
+      ex: [
+        {type: "choose", q: "Which birds brought Elijah food?", options: [["Ravens", "p-raven"], ["Doves", "p-dove"], ["No birds came", "p-sun"]], answer: 0},
+        {type: "choose", q: "When did the ravens bring food?", options: [["Only at night"], ["Morning and evening"], ["Once a year"]], answer: 1},
+        {type: "choose", q: "Where did Elijah drink water?", options: [["From a brook"], ["From the sea"], ["From a well in the city"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Matthew 6:11", words: ["Give", "us", "today", "our", "daily", "bread"], extra: ["meat", "rain"]},
+      ] },
+    { id: "daniel", title: "Daniel and the lions", icon: "p-lion", verse: "My God sent his angel, and he shut the mouths of the lions.", ref: "Daniel 6:22",
+      pages: [
+        {art: ["p-crown"], text: "Daniel worked for King Darius. He was honest and good, and he loved God with all his heart.", ref: "Daniel 6:1–3"},
+        {art: ["p-scroll"], text: "Some jealous men tricked the king into making a law: for thirty days, everyone must pray only to the king.", ref: "Daniel 6:4–9"},
+        {art: ["p-heart"], text: "But Daniel kept praying to God at his open window, just like always.", quote: "Three times a day he got down on his knees and prayed, giving thanks to his God, just as he had done before.", qref: "Daniel 6:10", ref: "Daniel 6:10"},
+        {art: ["p-lion", "p-moon"], text: "So Daniel was thrown into a den of hungry lions. The sad king said to him:", quote: "May your God, whom you serve continually, rescue you!", qref: "Daniel 6:16", ref: "Daniel 6:11–18"},
+        {art: ["p-lion", "p-sun"], text: "In the morning the king ran to the den. Daniel was safe! He called out:", quote: "My God sent his angel, and he shut the mouths of the lions.", qref: "Daniel 6:22", ref: "Daniel 6:19–23"},
+      ],
+      ex: [
+        {type: "choose", q: "How many times a day did Daniel pray?", options: [["Once"], ["Three times"], ["Never"]], answer: 1},
+        {type: "choose", q: "What animals were in the den?", options: [["Lions", "p-lion"], ["Sheep", "pip"], ["Ravens", "p-raven"]], answer: 0},
+        {type: "pairs", q: "Match the pairs", pairs: [["Daniel", "Kept praying"], ["Darius", "The king"], ["Lions", "In the den"], ["Angel", "Shut their mouths"]]},
+        {type: "build", q: "Build the verse", ref: "Daniel 6:22", words: ["My", "God", "sent", "his", "angel"], extra: ["king", "den"]},
+      ] },
+    { id: "lost-sheep", title: "The lost sheep", icon: "pip", verse: "Rejoice with me; I have found my lost sheep.", ref: "Luke 15:6",
+      pages: [
+        {art: ["pip"], text: "Jesus told a story about a shepherd who had one hundred sheep. He knew every one of them.", ref: "Luke 15:3–4"},
+        {art: ["p-moon"], text: "One day, one little sheep wandered away and got lost.", ref: "Luke 15:4"},
+        {art: ["p-tree", "p-star"], text: "The shepherd left the ninety-nine other sheep and searched and searched until he found the lost one.", ref: "Luke 15:4"},
+        {art: ["pip", "p-heart"], text: "He was so happy!", quote: "And when he finds it, he joyfully puts it on his shoulders", qref: "Luke 15:5", ref: "Luke 15:5"},
+        {art: ["p-star", "pip"], text: "He called his friends and neighbors to celebrate. Jesus said heaven is just as happy when one person comes back to God.", quote: "Rejoice with me; I have found my lost sheep.", qref: "Luke 15:6", ref: "Luke 15:6–7"},
+      ],
+      ex: [
+        {type: "choose", q: "How many sheep did the shepherd have?", options: [["Ten"], ["One hundred"], ["Five"]], answer: 1},
+        {type: "choose", q: "How many sheep got lost?", options: [["One"], ["Ninety-nine"], ["All of them"]], answer: 0},
+        {type: "choose", q: "What did the shepherd do when he found it?", say: "He was so happy...", options: [["Put it on his shoulders"], ["Left it behind"], ["Sold it"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Luke 15:6", words: ["Rejoice", "with", "me", "I", "have", "found", "my", "lost", "sheep"], extra: ["hundred", "shepherd"]},
+      ] },
+    { id: "zacchaeus", title: "Zacchaeus climbs a tree", icon: "p-tree", verse: "For the Son of Man came to seek and to save the lost.", ref: "Luke 19:10",
+      pages: [
+        {art: ["p-palace"], text: "In the city of Jericho lived a rich tax collector named Zacchaeus. People did not like him, because he took more money than he should.", ref: "Luke 19:1–2"},
+        {art: ["p-heart"], text: "One day Jesus came to town, and Zacchaeus wanted to see Him.", quote: "He wanted to see who Jesus was, but because he was short he could not see over the crowd.", qref: "Luke 19:3", ref: "Luke 19:3"},
+        {art: ["p-tree"], text: "So Zacchaeus ran ahead and climbed up a sycamore-fig tree to see Jesus go by.", ref: "Luke 19:4"},
+        {art: ["p-tree", "p-star"], text: "When Jesus reached the tree, He stopped and looked up.", quote: "Zacchaeus, come down immediately. I must stay at your house today.", qref: "Luke 19:5", ref: "Luke 19:5–7"},
+        {art: ["p-heart", "p-bread"], text: "Zacchaeus was so glad. He gave half of what he owned to the poor, and paid back four times what he had taken.", ref: "Luke 19:8–10"},
+      ],
+      ex: [
+        {type: "choose", q: "What did Zacchaeus climb to see Jesus?", options: [["A tree", "p-tree"], ["A tower", "p-tower"], ["A wall", "p-walls"]], answer: 0},
+        {type: "choose", q: "Why couldn't Zacchaeus see Jesus?", options: [["He was short"], ["It was dark"], ["He was asleep"]], answer: 0},
+        {type: "choose", q: "Where did Jesus want to stay?", say: "Zacchaeus, come down...", options: [["At Zacchaeus' house"], ["In the tree"], ["At the palace"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Luke 19:10", words: ["The", "Son", "of", "Man", "came", "to", "seek", "and", "to", "save", "the", "lost"], extra: ["tree", "short"]},
+      ] },
+    { id: "sabbath-healing", title: "Jesus heals on the Sabbath", icon: "p-sunset", verse: "The Sabbath was made for man, not man for the Sabbath.", ref: "Mark 2:27",
+      pages: [
+        {art: ["p-sunset", "p-scroll"], text: "It was the Sabbath, and Jesus went to worship with God's people.", quote: "On a Sabbath Jesus was teaching in one of the synagogues,", qref: "Luke 13:10", ref: "Luke 13:10"},
+        {art: ["p-moon"], text: "A woman was there who had been bent over for eighteen years. She could not stand up straight at all.", ref: "Luke 13:11"},
+        {art: ["p-heart"], text: "Jesus saw her and called her over. He said to her:", quote: "Woman, you are set free from your infirmity.", qref: "Luke 13:12", ref: "Luke 13:12"},
+        {art: ["p-sun", "p-heart"], text: "And she stood up tall!", quote: "Then he put his hands on her, and immediately she straightened up and praised God.", qref: "Luke 13:13", ref: "Luke 13:13"},
+        {art: ["p-sunset"], text: "Some leaders were cross that Jesus healed on the Sabbath. But Jesus showed that the Sabbath is a day for setting people free, and everyone was delighted.", ref: "Luke 13:14–17"},
+      ],
+      ex: [
+        {type: "choose", q: "On which day did Jesus heal the woman?", options: [["On the Sabbath", "p-sunset"], ["At night", "p-moon"], ["In the morning", "p-sun"]], answer: 0},
+        {type: "choose", q: "How long had the woman been bent over?", options: [["One day"], ["Eighteen years"], ["One week"]], answer: 1},
+        {type: "choose", q: "What did she do after Jesus healed her?", say: "She stood up tall and...", options: [["She praised God"], ["She went to sleep"], ["She ran away"]], answer: 0},
+        {type: "build", q: "Build the verse", ref: "Mark 2:27", words: ["The", "Sabbath", "was", "made", "for", "man"], extra: ["day", "rest"]},
+      ] },
+  ] });
