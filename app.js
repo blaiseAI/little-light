@@ -480,3 +480,92 @@ renderStats(); renderSky();
 // Preview hooks: #play=<n> opens a story, &step=<k> jumps ahead, &done=1 shows the finish screen
 const m = location.hash.match(/play=(\d)(?:&step=(\d))?(&done=1)?/);
 if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next(); } else if (m[2]) { L.queue = L.story.ex.slice(+m[2]); next(); } }
+
+/* ---------- home motion: event driven, with a static readable fallback ---------- */
+(() => {
+  const root = document.documentElement, art = $('.hero-art');
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const toggle = $('#motion-toggle');
+  let paused = false, queued = 0, visible = true;
+  try { paused = localStorage.getItem('little-light-motion') === 'off'; } catch {}
+  const active = () => !paused && !preference.matches;
+  // Reuse the lesson drawing verbatim, exposing just its articulated parts in the hero.
+  const pip = $('.hero-pip');
+  pip.replaceChildren(...[...$('#pip').children].map(n => n.cloneNode(true)));
+  const body = pip.firstElementChild;
+  [...body.children].slice(0, 2).forEach(n => n.classList.add('pip-leg'));
+  const lantern = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  lantern.classList.add('pip-lantern');
+  [...body.children].slice(-4).forEach(n => lantern.append(n));
+  body.append(lantern);
+  const glow = pip.querySelector('circle[cx="187"]');
+  glow.setAttribute('stroke', 'none');
+  lantern.append(glow);
+  const eyes = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  eyes.classList.add('pip-eyes');
+  pip.querySelectorAll('ellipse[cy="102"], circle[cy="98"][r="3"]').forEach(n => eyes.append(n));
+  pip.append(eyes);
+  const blend = (a, b, t) => `rgb(${a.map((c,i) => Math.round(c + (b[i]-c)*t)).join(',')})`;
+  function paint() {
+    queued = 0;
+    if (document.hidden || !visible) return;
+    const rect = art.getBoundingClientRect();
+    // Uses the illustration itself, so phones do not finish the sunset before Pip appears.
+    const start = Math.max(0, rect.top + scrollY - innerHeight * .5);
+    const progress = active() ? Math.max(0, Math.min(1, (scrollY - start) / Math.max(1, rect.height * .9))) : .85;
+    art.style.setProperty('--nightfall', progress.toFixed(3));
+    $('.scene-sky', art).setAttribute('fill', blend([255,225,211], [50,42,107], progress));
+  }
+  function schedule() { if (!queued && visible && !document.hidden) queued = requestAnimationFrame(paint); }
+  const entrances = new Set();
+  function sync() {
+    root.classList.toggle('motion-off', !active());
+    toggle.textContent = active() ? 'Pause motion' : 'Enable motion';
+    toggle.setAttribute('aria-pressed', String(!active()));
+    toggle.disabled = preference.matches;
+    if (preference.matches) toggle.textContent = 'Reduced motion is on';
+    if (!active()) { entrances.forEach(a => a.finish()); entrances.clear(); }
+    schedule();
+  }
+  toggle.hidden = false;
+  toggle.addEventListener('click', () => {
+    paused = !paused;
+    try { localStorage.setItem('little-light-motion', paused ? 'off' : 'on'); } catch {}
+    sync();
+  });
+  preference.addEventListener('change', sync);
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule, { passive: true });
+  function sleep() {
+    const asleep = document.hidden || $('#lesson').classList.contains('open') || !$('#hear').hidden;
+    root.classList.toggle('motion-sleep', asleep);
+    entrances.forEach(a => asleep ? a.pause() : a.play());
+    if (!asleep) schedule();
+  }
+  document.addEventListener('visibilitychange', sleep);
+  new MutationObserver(sleep).observe($('#lesson'), { attributes: true, attributeFilter: ['class'] });
+  new MutationObserver(sleep).observe($('#hear'), { attributes: true, attributeFilter: ['hidden'] });
+  if ('IntersectionObserver' in window) {
+    const seen = new WeakSet();
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      const el = entry.target;
+      el.classList.toggle('motion-outside', !entry.isIntersecting);
+      if (el === art) { visible = entry.isIntersecting; if (visible) schedule(); }
+      if (!entry.isIntersecting || seen.has(el)) return;
+      seen.add(el);
+      if (el === art && active()) el.classList.add('motion-ready');
+      // Draw each path once, leaving every story control available throughout.
+      const target = el.matches('.week-sky') ? el.querySelector('.lines') : el.matches('.panel') ? el.querySelector('svg') : null;
+      if (target && active()) {
+        const frames = el.matches('.week-sky') ? [{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }] : [{ opacity: .55 }, { opacity: 1 }];
+        const a = target.animate(frames, { duration: el.matches('.week-sky') ? 1800 : 600, easing: 'cubic-bezier(.16,1,.3,1)' });
+        entrances.add(a); a.onfinish = () => entrances.delete(a);
+      }
+    }), { threshold: .08 });
+    [art, $('.sky'), ...document.querySelectorAll('.panel'), $('footer')].forEach(el => observer.observe(el));
+    const observePaths = () => document.querySelectorAll('.week-sky').forEach(el => observer.observe(el));
+    observePaths();
+    new MutationObserver(observePaths).observe($('#constellation'), { childList: true });
+  }
+  sync(); sleep();
+})();

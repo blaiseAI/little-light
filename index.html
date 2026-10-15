@@ -147,8 +147,8 @@
       </div>
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 500 430">
-          <circle cx="330" cy="190" r="150" fill="#ffe1d3"/>
-          <circle cx="330" cy="190" r="104" fill="#fff1c7"/>
+          <circle class="scene-sky" cx="330" cy="190" r="150" fill="#ffe1d3"/>
+          <circle class="scene-sun" cx="330" cy="190" r="104" fill="#fff1c7"/><path class="scene-moon" d="M397 85a35 35 0 1 0 22 52A30 30 0 0 1 397 85z" fill="#fff8ec" stroke="#2b2250" stroke-width="4" opacity="0"/>
           <g stroke="#2b2250" stroke-width="5" stroke-linejoin="round">
             <path d="M-10 330q130-70 260-30t270-20v170H-10z" fill="#3bb3a6"/>
             <path d="M-10 380q160-40 300-6t230-14v90H-10z" fill="#d4f3ee"/>
@@ -160,10 +160,11 @@
             <use href="#star5" x="120" y="150" width="24" height="24" class="twinkle"/>
           </g>
           <circle cx="470" cy="230" r="7" fill="#ffb3c7" stroke="#2b2250" stroke-width="3" class="twinkle"/>
-          <g class="bob"><use href="#pip" x="130" y="130" width="260" height="250"/></g>
+          <g class="pip-arrival"><svg class="hero-pip" x="130" y="130" width="260" height="250" viewBox="0 0 240 230"><use href="#pip"/></svg></g><g class="fireflies" fill="#ffc94a" stroke="#2b2250" stroke-width="2"><circle cx="95" cy="320" r="4"/><circle cx="415" cy="290" r="4"/><circle cx="450" cy="355" r="3"/><circle cx="75" cy="245" r="3"/></g>
         </svg>
       </div>
     </div>
+    <div class="wrap motion-tools"><button id="motion-toggle" class="motion-toggle" aria-pressed="false" hidden>Pause motion</button></div>
     <svg class="scallop" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 48V24q25-24 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0V48z" fill="#221a48"/>
     </svg>
