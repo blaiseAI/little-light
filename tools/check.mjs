@@ -14,8 +14,12 @@ const browser = await chromium.launch({ channel: 'chrome', args: ['--autoplay-po
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const errors = []; page.on('pageerror', (e) => errors.push(e.message));
 await page.addInitScript(() => {
-  const A = window.Audio; window.__srcs = []; window.__bad = []; window.__fallback = 0;
-  window.Audio = function (src) { const a = new A(src); window.__srcs.push(src); a.addEventListener('error', () => window.__bad.push(src)); return a; };
+  try { localStorage.setItem('little-light-heard', 'yes'); } catch {}   // skip the one-time sound check
+  window.__srcs = []; window.__bad = []; window.__fallback = 0;
+  // Narration reuses one player, so record every play() and every media error instead of each new Audio()
+  const play = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function () { if (!this.src.startsWith('data:')) window.__srcs.push(this.src); return play.call(this); };
+  addEventListener('error', (e) => { if (e.target instanceof HTMLMediaElement && !e.target.src.startsWith('data:')) window.__bad.push(e.target.src); }, true);
   const sp = speechSynthesis.speak.bind(speechSynthesis);
   speechSynthesis.speak = (u) => { window.__fallback++; return sp(u); };
 });

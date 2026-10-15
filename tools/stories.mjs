@@ -23,6 +23,8 @@ const plain = (t) => t.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
 export function clipList(weeks) {
   const clips = new Map();
   const add = (file, text, lead) => { if (!clips.has(file)) clips.set(file, { file, text: plain(text), lead }); };
+  // The sound check ("Can you hear me?"); must match the text in app.js
+  add('help/hello.mp3', "Hello! I'm Pip. If you can hear me, tap yes!", 120);
   for (const s of weeks.flatMap((w) => w.stories)) {
     s.pages.forEach((p, i) => add(`${s.id}-${i + 1}.mp3`, p.text + (p.quote ? ' ' + p.quote : ''), 250));
     s.ex.forEach((ex, i) => {

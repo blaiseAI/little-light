@@ -55,6 +55,9 @@
     <symbol id="i-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5" fill="#ffb3c7" stroke="#2b2250" stroke-width="2"/><circle cx="16" cy="12" r="5" fill="#b9a6ff" stroke="#2b2250" stroke-width="2" opacity=".9"/></symbol>
     <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#ffc94a" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-quiet" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#fdecd2" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M16 9.5l5 5M21 9.5l-5 5" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-ear" viewBox="0 0 24 24"><path d="M7 10a5 5 0 0 1 10 0c0 3-3 4-3 7a3 3 0 0 1-6 0" fill="none" stroke="#2b2250" stroke-width="2.2" stroke-linecap="round"/><path d="M10 10a2 2 0 0 1 4 0" fill="none" stroke="#2b2250" stroke-width="2.2" stroke-linecap="round"/><circle cx="19" cy="5" r="3" fill="#ff7a45"/></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3z" fill="#ffc94a" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M15 8.5a4.5 4.5 0 0 1 0 7M17.5 6a8 8 0 0 1 0 12" fill="none" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/><path d="M21 3v4M19 5h4" stroke="#ff7a45" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z" fill="#ffc94a" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M10 21a2 2 0 0 0 4 0" fill="none" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-lock" viewBox="0 0 64 64"><rect x="16" y="29" width="32" height="24" rx="7" fill="#5d54a6"/><path d="M23 29v-5a9 9 0 0 1 18 0v5" fill="none" stroke="#5d54a6" stroke-width="6"/></symbol>
 
     <!-- Story icons (ink on coloured node) -->
@@ -110,8 +113,22 @@
     <a class="logo" href="#top" aria-label="Little Light home"><svg aria-hidden="true"><use href="#i-lantern"/></svg>little <em>light</em></a>
     <div class="stats">
       <button class="mute" id="mute-top" aria-pressed="true" aria-label="Sound on"><svg class="on" aria-hidden="true"><use href="#i-sound"/></svg><svg class="off" aria-hidden="true"><use href="#i-quiet"/></svg></button>
-      <span class="stat sun" title="Days shining"><svg aria-hidden="true"><use href="#i-sun"/></svg><span id="streak">0</span><span class="sr">days shining</span></span>
-      <span class="stat" title="Stars lit"><svg aria-hidden="true"><use href="#i-star"/></svg><span id="xp">0</span><span class="sr">stars</span></span>
+      <span class="stat sun" title="Days shining"><svg aria-hidden="true"><use href="#i-sun"/></svg><span class="n-streak">0</span><span class="sr">days shining</span></span>
+      <span class="stat" title="Stars lit"><svg aria-hidden="true"><use href="#i-star"/></svg><span class="n-xp">0</span><span class="sr">stars</span></span>
+    </div>
+    <!-- Phone: one control in the bar; everything else lives in the panel below it -->
+    <button class="me" id="me" aria-expanded="false" aria-controls="panel">
+      <svg aria-hidden="true"><use href="#i-star"/></svg><span class="n-xp">0</span><span class="me-label">My light</span>
+    </button>
+  </div>
+  <div class="menu" id="panel" hidden>
+    <div class="wrap menu-in">
+      <div class="menu-stats">
+        <p><svg aria-hidden="true"><use href="#i-star"/></svg><b class="n-xp">0</b> stars lit</p>
+        <p><svg aria-hidden="true"><use href="#i-sun"/></svg><b class="n-streak">0</b> days shining</p>
+      </div>
+      <button class="mute row" id="mute-panel" aria-pressed="true" aria-label="Sound on"><svg class="on" aria-hidden="true"><use href="#i-sound"/></svg><svg class="off" aria-hidden="true"><use href="#i-quiet"/></svg><span class="row-text">Sound</span><span class="row-state"></span></button>
+      <button class="row" id="panel-help"><svg aria-hidden="true"><use href="#i-ear"/></svg><span class="row-text">Can't hear the sounds?</span></button>
     </div>
   </div>
 </header>
@@ -230,7 +247,23 @@
     </div>
   </div>
 </div>
-<canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+<!-- Sound check: a page can't tell if the phone is on silent or turned down, so Pip asks -->
+<div class="hear" id="hear" role="dialog" aria-modal="true" aria-labelledby="hear-h" hidden>
+  <div class="hear-card">
+    <svg class="hear-pip" viewBox="0 0 240 230" aria-hidden="true"><use href="#pip"/></svg>
+    <h2 id="hear-h">Can you hear me?</h2>
+    <p>Tap the button. You should hear a chime and Pip saying hello.</p>
+    <button class="btn paper" id="hear-play"><svg aria-hidden="true"><use href="#i-sound"/></svg>Play a sound</button>
+    <ul class="hear-tips">
+      <li><svg aria-hidden="true"><use href="#i-volume"/></svg><span><b>Turn the volume up</b> with the buttons on the side of your device.</span></li>
+      <li class="ios-only"><svg aria-hidden="true"><use href="#i-bell"/></svg><span><b>Turn off Silent Mode.</b> On iPhone, swipe down from the top right corner and tap the bell, or use the switch or Action button on the side.</span></li>
+    </ul>
+    <button class="btn" id="hear-yes">Yes, I can hear it</button>
+    <button class="hear-skip" id="hear-skip">Play without sound</button>
+  </div>
+</div>
+<canvas class="confetti" id="confetti" aria-hidden="true" hidden></canvas>
+<pre class="debug" id="debug" hidden></pre>
 
 <script src="stories/week-1.js"></script>
 <script src="stories/week-2.js"></script>

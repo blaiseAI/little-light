@@ -23,6 +23,9 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
+/* Safari 26 colours its bars from the page itself, so the root never stays transparent */
+html { background: var(--paper); }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--text); font-weight: 400;
   font-size: 18px; line-height: 1.55; overflow-x: clip; }
@@ -54,7 +57,7 @@ button { font: inherit; color: inherit; }
 .top { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: var(--stroke) solid var(--ink);
   padding-top: env(safe-area-inset-top, 0px); }
 .wrap { padding-left: max(var(--s5), env(safe-area-inset-left, 0px)); padding-right: max(var(--s5), env(safe-area-inset-right, 0px)); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.top > .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .logo { display: flex; align-items: center; gap: var(--s2); color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 28px; text-decoration: none; letter-spacing: -0.01em; }
 .logo svg { width: 40px; height: 40px; }
 .logo em { font-style: normal; color: #d4501a; }
@@ -69,6 +72,51 @@ button { font: inherit; color: inherit; }
 .mute svg { width: 24px; height: 24px; }
 .mute .off { display: none; } .mute[aria-pressed="false"] .on { display: none; } .mute[aria-pressed="false"] .off { display: block; }
 .mute[aria-pressed="false"] { background: var(--paper-2); }
+/* Phone bar: the wordmark and one control. The rest opens in a panel under the bar
+   (never at the bottom, where Safari 26 floats its toolbar over the page). */
+.me { display: none; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px 0 10px; border: var(--stroke) solid var(--ink);
+  border-radius: var(--r-pill); background: var(--gold-wash); box-shadow: 0 3px 0 var(--ink); cursor: pointer;
+  font-family: var(--display); font-weight: 600; font-size: 17px; }
+.me:active { transform: translateY(3px); box-shadow: none; }
+.me svg { width: 24px; height: 24px; }
+.me-label { margin-left: 4px; }
+.me[aria-expanded="true"] { background: var(--coral-wash); }
+.menu { border-top: 2px dashed #d9c9ab; background: var(--paper); }
+.menu-in { display: grid; gap: var(--s3); padding-block: var(--s4) var(--s5); }
+.menu-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+.menu-stats p { display: flex; align-items: center; gap: 8px; margin: 0; border: var(--stroke) solid var(--ink); border-radius: var(--r-card);
+  padding: 10px 12px; background: var(--gold-wash); font-family: var(--display); font-weight: 500; font-size: 16px; line-height: 1.2; }
+.menu-stats p + p { background: var(--coral-wash); }
+.menu-stats b { font-size: 24px; font-weight: 600; }
+.menu-stats svg { width: 26px; height: 26px; flex: none; }
+.row { display: flex; align-items: center; gap: var(--s3); width: 100%; min-height: 56px; padding: 0 var(--s4); border: var(--stroke) solid var(--ink);
+  border-radius: var(--r-card); background: #fff; box-shadow: 0 4px 0 var(--ink); cursor: pointer; text-align: left;
+  font-family: var(--display); font-weight: 600; font-size: 18px; }
+.row:active { transform: translateY(4px); box-shadow: none; }
+.row svg { width: 26px; height: 26px; flex: none; }
+.mute.row { display: flex; align-items: center; justify-content: flex-start; height: auto; border-radius: var(--r-card); }
+.row-state { margin-left: auto; color: var(--ink-soft); font-weight: 500; }
+.mute.row[aria-pressed="false"] { background: var(--paper-2); }
+
+/* Sound check */
+.hear { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; overflow-y: auto; overscroll-behavior: contain;
+  padding: calc(env(safe-area-inset-top, 0px) + 16px) 16px calc(env(safe-area-inset-bottom, 0px) + var(--toolbar, 0px) + 16px);
+  background: rgba(34, 26, 72, .6); }
+.hear-card { width: 100%; max-width: 420px; display: grid; gap: var(--s3); justify-items: center; text-align: center; padding: var(--s5);
+  background: var(--paper); border: var(--stroke) solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 var(--ink); }
+.hear-pip { width: 110px; }
+.hear-card h2 { font-size: 30px; }
+.hear-card p { color: var(--ink-soft); font-size: 17px; }
+.hear-tips { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); width: 100%; text-align: left; }
+.hear-tips li { display: flex; gap: var(--s3); align-items: flex-start; background: #fff; border: 2px solid var(--ink); border-radius: 18px; padding: 10px 14px; font-size: 16px; line-height: 1.4; }
+.hear-tips svg { width: 28px; height: 28px; flex: none; }
+.hear .ios-only { display: none; }
+.is-ios .hear .ios-only { display: flex; }
+.hear.listening .hear-tips li { background: var(--gold-wash); }
+#hear-yes { width: 100%; }
+.hear-skip { min-height: 44px; background: none; border: 0; color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; font-size: 16px; cursor: pointer; }
+.debug { position: fixed; left: 8px; right: 8px; top: calc(env(safe-area-inset-top, 0px) + 84px); z-index: 90; margin: 0; padding: 10px; border-radius: 10px;
+  background: rgba(0, 0, 0, .82); color: #b7ffb0; font: 12px/1.45 ui-monospace, monospace; white-space: pre-wrap; pointer-events: none; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* ---------- Hero ---------- */
@@ -138,7 +186,7 @@ footer cite { display: block; font-style: normal; font-family: var(--text); font
 footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
 
 /* ---------- Lesson ---------- */
-.lesson { position: fixed; inset: 0; z-index: 50; background: var(--paper); display: none; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.lesson { position: fixed; inset: 0; z-index: 50; background: var(--paper); display: none; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); overscroll-behavior: contain; }
 .lesson.open { display: flex; }
 .l-top { max-width: 1000px; width: 100%; margin: 0 auto; display: flex; align-items: center; gap: var(--s4); padding: var(--s5) var(--s5) 0; }
 .close { width: 48px; height: 48px; flex: none; border: var(--stroke) solid var(--ink); border-radius: 50%; background: var(--paper); cursor: pointer; display: grid; place-items: center; box-shadow: 0 3px 0 var(--ink); }
@@ -149,7 +197,7 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
 .trail svg.lit { transform: scale(1.15) rotate(8deg); }
 .trail svg path { fill: var(--paper-2); stroke: #d9c9ab; transition: fill .3s, stroke .3s; }
 .trail svg.lit path { fill: var(--gold); stroke: var(--ink); }
-.l-body { flex: 1; overflow-y: auto; }
+.l-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; }
 .l-inner { max-width: 660px; margin: 0 auto; padding: var(--s6) var(--s5) var(--s6); }
 .l-head { display: flex; align-items: center; gap: var(--s3); }
 .qplay { width: 44px; height: 44px; flex: none; border: var(--stroke) solid var(--ink); border-radius: 50%; background: var(--sky-wash); cursor: pointer;
@@ -199,7 +247,7 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
 .pair.bad { background: var(--coral-wash); animation: wobble .4s; }
 @keyframes wobble { 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } }
 
-.l-foot { padding: 0 var(--s5) var(--s5); }
+.l-foot { padding: 0 var(--s5) calc(max(env(safe-area-inset-bottom, 0px), var(--obscured, 0px)) + var(--toolbar, 0px) + var(--s4)); }
 .l-foot .in { max-width: 960px; margin: 0 auto; border: var(--stroke) solid transparent; border-radius: 28px; padding: var(--s4) var(--s5);
   display: flex; align-items: center; gap: var(--s4); min-height: 104px; transition: background-color .2s, border-color .2s; }
 .l-foot .msg { display: none; align-items: center; gap: var(--s4); }
@@ -248,6 +296,13 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
 
 .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 60; }
 
+/* Phone: one row, wordmark and one control (taste-skill layout §6/§8) */
+@media (max-width: 640px) {
+  .stats { display: none; }
+  .me { display: inline-flex; }
+  .top > .wrap { height: 60px; }
+}
+@media (min-width: 641px) { .menu { display: none !important; } }
 @media (max-width: 860px) {
   .hero { padding-top: var(--s6); }
   .hero .wrap, .panels .wrap, footer .wrap { grid-template-columns: 1fr; }

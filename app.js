@@ -14,7 +14,7 @@ const Sound = (() => {
       const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
       ctx = new AC();
       const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 4;
-      master = ctx.createGain(); master.gain.value = 0.55;
+      master = ctx.createGain(); master.gain.value = 0.9;   // phone speakers need it louder; the compressor keeps it clean
       master.connect(comp); comp.connect(ctx.destination);
       // Older iOS only starts a context that has played something inside a tap: play one silent sample.
       const b = ctx.createBuffer(1, 1, 22050), s = ctx.createBufferSource(); s.buffer = b; s.connect(ctx.destination); s.start(0);
@@ -70,11 +70,17 @@ const Sound = (() => {
       for (let i = 0; i < 9; i++) tone({ f: [N.C6, N.E6, N.G6][i % 3] * (1 + Math.round(r())), at: 0.5 + i * 0.11 + r() * 0.05, dur: 0.3, gain: 0.03, pan: r() * 1.6 - 0.8 });
     },
   };
-  function paint() { document.querySelectorAll('.mute').forEach((b) => { b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on ? 'Sound on' : 'Sound off'); }); }
+  function paint() {
+    document.querySelectorAll('.mute').forEach((b) => {
+      b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on ? 'Sound on' : 'Sound off');
+      const st = b.querySelector('.row-state'); if (st) st.textContent = on ? 'On' : 'Off';
+    });
+  }
   return {
     play(name, ...args) { if (!on) return; try { if (ensure()) S[name](...args); } catch {} },
     isOn: () => on,
-    toggle() { on = !on; try { localStorage.setItem('little-light-sound', on ? 'on' : 'off'); } catch {} paint(); if (on) this.play('tap'); },
+    toggle() { this.set(!on); if (on) this.play('tap'); },
+    set(v) { on = !!v; try { localStorage.setItem('little-light-sound', on ? 'on' : 'off'); } catch {} paint(); },
     paint,
   };
 })();
@@ -92,7 +98,10 @@ const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) {
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const STAR = '<path d="M16 3l4 8.5 9.3 1.2-6.8 6.4 1.8 9.2L16 23.7l-8.3 4.6 1.8-9.2-6.8-6.4 9.3-1.2z" stroke-width="2.5" stroke-linejoin="round"/>';
 
-function renderStats() { $('#streak').textContent = state.streak; $('#xp').textContent = state.xp; }
+function renderStats() {
+  document.querySelectorAll('.n-streak').forEach((el) => { el.textContent = state.streak; });
+  document.querySelectorAll('.n-xp').forEach((el) => { el.textContent = state.xp; });
+}
 
 /* ---------- star dust backgrounds ---------- */
 function dust(el, n, w, h) {
@@ -159,11 +168,13 @@ let L = null;
 const lessonEl = $('#lesson'), stage = $('#stage'), foot = $('#foot'), checkBtn = $('#check');
 
 function openLesson(i) {
+  // The first time on this device, Pip checks the sound is audible before the story starts
+  if (Sound.isOn() && !heardBefore()) { openHear(() => openLesson(i)); return; }
   const story = STORIES[i];
   L = { story, queue: story.ex.slice(), total: story.ex.length, answered: 0, phase: 'answer' };
   $('#trail').innerHTML = story.ex.map(() => `<svg viewBox="0 0 32 32" aria-hidden="true">${STAR}</svg>`).join('');
   $('#trail').setAttribute('aria-valuemax', story.ex.length);
-  lessonEl.classList.add('open'); document.body.style.overflow = 'hidden'; Sound.play('whoosh');
+  lessonEl.classList.add('open'); closePanel(); Sound.play('whoosh');
   if (story.pages) { L.phase = 'story'; L.page = 0; renderPage(); } else next();
 }
 
@@ -171,8 +182,17 @@ function openLesson(i) {
 const canSpeak = 'speechSynthesis' in window && typeof SpeechSynthesisUtterance === 'function';
 // Story pages are read by recorded narration (Kokoro "Heart", made offline, files in audio/).
 // The device voice is only a fallback if a recording can't load.
-let narr = null;
+// One reusable player, unlocked on the first touch: iOS only lets a page start audio on its own
+// (the questions read themselves) with a player that has already played once inside a tap.
+let narr = null, narrEl = null, narrToken = 0;
+const SILENCE = 'data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YSADAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';
+function player() { if (!narrEl) { narrEl = new Audio(); narrEl.preload = 'auto'; } return narrEl; }
+document.addEventListener('pointerdown', () => {
+  const a = player(); if (a.src) return;
+  a.src = SILENCE; const pr = a.play(); if (pr && pr.catch) pr.catch(() => {});
+}, { once: true, capture: true });
 function hush() {
+  narrToken++;
   try { if (narr) { narr.pause(); narr = null; } } catch {}
   try { if (canSpeak) speechSynthesis.cancel(); } catch {}
 }
@@ -182,13 +202,14 @@ const sayClip = (id, text) => narrate(`audio/${id}.mp3`, text, null);
 const sayWord = (t) => sayClip('w/' + slug(t), t);
 function narrate(src, text, btn) {
   hush();
-  const a = new Audio(src); narr = a;
+  const a = player(), me = ++narrToken; narr = a;
   const done = () => { if (btn) btn.setAttribute('aria-pressed', 'false'); };
-  const fallback = () => { if (narr !== a) return; narr = null; if (canSpeak) speak(text, btn); else done(); };
+  const fallback = () => { if (me !== narrToken) return; narr = null; if (canSpeak) speak(text, btn); else done(); };
   if (btn) btn.setAttribute('aria-pressed', 'true');
-  a.onended = () => { if (narr === a) narr = null; done(); };
+  a.onended = () => { if (me === narrToken) narr = null; done(); };
   a.onerror = fallback;
-  const pr = a.play(); if (pr && pr.catch) pr.catch(fallback);
+  a.src = src;
+  const pr = a.play(); if (pr && pr.catch) pr.catch((e) => { if (e && e.name !== 'AbortError') fallback(); });
 }
 function speak(text, btn) {
   hush();
@@ -225,7 +246,7 @@ function renderPage() {
   checkBtn.textContent = last ? 'Start the questions' : 'Next page';
   checkBtn.disabled = false;
 }
-function closeLesson() { hush(); lessonEl.classList.remove('open'); document.body.style.overflow = ''; L = null; }
+function closeLesson() { hush(); lessonEl.classList.remove('open'); L = null; }
 $('#close').addEventListener('click', closeLesson);
 document.addEventListener('keydown', (e) => {
   if (!L) return;
@@ -370,6 +391,7 @@ function finish() {
 function confetti() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const c = $('#confetti'), x = c.getContext('2d'); c.width = innerWidth; c.height = innerHeight;
+  c.hidden = false;   // only on screen while it animates: Safari 26 tints its bars from fixed layers
   const colors = ['#ffc94a', '#ff7a45', '#3bb3a6', '#b9a6ff', '#ffb3c7', '#8fd3ff'];
   const star = (r) => { x.beginPath(); for (let i = 0; i < 10; i++) { const a = Math.PI / 5 * i - Math.PI / 2, rr = i % 2 ? r * .45 : r; x.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } x.closePath(); };
   const bits = Array.from({ length: 110 }, () => ({ x: innerWidth / 2, y: innerHeight * .4, vx: (Math.random() - .5) * 15, vy: -Math.random() * 15 - 4,
@@ -381,9 +403,76 @@ function confetti() {
       b.vy += .42; b.vx *= .99; b.x += b.vx; b.y += b.vy; b.a += b.va;
       x.save(); x.translate(b.x, b.y); x.rotate(b.a); star(b.r); x.fillStyle = b.c; x.fill(); x.lineWidth = 2; x.strokeStyle = '#2b2250'; x.stroke(); x.restore();
     }
-    if (++t < 170) requestAnimationFrame(frame); else x.clearRect(0, 0, c.width, c.height);
+    if (++t < 170) requestAnimationFrame(frame); else { x.clearRect(0, 0, c.width, c.height); c.hidden = true; }
   })();
 }
+
+/* ---------- phone menu: the "My light" panel under the bar ---------- */
+const panel = $('#panel'), meBtn = $('#me');
+function closePanel() { panel.hidden = true; meBtn.setAttribute('aria-expanded', 'false'); }
+meBtn.addEventListener('click', () => {
+  const open = panel.hidden; panel.hidden = !open; meBtn.setAttribute('aria-expanded', String(open)); Sound.play('tap');
+});
+document.addEventListener('click', (e) => { if (!panel.hidden && !e.target.closest('.top')) closePanel(); });
+$('#panel-help').addEventListener('click', () => { closePanel(); openHear(null); });
+
+/* ---------- sound check ----------
+   A page can't see the silent switch or the volume, so the first time on a device Pip asks. */
+const IS_IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+if (IS_IOS) document.documentElement.classList.add('is-ios');
+const hearEl = $('#hear');
+let hearThen = null;
+function heardBefore() { try { return localStorage.getItem('little-light-heard') === 'yes'; } catch { return true; } }
+function openHear(then) { hearThen = then; hearEl.classList.remove('listening'); hearEl.hidden = false; $('#hear-play').focus(); }
+function closeHear(heard) {
+  hush(); hearEl.hidden = true;
+  if (heard) { try { localStorage.setItem('little-light-heard', 'yes'); } catch {} }
+  const go = hearThen; hearThen = null; if (go) go();
+}
+$('#hear-play').addEventListener('click', (e) => {
+  if (!Sound.isOn()) Sound.set(true);
+  hearEl.classList.add('listening');
+  Sound.play('right');
+  setTimeout(() => narrate('audio/help/hello.mp3', "Hello! I'm Pip. If you can hear me, tap yes!", e.currentTarget), 650);
+});
+$('#hear-yes').addEventListener('click', () => closeHear(true));
+$('#hear-skip').addEventListener('click', () => { Sound.set(false); closeHear(true); });
+
+/* ---------- Safari 26 floats its toolbar over the bottom of the page ----------
+   safe-area-inset-bottom only covers the home bar, so lift the lesson buttons above the toolbar too. */
+const UA = navigator.userAgent;
+const SAFARI_VERSION = IS_IOS && !/CriOS|FxiOS|EdgiOS|GSA\//.test(UA) ? +(UA.match(/Version\/(\d+)/) || [])[1] || 0 : 0;
+const STANDALONE = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+if (SAFARI_VERSION >= 26 && !STANDALONE) document.documentElement.style.setProperty('--toolbar', '40px');
+function measureViewport() {
+  const vv = window.visualViewport;
+  const covered = vv ? Math.max(0, Math.round(innerHeight - vv.height - vv.offsetTop)) : 0;
+  document.documentElement.style.setProperty('--obscured', covered + 'px');
+  if (!$('#debug').hidden) showDebug();
+}
+if (window.visualViewport) { visualViewport.addEventListener('resize', measureViewport); visualViewport.addEventListener('scroll', measureViewport); }
+addEventListener('resize', measureViewport);
+
+// Open the site with #debug to see what this device reports (for fixing layout on real phones)
+function showDebug() {
+  const probe = document.createElement('div');
+  probe.style.cssText = 'position:fixed;visibility:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)';
+  document.body.appendChild(probe); const cs = getComputedStyle(probe);
+  const vv = window.visualViewport || {}, root = getComputedStyle(document.documentElement);
+  $('#debug').textContent = [
+    'Little Light debug', UA, '',
+    `iOS: ${IS_IOS}  Safari: ${SAFARI_VERSION || 'no'}  standalone: ${!!STANDALONE}`,
+    `inner: ${innerWidth} x ${innerHeight}   screen: ${screen.width} x ${screen.height}`,
+    `visualViewport: ${Math.round(vv.width)} x ${Math.round(vv.height)}  offsetTop ${Math.round(vv.offsetTop)}`,
+    `safe-area  top ${cs.paddingTop}  bottom ${cs.paddingBottom}  left ${cs.paddingLeft}  right ${cs.paddingRight}`,
+    `--obscured ${root.getPropertyValue('--obscured') || '0'}   --toolbar ${root.getPropertyValue('--toolbar') || '0'}`,
+    `audioSession: ${navigator.audioSession ? navigator.audioSession.type : 'not supported'}   sound: ${Sound.isOn() ? 'on' : 'off'}`,
+  ].join('\n');
+  probe.remove();
+}
+function syncDebug() { $('#debug').hidden = location.hash !== '#debug'; if (!$('#debug').hidden) showDebug(); }
+addEventListener('hashchange', syncDebug); addEventListener('scroll', () => { if (!$('#debug').hidden) showDebug(); }, { passive: true });
+measureViewport(); syncDebug();
 
 renderStats(); renderSky();
 (() => { const d = new Date(), day = d.getDay(), h = d.getHours();
