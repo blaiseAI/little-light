@@ -498,8 +498,10 @@ if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next
 (() => {
   const wanted = new URLSearchParams(location.search).get('story'); if (!wanted) return;
   history.replaceState(null, '', location.pathname + location.hash);
-  const i = STORIES.findIndex((s) => s.id === wanted), firstOpen = STORIES.findIndex((s) => !state.done.includes(s.id));
-  if (i >= 0 && (state.done.includes(wanted) || i === firstOpen)) openLesson(i);
+  const firstOpen = STORIES.findIndex((s) => !state.done.includes(s.id));
+  // "next" = the start buttons on the landing page: open the child's next story straight away
+  const i = wanted === 'next' ? firstOpen : STORIES.findIndex((s) => s.id === wanted);
+  if (i >= 0 && (i === firstOpen || state.done.includes(STORIES[i].id))) openLesson(i);
   else $('#sky').scrollIntoView();
 })();
 

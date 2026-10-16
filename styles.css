@@ -148,7 +148,7 @@ button { font: inherit; color: inherit; }
 .week-head { text-align: center; display: grid; gap: 2px; }
 .week-head h3 { font-size: clamp(24px, 3vw, 30px); color: var(--cream); }
 .week-head p { color: var(--lilac); font-size: 16px; }
-.week-sky { position: relative; margin-top: var(--s6); }
+.week-sky { position: relative; margin-top: var(--s8); }   /* room for the "Start here" tag above the first star */
 .week.closed .week-head h3 { color: #8c83c4; }
 .dim-stars { display: flex; justify-content: center; gap: var(--s3); margin-top: var(--s4); opacity: .35; }
 .dim-stars svg { width: 30px; height: 30px; }
