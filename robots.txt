@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+# working files that happen to be published with the site
+Disallow: /qa/
+Disallow: /tests/
+Disallow: /tools/
+Disallow: /docs/
+
+Sitemap: https://littlelight.kids/sitemap.xml
