@@ -292,6 +292,7 @@ checkBtn.addEventListener('click', () => {
 
 function finish() {
   L.phase = 'done';
+  lessonEl.classList.remove('reading');   // the finish screen is never story time
   const s = L.story, gained = s.ex.length;
   if (!state.done.includes(s.id)) state.done.push(s.id);
   state.xp += gained;
@@ -308,7 +309,11 @@ function finish() {
     <div class="chips">
       <span style="background:var(--gold-wash)"><svg><use href="#i-star"/></svg>+${gained} stars</span>
       <span style="background:var(--coral-wash)"><svg><use href="#i-sun"/></svg>${state.streak} ${state.streak === 1 ? 'day' : 'days'} shining</span>
-    </div></div>`;
+    </div>
+    ${window.LL_install && window.LL_install.canOffer() ? '<button class="btn soft keep-app" id="keep-app"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 8v6m-3-3 3 3 3-3"/></svg>Keep Little Light on your phone</button>' : ''}
+    </div>`;
+  // A happy moment to offer the home-screen app (pwa.js decides if this device can have it)
+  $('#keep-app')?.addEventListener('click', () => window.LL_install.open());
   setFoot('done'); checkBtn.textContent = JOURNEY ? 'Back to my journey' : 'See my sky'; checkBtn.disabled = false; checkBtn.className = 'btn gold';
   confetti(); Sound.play('done');
 }

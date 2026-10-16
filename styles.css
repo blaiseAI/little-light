@@ -422,3 +422,6 @@ body.story-only > header, body.story-only > main, body.story-only > footer { dis
 body.story-only { background: #fff; min-height: 100svh; }
 /* The sound check sits over the story's first page: dim it and soften it, keep it recognisable */
 .hear { background: rgba(34, 26, 72, .45); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+/* "Keep Little Light on your phone" on the finish screen */
+.keep-app { margin-top: var(--s5); min-height: 50px; font-size: 17px; }
+.keep-app svg { width: 22px; height: 22px; }
