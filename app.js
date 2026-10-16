@@ -171,13 +171,14 @@ const lessonEl = $('#lesson'), stage = $('#stage'), foot = $('#foot'), checkBtn 
 
 function openLesson(i) {
   // The first time on this device, Pip checks the sound is audible before the story starts
-  if (Sound.isOn() && !heardBefore()) { openHear(() => openLesson(i)); return; }
   const story = STORIES[i];
   L = { story, queue: story.ex.slice(), total: story.ex.length, answered: 0, phase: 'answer' };
   $('#trail').innerHTML = story.ex.map(() => `<svg viewBox="0 0 32 32" aria-hidden="true">${STAR}</svg>`).join('');
   $('#trail').setAttribute('aria-valuemax', story.ex.length);
   lessonEl.classList.add('open'); closePanel(); Sound.play('whoosh');
   if (story.pages) { L.phase = 'story'; L.page = 0; renderPage(); } else next();
+  // Once per visit, Pip checks the sound over the first page, so the child sees the story waiting behind it
+  if (Sound.isOn() && !heardBefore()) openHear(null);
 }
 
 /* ---------- story time ---------- */
@@ -452,7 +453,7 @@ $('#hear-play').addEventListener('click', (e) => {
 });
 $('#hear-yes').addEventListener('click', () => closeHear(true));
 // Closing the check cancels the story; the child can open it again from the sky
-$('#hear-close').addEventListener('click', () => { hush(); hearEl.hidden = true; hearThen = null; if (JOURNEY && !lessonEl.classList.contains('open')) location.href = JOURNEY; });
+$('#hear-close').addEventListener('click', () => { hush(); hearEl.hidden = true; hearThen = null; if (JOURNEY) backToJourney(); else closeLesson(); });
 $('#hear-skip').addEventListener('click', () => { Sound.set(false); closeHear(true); });
 
 /* ---------- Safari 26 floats its toolbar over the bottom of the page ----------

@@ -420,3 +420,5 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
    night-sky page behind the sound check and the reader stays hidden. Tests still use its markup. */
 body.story-only > header, body.story-only > main, body.story-only > footer { display: none; }
 body.story-only { background: #fff; min-height: 100svh; }
+/* The sound check sits over the story's first page: dim it and soften it, keep it recognisable */
+.hear { background: rgba(34, 26, 72, .45); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
