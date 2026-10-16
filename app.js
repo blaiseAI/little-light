@@ -252,7 +252,11 @@ function renderPage() {
   checkBtn.disabled = false;
 }
 function closeLesson() { hush(); lessonEl.classList.remove('open', 'reading'); L = null; }
-$('#close').addEventListener('click', closeLesson);
+// The journey on the landing page is the map now: leaving a story (or finishing one) goes back there.
+// On a page without a ROOT (tests, previews) it just closes in place.
+const JOURNEY = ROOT && !window.LL_STAY ? `${ROOT}#stories` : null;   // LL_STAY: tools/check.mjs plays every story on one page
+function backToJourney() { closeLesson(); if (JOURNEY) location.href = JOURNEY; }
+$('#close').addEventListener('click', backToJourney);
 document.addEventListener('keydown', (e) => {
   if (!L) return;
   if (e.key === 'Escape') closeLesson();
@@ -357,7 +361,7 @@ function wirePairs(ex) {
 const PRAISE = ['You shine!', 'Wonderful!', 'Yes, that\'s it!', 'Bright work!', 'Hooray!'];
 checkBtn.addEventListener('click', () => {
   if (!L) return;
-  if (L.phase === 'done') { closeLesson(); renderSky(); $('#sky').scrollIntoView(); return; }
+  if (L.phase === 'done') { if (JOURNEY) { backToJourney(); return; } closeLesson(); renderSky(); $('#sky').scrollIntoView(); return; }
   if (L.phase === 'feedback') { next(); return; }
   if (L.phase === 'story') { hush(); Sound.play('page'); if (L.page < L.story.pages.length - 1) { L.page++; renderPage(); } else next(); return; }
   hush();
@@ -388,7 +392,7 @@ function finish() {
       <span style="background:var(--gold-wash)"><svg><use href="#i-star"/></svg>+${gained} stars</span>
       <span style="background:var(--coral-wash)"><svg><use href="#i-sun"/></svg>${state.streak} ${state.streak === 1 ? 'day' : 'days'} shining</span>
     </div></div>`;
-  setFoot('done'); checkBtn.textContent = 'See my sky'; checkBtn.disabled = false; checkBtn.className = 'btn gold';
+  setFoot('done'); checkBtn.textContent = JOURNEY ? 'Back to my journey' : 'See my sky'; checkBtn.disabled = false; checkBtn.className = 'btn gold';
   confetti(); Sound.play('done');
 }
 
@@ -496,7 +500,10 @@ if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next
 
 // Opened from the landing page ("Read this story"): play/?story=<id>. Only a story the child has reached opens.
 (() => {
-  const wanted = new URLSearchParams(location.search).get('story'); if (!wanted) return;
+  const wanted = new URLSearchParams(location.search).get('story'); 
+  // /play/ on its own (no story asked for) has nothing to show: the map lives on the landing page.
+  // Tests and previews (automation, #play= hooks) still get the page.
+  if (!wanted) { if (JOURNEY && !navigator.webdriver && !/play=/.test(location.hash)) location.replace(JOURNEY); return; }
   history.replaceState(null, '', location.pathname + location.hash);
   const firstOpen = STORIES.findIndex((s) => !state.done.includes(s.id));
   // "next" = the start buttons on the landing page: open the child's next story straight away

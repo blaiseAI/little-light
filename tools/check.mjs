@@ -15,6 +15,7 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const errors = []; page.on('pageerror', (e) => errors.push(e.message));
 await page.addInitScript(() => {
   try { sessionStorage.setItem('little-light-session-heard', 'yes'); } catch {}   // skip the once-per-visit sound check
+  window.LL_STAY = true;   // stay on the game page between stories instead of returning to the journey
   window.__srcs = []; window.__bad = []; window.__fallback = 0;
   // Narration reuses one player, so record every play() and every media error instead of each new Audio()
   const play = HTMLMediaElement.prototype.play;
