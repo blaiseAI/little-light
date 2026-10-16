@@ -2,7 +2,7 @@
 // every story page and question plays, every clip it asks for loads, nothing falls back to the device voice,
 // every star lights, and there are no page errors. Also checks every clip exists on disk.
 //   node tools/check.mjs                                          the local files
-//   node tools/check.mjs --url https://blaiseai.github.io/little-light/   the live site
+//   node tools/check.mjs --url https://blaiseai.github.io/little-light/play/   the live site
 import { chromium } from 'playwright';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -14,7 +14,7 @@ const browser = await chromium.launch({ channel: 'chrome', args: ['--autoplay-po
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const errors = []; page.on('pageerror', (e) => errors.push(e.message));
 await page.addInitScript(() => {
-  try { localStorage.setItem('little-light-heard', 'yes'); } catch {}   // skip the one-time sound check
+  try { sessionStorage.setItem('little-light-session-heard', 'yes'); } catch {}   // skip the once-per-visit sound check
   window.__srcs = []; window.__bad = []; window.__fallback = 0;
   // Narration reuses one player, so record every play() and every media error instead of each new Audio()
   const play = HTMLMediaElement.prototype.play;
@@ -24,7 +24,7 @@ await page.addInitScript(() => {
   speechSynthesis.speak = (u) => { window.__fallback++; return sp(u); };
 });
 const urlArg = process.argv.indexOf('--url');
-const target = urlArg > 0 ? process.argv[urlArg + 1] : pathToFileURL(join(ROOT, 'index.html')).href;
+const target = urlArg > 0 ? process.argv[urlArg + 1] : pathToFileURL(join(ROOT, 'play', 'index.html')).href;
 console.log('checking', target);
 await page.goto(target);
 

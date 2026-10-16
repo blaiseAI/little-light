@@ -1,3 +1,5 @@
+// Pages in a subfolder (play/) set window.LL_ROOT so audio paths resolve from the site root
+const ROOT = window.LL_ROOT || '';
 
 /* ---------- sound ----------
    Synthesised in code, the motion-studio way (score.mjs: pop, chime, thump, whoosh),
@@ -158,7 +160,7 @@ $('#constellation').addEventListener('click', (e) => {
   if (b.classList.contains('locked')) { Sound.play('bonk'); b.animate([{ transform: 'rotate(-8deg)' }, { transform: 'rotate(8deg)' }, { transform: 'none' }], { duration: 260 }); return; }
   openLesson(+b.dataset.i);
 });
-$('#quick').addEventListener('click', () => {
+$('#quick')?.addEventListener('click', () => {
   const i = STORIES.findIndex((s) => !state.done.includes(s.id));
   openLesson(i === -1 ? Math.floor(Math.random() * STORIES.length) : i);
 });
@@ -198,7 +200,7 @@ function hush() {
 }
 // Quiz clips: q/<story>-<n> for questions, w/<slug> for answers, tiles and cards (recorded in Heart)
 const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const sayClip = (id, text) => narrate(`audio/${id}.mp3`, text, null);
+const sayClip = (id, text) => narrate(`${ROOT}audio/${id}.mp3`, text, null);
 const sayWord = (t) => sayClip('w/' + slug(t), t);
 function narrate(src, text, btn) {
   hush();
@@ -225,28 +227,31 @@ function renderPage() {
   const art = pg.art.map((id) => id === 'pip'
     ? '<svg viewBox="0 0 240 230" aria-hidden="true"><use href="#pip"/></svg>'
     : `<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#${id}"/></svg>`).join('');
-  stage.innerHTML = `<span class="l-kind"><svg><use href="#i-book"/></svg>Story time · page ${L.page + 1} of ${pages.length}</span>
-    <h2 class="l-q" id="l-q">${esc(L.story.title)}</h2>
+  lessonEl.classList.add('reading');
+  $('#reading-label').textContent = `Story time · page ${L.page + 1} of ${pages.length}`;
+  stage.innerHTML = `
+    <h2 class="l-q reader-title" id="l-q">${esc(L.story.title)}</h2>
     <div class="story">
       <div class="story-art a${L.page % 4}">${art}</div>
       <p class="tell">${esc(pg.text)}</p>
       ${pg.quote ? `<blockquote class="niv">“${esc(pg.quote)}”<cite>${esc(pg.qref)} (NIV)</cite></blockquote>` : ''}
       <p class="ref">${esc(pg.ref)}</p>
-      <button class="btn paper read" id="read" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sound"/></svg>Read to me</button>
-      <div class="dots" aria-hidden="true">${pages.map((_, i) => `<i class="${i <= L.page ? 'on' : ''}"></i>`).join('')}</div>
+      <button class="btn soft read" id="read" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sound"/></svg>Read to me</button>
+      <p class="read-hint">Tap Read to me to hear this page.</p>
+      <div class="dots" aria-hidden="true">${pages.map((_, i) => `<i class="${i === L.page ? 'current' : i < L.page ? 'on' : ''}"></i>`).join('')}</div>
     </div>`;
   stage.parentElement.scrollTop = 0;
   const rb = $('#read');
   rb.addEventListener('click', () => {
     if (rb.getAttribute('aria-pressed') === 'true') { hush(); rb.setAttribute('aria-pressed', 'false'); return; }
-    narrate(`audio/${L.story.id}-${L.page + 1}.mp3`, pg.text + (pg.quote ? ' ' + pg.quote : ''), rb);
+    narrate(`${ROOT}audio/${L.story.id}-${L.page + 1}.mp3`, pg.text + (pg.quote ? ' ' + pg.quote : ''), rb);
   });
   setFoot(''); foot.classList.add('story');
   $('#skip').textContent = L.page ? 'Back' : 'Skip the story';
   checkBtn.textContent = last ? 'Start the questions' : 'Next page';
   checkBtn.disabled = false;
 }
-function closeLesson() { hush(); lessonEl.classList.remove('open'); L = null; }
+function closeLesson() { hush(); lessonEl.classList.remove('open', 'reading'); L = null; }
 $('#close').addEventListener('click', closeLesson);
 document.addEventListener('keydown', (e) => {
   if (!L) return;
@@ -273,7 +278,7 @@ const KIND = { choose: ['i-eye', 'Pick the answer'], build: ['i-scroll', 'New ve
 function next() {
   setProgress();
   if (!L.queue.length) return finish();
-  L.current = L.queue.shift(); L.phase = 'answer';
+  L.current = L.queue.shift(); L.phase = 'answer'; lessonEl.classList.remove('reading');
   setFoot(''); checkBtn.textContent = 'Check'; checkBtn.disabled = true; $('#skip').textContent = 'Skip for now';
   const ex = L.current, [kicon, klabel] = KIND[ex.type];
   let html = `<div class="l-head"><span class="l-kind"><svg><use href="#${kicon}"/></svg>${klabel}</span><button class="qplay" id="qplay" aria-label="Hear the question"><svg aria-hidden="true"><use href="#i-sound"/></svg></button></div><h2 class="l-q" id="l-q">${esc(ex.q)}</h2>`;
@@ -422,20 +427,28 @@ const IS_IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform
 if (IS_IOS) document.documentElement.classList.add('is-ios');
 const hearEl = $('#hear');
 let hearThen = null;
-function heardBefore() { try { return localStorage.getItem('little-light-heard') === 'yes'; } catch { return true; } }
-function openHear(then) { hearThen = then; hearEl.classList.remove('listening'); hearEl.hidden = false; $('#hear-play').focus(); }
+function heardBefore() { try { return sessionStorage.getItem('little-light-session-heard') === 'yes'; } catch { return true; } }
+function openHear(then) {
+  hearThen = then; hearEl.classList.remove('listening'); hearEl.hidden = false;
+  $('#hear-yes').disabled = true; $('#hear-hint').textContent = 'Turn your volume up, then tap play.'; $('#hear-play').focus();
+}
 function closeHear(heard) {
   hush(); hearEl.hidden = true;
-  if (heard) { try { localStorage.setItem('little-light-heard', 'yes'); } catch {} }
+  if (heard) { try { sessionStorage.setItem('little-light-session-heard', 'yes'); } catch {} }
   const go = hearThen; hearThen = null; if (go) go();
 }
 $('#hear-play').addEventListener('click', (e) => {
   if (!Sound.isOn()) Sound.set(true);
   hearEl.classList.add('listening');
   Sound.play('right');
-  setTimeout(() => narrate('audio/help/hello.mp3', "Hello! I'm Pip. If you can hear me, tap yes!", e.currentTarget), 650);
+  setTimeout(() => narrate(`${ROOT}audio/help/hello.mp3`, "Hello! I'm Pip. If you can hear me, tap yes!", e.currentTarget), 650);
+  // "Yes" only makes sense once something has played
+  $('#hear-yes').disabled = false;
+  $('#hear-hint').textContent = 'Did you hear Pip? If not, turn the volume up and tap play again.';
 });
 $('#hear-yes').addEventListener('click', () => closeHear(true));
+// Closing the check cancels the story; the child can open it again from the sky
+$('#hear-close').addEventListener('click', () => { hush(); hearEl.hidden = true; hearThen = null; });
 $('#hear-skip').addEventListener('click', () => { Sound.set(false); closeHear(true); });
 
 /* ---------- Safari 26 floats its toolbar over the bottom of the page ----------
@@ -481,9 +494,19 @@ renderStats(); renderSky();
 const m = location.hash.match(/play=(\d)(?:&step=(\d))?(&done=1)?/);
 if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next(); } else if (m[2]) { L.queue = L.story.ex.slice(+m[2]); next(); } }
 
+// Opened from the landing page ("Read this story"): play/?story=<id>. Only a story the child has reached opens.
+(() => {
+  const wanted = new URLSearchParams(location.search).get('story'); if (!wanted) return;
+  history.replaceState(null, '', location.pathname + location.hash);
+  const i = STORIES.findIndex((s) => s.id === wanted), firstOpen = STORIES.findIndex((s) => !state.done.includes(s.id));
+  if (i >= 0 && (state.done.includes(wanted) || i === firstOpen)) openLesson(i);
+  else $('#sky').scrollIntoView();
+})();
+
 /* ---------- home motion: event driven, with a static readable fallback ---------- */
 (() => {
   const root = document.documentElement, art = $('.hero-art');
+  if (!art) return;   // the game page has no hero; the landing page carries the scene
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const toggle = $('#motion-toggle');
   let paused = false, queued = 0, visible = true;

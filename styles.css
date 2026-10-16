@@ -6,7 +6,8 @@
    ============================================================ */
 :root {
   /* ground and ink */
-  --paper: #fff8ec;  --paper-2: #fdecd2;  --ink: #2b2250;  --ink-soft: #5d5680;
+  --paper: #ffffff;   /* white canvas (Open Design) */
+  --surface: #fbf7ef; --line: #ddd8e4;  --paper-2: #fdecd2;  --ink: #2b2250;  --ink-soft: #5d5680;
   --night: #221a48;  --night-2: #322a6b;  --night-3: #463d8a;  --cream: #fff3d6;
   /* accents */
   --coral: #ff7a45;  --coral-wash: #ffe1d3;
@@ -355,4 +356,62 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
 ::selection { background: var(--gold); color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   .scene-sun { transform: none; }
+}
+
+
+/* ============================================================
+   Open Design reader + sound check (2026-10-16)
+   White canvas, cream surfaces, thin borders; gold for the one main action.
+   ============================================================ */
+.btn.soft { --fill: #fff; border-color: var(--line); box-shadow: 0 3px 0 var(--line); }
+.btn.soft:hover { box-shadow: 0 4px 0 var(--line); }
+.btn.soft:active { box-shadow: 0 0 0 var(--line); }
+.btn:disabled { opacity: .55; }
+
+/* Story time reads like a book: page label in the bar, quiet art, plain text, thin quote card */
+.reading-label { display: none; margin: 0; flex: 1; text-align: center; font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.close-label { display: none; }
+.lesson.reading .trail { display: none; }
+.lesson.reading .reading-label { display: block; }
+.lesson.reading .l-top { border-bottom: 1px solid var(--line); padding-bottom: var(--s3); }
+.lesson.reading .close { width: auto; padding: 0 14px; gap: 8px; border-radius: var(--r-card); border: 2px solid var(--line); box-shadow: none; display: flex; align-items: center; font-family: var(--display); font-weight: 600; font-size: 15px; }
+.lesson.reading .close-label { display: inline; }
+.lesson.reading .l-top .mute { border: 2px solid var(--line); box-shadow: none; background: #fff; }
+.lesson.reading .reader-title { text-align: center; margin: var(--s2) 0 var(--s5); font-size: clamp(28px, 4vw, 38px); }
+.lesson.reading .story-art { background: var(--surface); border: 0; box-shadow: none; border-radius: 24px; padding: var(--s5); min-height: 160px; align-items: center; }
+.lesson.reading .tell { font-family: var(--text); font-weight: 400; font-size: clamp(19px, 2.5vw, 24px); line-height: 1.6; max-width: 42ch; }
+.lesson.reading .niv { border: 1px solid var(--line); border-radius: 16px; padding: 16px 22px; font-size: 16px; line-height: 1.7; max-width: 52ch; }
+.lesson.reading .niv cite { font-size: 13px; }
+.read-hint { margin: 0; font-size: 13px; color: var(--ink-soft); }
+.dots i { width: 9px; height: 9px; border: 1px solid var(--line); background: var(--surface); }
+.dots i.on { background: var(--line); border-color: var(--line); }
+.dots i.current { background: var(--ink); border-color: var(--ink); }
+.lesson.reading .l-foot { border-top: 1px solid var(--line); padding-top: var(--s3); }
+.lesson.reading .l-foot .skip { --fill: #fff; border-color: var(--line); box-shadow: 0 3px 0 var(--line); }
+.lesson.reading #check { --fill: var(--gold); }
+
+/* Sound check */
+.hear-card { position: relative; border: 2px solid var(--line); box-shadow: 0 20px 70px rgba(43, 34, 80, .2); padding: 30px 24px 22px; gap: var(--s2); background: #fff; }
+.hear-close { position: absolute; right: 14px; top: 14px; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--line); background: #fff; display: grid; place-items: center; cursor: pointer; }
+.hear-close svg { width: 16px; height: 16px; }
+.hear-pip { width: 100px; }
+.hear-card h2 { font-size: 32px; margin-top: var(--s2); }
+.hear-card > p { color: var(--ink); font-size: 16px; }
+.hear-card .btn { width: 100%; min-height: 52px; font-size: 18px; }
+.hear-hint { margin: 2px 0 6px; font-size: 14px; color: var(--ink-soft) !important; min-height: 2.6em; }
+.hear-ios { display: none; gap: 10px; align-items: flex-start; text-align: left; margin: 0 0 6px; padding: 10px 14px; border-radius: 16px; background: var(--surface); font-size: 14px !important; line-height: 1.45; }
+.is-ios .hear-ios { display: flex; }
+.hear-ios svg { width: 22px; height: 22px; flex: none; margin-top: 1px; }
+.hear-note { margin: 0; font-size: 13px !important; color: var(--ink-soft) !important; }
+.hear-skip { color: var(--ink); }
+@media (max-width: 640px) {
+  .lesson.reading .close { padding: 0 10px; font-size: 14px; }
+  .lesson.reading .story-art { min-height: 120px; padding: var(--s3); }
+  .lesson.reading .tell { font-size: 19px; }
+  .lesson.reading .niv { padding: 14px; font-size: 15px; }
+}
+@media (max-width: 640px) {
+  /* Open Design's phone footer: a narrow secondary button and a wide main one */
+  .lesson.reading .l-foot.story .in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--s3); }
+  .lesson.reading .l-foot .btn { width: 100%; min-height: 52px; padding: 0 var(--s3); font-size: 17px; line-height: 1.2; white-space: normal; text-align: center; }
 }

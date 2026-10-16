@@ -3,272 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#fff8ec">
 <title>Little Light</title>
+<meta name="description" content="Five-minute Bible stories and games for kids aged 5 to 7. Hear the story, learn a verse, and light a star.">
+<link rel="icon" href="assets/landing/logo-lantern.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="landing.css">
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <!-- Pip the lamb, holding a lantern -->
-    <symbol id="pip" viewBox="0 0 240 230">
-      <g stroke="#2b2250" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="70" y="158" width="20" height="44" rx="10" fill="#2b2250"/>
-        <rect x="132" y="158" width="20" height="44" rx="10" fill="#2b2250"/>
-        <g fill="#2b2250" stroke-width="14">
-          <circle cx="76" cy="118" r="34"/><circle cx="112" cy="98" r="40"/><circle cx="148" cy="118" r="34"/>
-          <circle cx="90" cy="150" r="30"/><circle cx="134" cy="150" r="30"/><circle cx="112" cy="136" r="36"/>
-        </g>
-        <g fill="#fffdf7" stroke="none">
-          <circle cx="76" cy="118" r="34"/><circle cx="112" cy="98" r="40"/><circle cx="148" cy="118" r="34"/>
-          <circle cx="90" cy="150" r="30"/><circle cx="134" cy="150" r="30"/><circle cx="112" cy="136" r="36"/>
-        </g>
-        <ellipse cx="76" cy="90" rx="20" ry="11" fill="#ffb3c7" transform="rotate(-25 76 90)"/>
-        <ellipse cx="148" cy="90" rx="20" ry="11" fill="#ffb3c7" transform="rotate(25 148 90)"/>
-        <ellipse cx="112" cy="104" rx="31" ry="34" fill="#f3d9bf"/>
-        <g fill="#fffdf7" stroke="none"><circle cx="104" cy="66" r="12"/><circle cx="120" cy="64" r="11"/><circle cx="112" cy="72" r="12"/></g>
-        <path d="M100 68a12 12 0 0 1 22-4" fill="none" stroke-width="5"/>
-        <path d="M150 140q22 2 36-6" fill="none" stroke-width="9"/>
-        <path d="M186 126v-10" stroke-width="5"/>
-        <rect x="172" y="132" width="30" height="40" rx="9" fill="#ffc94a"/>
-        <path d="M172 144h30M172 160h30" stroke-width="4"/>
-        <rect x="176" y="126" width="22" height="8" rx="3" fill="#2b2250"/>
-      </g>
-      <circle cx="187" cy="152" r="34" fill="#ffc94a" opacity=".25"/>
-      <ellipse cx="101" cy="102" rx="8" ry="10" fill="#2b2250"/><ellipse cx="123" cy="102" rx="8" ry="10" fill="#2b2250"/>
-      <circle cx="104" cy="98" r="3" fill="#fff"/><circle cx="126" cy="98" r="3" fill="#fff"/>
-      <path d="M104 120q8 7 16 0" fill="none" stroke="#2b2250" stroke-width="5" stroke-linecap="round"/>
-      <ellipse cx="90" cy="116" rx="7" ry="4.5" fill="#ff7a45" opacity=".55"/><ellipse cx="134" cy="116" rx="7" ry="4.5" fill="#ff7a45" opacity=".55"/>
-    </symbol>
-
-    <symbol id="star5" viewBox="0 0 64 64"><path d="M32 5l8 17 18.5 2.3-13.6 12.7 3.6 18.4L32 46.3 15.5 55.4l3.6-18.4L5.5 24.3 24 22z" stroke-width="4" stroke-linejoin="round"/></symbol>
-    <symbol id="i-lantern" viewBox="0 0 40 40"><g stroke="#2b2250" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M20 3v4"/><rect x="11" y="7" width="18" height="5" rx="2" fill="#2b2250"/><rect x="9" y="12" width="22" height="22" rx="7" fill="#ffc94a"/><path d="M9 20h22M9 27h22"/></g></symbol>
-    <symbol id="i-sun" viewBox="0 0 32 32"><g stroke="#2b2250" stroke-width="2.5" stroke-linecap="round"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6 6l3 3M23 23l3 3M26 6l-3 3M9 23l-3 3"/><circle cx="16" cy="16" r="7" fill="#ff7a45"/></g></symbol>
-    <symbol id="i-star" viewBox="0 0 32 32"><path d="M16 3l4 8.5 9.3 1.2-6.8 6.4 1.8 9.2L16 23.7l-8.3 4.6 1.8-9.2-6.8-6.4 9.3-1.2z" fill="#ffc94a" stroke="#2b2250" stroke-width="2.5" stroke-linejoin="round"/></symbol>
-    <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="#2b2250" stroke-width="3.5" stroke-linecap="round"/></symbol>
-    <symbol id="i-eye" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#ffc94a" stroke="#2b2250" stroke-width="2"/><path d="M8 12l3 3 5-6" fill="none" stroke="#2b2250" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-scroll" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" fill="#8fd3ff" stroke="#2b2250" stroke-width="2"/><path d="M8 10h8M8 14h5" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5" fill="#ffb3c7" stroke="#2b2250" stroke-width="2"/><circle cx="16" cy="12" r="5" fill="#b9a6ff" stroke="#2b2250" stroke-width="2" opacity=".9"/></symbol>
-    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#ffc94a" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-quiet" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#fdecd2" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M16 9.5l5 5M21 9.5l-5 5" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-ear" viewBox="0 0 24 24"><path d="M7 10a5 5 0 0 1 10 0c0 3-3 4-3 7a3 3 0 0 1-6 0" fill="none" stroke="#2b2250" stroke-width="2.2" stroke-linecap="round"/><path d="M10 10a2 2 0 0 1 4 0" fill="none" stroke="#2b2250" stroke-width="2.2" stroke-linecap="round"/><circle cx="19" cy="5" r="3" fill="#ff7a45"/></symbol>
-    <symbol id="i-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3z" fill="#ffc94a" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M15 8.5a4.5 4.5 0 0 1 0 7M17.5 6a8 8 0 0 1 0 12" fill="none" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/><path d="M21 3v4M19 5h4" stroke="#ff7a45" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z" fill="#ffc94a" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M10 21a2 2 0 0 0 4 0" fill="none" stroke="#2b2250" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-lock" viewBox="0 0 64 64"><rect x="16" y="29" width="32" height="24" rx="7" fill="#5d54a6"/><path d="M23 29v-5a9 9 0 0 1 18 0v5" fill="none" stroke="#5d54a6" stroke-width="6"/></symbol>
-
-    <!-- Story icons (ink on coloured node) -->
-    <symbol id="n-sun" viewBox="0 0 64 64"><g stroke="#2b2250" stroke-width="4" stroke-linecap="round"><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13 13l6 6M45 45l6 6M51 13l-6 6M19 45l-6 6"/><circle cx="32" cy="32" r="12" fill="#fff8ec"/></g></symbol>
-    <symbol id="n-ark" viewBox="0 0 64 64"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M6 36h52l-8 15H14z" fill="#fff8ec"/><rect x="19" y="23" width="26" height="13" fill="#fff8ec"/><path d="M15 24l17-12 17 12z" fill="#fff8ec"/></g></symbol>
-    <symbol id="n-stone" viewBox="0 0 64 64"><g stroke="#2b2250" stroke-width="4"><path d="M10 12c8 20 36 20 44 0" fill="none" stroke-linecap="round"/><ellipse cx="32" cy="40" rx="12" ry="9" fill="#fff8ec"/><ellipse cx="14" cy="52" rx="6" ry="4.5" fill="#fff8ec"/><ellipse cx="50" cy="52" rx="6" ry="4.5" fill="#fff8ec"/></g></symbol>
-    <symbol id="n-fish" viewBox="0 0 64 64"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M6 32c10-16 32-16 42 0-10 16-32 16-42 0z" fill="#fff8ec"/><path d="M46 32l12-10v20z" fill="#fff8ec"/></g><circle cx="20" cy="29" r="3.5" fill="#2b2250"/></symbol>
-    <symbol id="n-star" viewBox="0 0 64 64"><path d="M32 6l7.6 16.4L57 24.6 44 37l3.4 18L32 46 16.6 55 20 37 7 24.6l17.4-2.2z" fill="#fff8ec" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/></symbol>
-    <symbol id="n-bread" viewBox="0 0 64 64"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M8 36c0-12 10-18 24-18s24 6 24 18v12H8z" fill="#fff8ec"/><path d="M22 25v8M32 23v10M42 25v8"/></g></symbol>
-    <symbol id="n-manna" viewBox="0 0 64 64"><g fill="#fff8ec" stroke="#2b2250" stroke-width="3.5"><circle cx="18" cy="16" r="5"/><circle cx="40" cy="12" r="5"/><circle cx="30" cy="30" r="5"/><circle cx="48" cy="32" r="5"/><circle cx="14" cy="40" r="5"/></g><path d="M6 54q26-8 52 0" fill="none" stroke="#2b2250" stroke-width="4" stroke-linecap="round"/></symbol>
-    <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 6c3-1 6-1 9 1 3-2 6-2 9-1v13c-3-1-6-1-9 1-3-2-6-2-9-1z" fill="#ffc94a" stroke="#2b2250" stroke-width="2" stroke-linejoin="round"/><path d="M12 7v13" stroke="#2b2250" stroke-width="2"/></symbol>
-    <symbol id="n-check" viewBox="0 0 64 64"><path d="M15 33l11 11 23-25" fill="none" stroke="#2b2250" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-
-    <!-- Choice pictures -->
-    <symbol id="p-ark" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M8 58h84L80 82H20z" fill="#e8a24a"/><rect x="26" y="38" width="44" height="20" fill="#ffc94a"/><path d="M22 40l26-18 26 18z" fill="#ff7a45"/><circle cx="40" cy="48" r="4" fill="#fff"/><circle cx="56" cy="48" r="4" fill="#fff"/></g><path d="M4 88q12-6 23 0t23 0 23 0 23 0" fill="none" stroke="#3bb3a6" stroke-width="5" stroke-linecap="round"/></symbol>
-    <symbol id="p-rainbow" viewBox="0 0 100 100"><g fill="none" stroke-width="8" stroke-linecap="round"><path d="M14 74a36 36 0 0 1 72 0" stroke="#ff7a45"/><path d="M22 74a28 28 0 0 1 56 0" stroke="#ffc94a"/><path d="M30 74a20 20 0 0 1 40 0" stroke="#3bb3a6"/><path d="M38 74a12 12 0 0 1 24 0" stroke="#b9a6ff"/></g><g stroke="#2b2250" stroke-width="4" fill="#fff"><path d="M6 80a9 9 0 0 1 9-11 11 11 0 0 1 20 3 7 7 0 0 1-1 13H12a7 7 0 0 1-6-5z"/><path d="M66 80a9 9 0 0 1 9-11 11 11 0 0 1 20 3 7 7 0 0 1-1 13H72a7 7 0 0 1-6-5z"/></g></symbol>
-    <symbol id="p-fish" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M8 52c16-30 56-30 70 0-14 30-54 30-70 0z" fill="#8fd3ff"/><path d="M76 52l18-16v32z" fill="#3bb3a6"/><path d="M30 64q14 8 28 0" fill="none"/></g><circle cx="30" cy="44" r="6" fill="#fff" stroke="#2b2250" stroke-width="3"/><circle cx="31" cy="45" r="3" fill="#2b2250"/></symbol>
-    <symbol id="p-bread" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M14 60c0-16 14-26 36-26s36 10 36 26v14H14z" fill="#e8a24a"/><path d="M34 42v12M50 38v14M66 42v12" stroke-linecap="round"/><path d="M20 82c8-8 20-8 26 0-6 8-18 8-26 0z" fill="#8fd3ff"/><path d="M54 82c8-8 20-8 26 0-6 8-18 8-26 0z" fill="#8fd3ff"/></g></symbol>
-    <symbol id="p-star" viewBox="0 0 100 100"><path d="M50 10l10 24 26 2-20 17 6 26-22-14-22 14 6-26-20-17 26-2z" fill="#ffc94a" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/></symbol>
-    <symbol id="p-crown" viewBox="0 0 100 100"><path d="M14 74l-4-42 22 18 18-28 18 28 22-18-4 42z" fill="#ffc94a" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/><circle cx="50" cy="60" r="7" fill="#ff7a45" stroke="#2b2250" stroke-width="3"/><rect x="14" y="74" width="72" height="10" fill="#e8a24a" stroke="#2b2250" stroke-width="4"/></symbol>
-    <symbol id="p-sling" viewBox="0 0 100 100"><path d="M18 22c4 34 22 48 32 48s28-14 32-48" fill="none" stroke="#b07a4a" stroke-width="6" stroke-linecap="round"/><g stroke="#2b2250" stroke-width="4"><ellipse cx="50" cy="72" rx="13" ry="10" fill="#cfc6e6"/><ellipse cx="24" cy="86" rx="8" ry="6" fill="#e6e0f5"/><ellipse cx="76" cy="86" rx="8" ry="6" fill="#e6e0f5"/></g></symbol>
-    <symbol id="p-sword" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M50 8l8 12v46H42V20z" fill="#e6e0f5"/><rect x="30" y="66" width="40" height="8" rx="3" fill="#ffc94a"/><rect x="45" y="74" width="10" height="18" rx="3" fill="#b07a4a"/></g></symbol>
-    <symbol id="p-tower" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><rect x="30" y="58" width="40" height="30" fill="#e8a24a"/><rect x="36" y="34" width="28" height="24" fill="#f2c48a"/><rect x="42" y="14" width="16" height="20" fill="#fff1c7"/><path d="M44 88V76a6 6 0 0 1 12 0v12z" fill="#2b2250"/></g></symbol>
-    <symbol id="p-sunset" viewBox="0 0 100 100"><g stroke="#ffc94a" stroke-width="5" stroke-linecap="round"><path d="M50 14v12M20 28l8 8M80 28l-8 8"/></g><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M22 64a28 28 0 0 1 56 0z" fill="#ff7a45"/><path d="M8 64h84"/></g><g stroke="#b9a6ff" stroke-width="5" stroke-linecap="round"><path d="M22 76h56M34 87h32"/></g></symbol>
-    <symbol id="p-rain" viewBox="0 0 100 100"><path d="M22 58a14 14 0 0 1 4-27 20 20 0 0 1 38-4 15 15 0 0 1 14 31z" fill="#e6e0f5" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/><g stroke="#3bb3a6" stroke-width="5" stroke-linecap="round"><path d="M30 70l-4 10M50 70l-4 10M70 70l-4 10M40 84l-3 8M60 84l-3 8"/></g></symbol>
-    <symbol id="p-dove" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M10 58c12-2 20-12 32-12 14 0 22 6 32 2-4 14-18 22-32 22-12 0-24-4-32-12z" fill="#fff"/><path d="M38 50c-6-16 6-30 22-32-2 16-8 24-18 32z" fill="#fff"/><path d="M74 48l14-2-12 9z" fill="#ffc94a"/></g><circle cx="66" cy="50" r="3" fill="#2b2250"/><path d="M86 52q8 6 4 18" fill="none" stroke="#3bb3a6" stroke-width="3" stroke-linecap="round"/><ellipse cx="91" cy="62" rx="3.5" ry="7" fill="#3bb3a6" stroke="#2b2250" stroke-width="2" transform="rotate(-15 91 62)"/></symbol>
-    <symbol id="p-manna" viewBox="0 0 100 100"><path d="M6 80q44-10 88 0v10H6z" fill="#f2c48a" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/><g fill="#fff" stroke="#2b2250" stroke-width="2.5"><circle cx="20" cy="76" r="4"/><circle cx="34" cy="72" r="4"/><circle cx="48" cy="74" r="4"/><circle cx="64" cy="72" r="4"/><circle cx="80" cy="76" r="4"/><circle cx="30" cy="40" r="3.5"/><circle cx="52" cy="26" r="3.5"/><circle cx="72" cy="42" r="3.5"/><circle cx="42" cy="56" r="3.5"/><circle cx="62" cy="58" r="3.5"/></g></symbol>
-    <symbol id="p-sun" viewBox="0 0 100 100"><g stroke="#ff7a45" stroke-width="7" stroke-linecap="round"><path d="M50 8v12M50 80v12M8 50h12M80 50h12M20 20l9 9M71 71l9 9M80 20l-9 9M29 71l-9 9"/></g><circle cx="50" cy="50" r="20" fill="#ffc94a" stroke="#2b2250" stroke-width="4"/></symbol>
-    <symbol id="p-moon" viewBox="0 0 100 100"><path d="M64 14a36 36 0 1 0 22 52A30 30 0 0 1 64 14z" fill="#b9a6ff" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/></symbol>
-    <symbol id="p-tree" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><rect x="44" y="58" width="12" height="30" fill="#b07a4a"/><circle cx="50" cy="40" r="28" fill="#3bb3a6"/><circle cx="38" cy="36" r="5" fill="#ff7a45"/><circle cx="60" cy="48" r="5" fill="#ff7a45"/><circle cx="58" cy="28" r="5" fill="#ff7a45"/></g></symbol>
-    <symbol id="p-manger" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M14 46h72l-10 24H24z" fill="#b07a4a"/><path d="M22 70l-8 18M78 70l8 18" stroke-linecap="round"/><path d="M18 46q8-10 16-2 8-10 16-2 8-10 16-2 8-10 16 2" fill="#ffc94a"/><circle cx="50" cy="38" r="9" fill="#f3d9bf"/></g></symbol>
-    <symbol id="p-palace" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><rect x="14" y="40" width="72" height="46" fill="#e6e0f5"/><path d="M14 40V24h12v8h12V24h24v8h12V24h12v16z" fill="#cfc6e6"/><path d="M42 86V64a8 8 0 0 1 16 0v22z" fill="#8fd3ff"/></g></symbol>
-
-    <!-- Weeks 2 and 3 -->
-    <symbol id="p-tablets" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M12 88V34a17 17 0 0 1 34 0v54z" fill="#e6e0f5"/><path d="M54 88V34a17 17 0 0 1 34 0v54z" fill="#e6e0f5"/></g><g stroke="#5d54a6" stroke-width="3" stroke-linecap="round"><path d="M21 40h16M21 50h16M21 60h16M21 70h16M63 40h16M63 50h16M63 60h16M63 70h16"/></g></symbol>
-    <symbol id="p-mountain" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M4 88l32-52 14 20 12-14 34 46z" fill="#b9a6ff"/><path d="M28 49l8-13 9 13-9 5z" fill="#fff"/><path d="M28 30a8 8 0 0 1 3-14 11 11 0 0 1 21-3 8 8 0 0 1 8 17z" fill="#e6e0f5"/></g><path d="M66 12l-6 12h8l-6 12" fill="none" stroke="#ffc94a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="p-lamp" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M12 62c0-12 16-18 38-18 16 0 26 4 34 0-4 14-16 26-34 26-22 0-38-2-38-8z" fill="#e8a24a"/><path d="M36 84h28M44 70l-4 14M56 70l4 14"/><path d="M84 42c-3-10 3-17 7-24 3 8 5 15-2 24z" fill="#ffc94a"/></g></symbol>
-    <symbol id="p-raven" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M10 62c10-14 30-22 48-18l16-6-6 12c4 10-2 22-16 26-18 6-34 0-42-14z" fill="#3a3466"/><path d="M30 54c8-12 20-16 32-14-6 10-18 16-32 14z" fill="#5d54a6"/><path d="M74 38l16 2-14 6z" fill="#ffc94a"/><path d="M38 78l-4 12M50 78l2 12"/></g><circle cx="66" cy="44" r="3" fill="#fff"/><rect x="86" y="36" width="10" height="8" rx="3" fill="#e8a24a" stroke="#2b2250" stroke-width="2.5"/></symbol>
-    <symbol id="p-lion" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4"><circle cx="50" cy="52" r="38" fill="#e8a24a"/><circle cx="30" cy="30" r="9" fill="#ffc94a"/><circle cx="70" cy="30" r="9" fill="#ffc94a"/><circle cx="50" cy="55" r="25" fill="#ffc94a"/></g><path d="M38 50q3-4 6 0M56 50q3-4 6 0" fill="none" stroke="#2b2250" stroke-width="3.5" stroke-linecap="round"/><path d="M44 60h12l-6 6z" fill="#2b2250"/><path d="M42 70q8 5 16 0" fill="none" stroke="#2b2250" stroke-width="3" stroke-linecap="round"/></symbol>
-    <symbol id="p-coat" viewBox="0 0 100 100"><clipPath id="robe-clip"><path d="M38 10h24l22 15-9 13-8-6v58H33V32l-8 6-9-13z"/></clipPath><g clip-path="url(#robe-clip)"><rect width="100" height="100" fill="#ff7a45"/><rect x="30" width="9" height="100" fill="#ffc94a"/><rect x="46" width="9" height="100" fill="#3bb3a6"/><rect x="62" width="9" height="100" fill="#b9a6ff"/></g><path d="M38 10h24l22 15-9 13-8-6v58H33V32l-8 6-9-13z" fill="none" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/><path d="M40 10q10 10 20 0" fill="none" stroke="#2b2250" stroke-width="4"/></symbol>
-    <symbol id="p-basket" viewBox="0 0 100 100"><g stroke="#3bb3a6" stroke-width="4" stroke-linecap="round"><path d="M10 74V36M16 74V46M84 74V40M90 74V50"/></g><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M20 56h60l-8 20H28z" fill="#e8a24a"/><path d="M34 56q16-12 32 0" fill="#e3f4ff"/><circle cx="50" cy="48" r="8" fill="#f3d9bf"/></g><path d="M30 64h40M32 70h36" stroke="#b07a4a" stroke-width="2.5"/><path d="M4 84q11-6 23 0t23 0 23 0 23 0" fill="none" stroke="#8fd3ff" stroke-width="5" stroke-linecap="round"/></symbol>
-    <symbol id="p-walls" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><path d="M6 88V42h16v8h10v-8h16v8h10v-8h16v8h10v-8h10v46z" fill="#f2c48a"/><path d="M42 88V70a8 8 0 0 1 16 0v18z" fill="#b07a4a"/></g><path d="M10 62h22M18 74h18M64 62h24M68 76h18" stroke="#c98a4a" stroke-width="3" stroke-linecap="round"/></symbol>
-    <symbol id="p-trumpet" viewBox="0 0 100 100"><path d="M10 74c12-2 32-10 46-26 8-10 12-22 26-28l7 10c-12 4-14 16-20 26-14 20-38 30-59 30z" fill="#f2c48a" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/><path d="M26 74c14-6 30-16 40-30" fill="none" stroke="#c98a4a" stroke-width="3" stroke-linecap="round"/><g fill="none" stroke="#ff7a45" stroke-width="4" stroke-linecap="round"><path d="M88 10q7-2 8 5M92 24q6 1 5 8"/></g></symbol>
-    <symbol id="p-boat" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M50 62V14"/><path d="M54 18l28 38H54z" fill="#fff"/><path d="M8 62h84l-12 18H20z" fill="#b07a4a"/></g><path d="M4 88q11-6 23 0t23 0 23 0 23 0" fill="none" stroke="#3bb3a6" stroke-width="5" stroke-linecap="round"/></symbol>
-    <symbol id="p-donkey" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M26 66v20M36 66v20M56 66v20M64 66v20"/><path d="M14 44c-4 2-8 8-6 14" fill="none"/><path d="M20 42h44c8 0 12 6 12 12v12H20c-6 0-8-4-8-10s4-14 8-14z" fill="#cfc6e6"/><path d="M62 46l10-22c4-6 12-5 15 1l5 12-9 6-8-2-6 12z" fill="#cfc6e6"/><path d="M76 22l-3-14 7 12M84 22l4-13 1 14" fill="#cfc6e6"/></g><circle cx="80" cy="30" r="2.6" fill="#2b2250"/><path d="M30 42h22v10H30z" fill="#ff7a45" stroke="#2b2250" stroke-width="3"/></symbol>
-    <symbol id="p-heart" viewBox="0 0 100 100"><path d="M50 86C20 66 8 50 12 34c4-16 24-20 38-4 14-16 34-12 38 4 4 16-8 32-38 52z" fill="#ff7a45" stroke="#2b2250" stroke-width="4" stroke-linejoin="round"/><path d="M28 36q4-8 12-6" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
-    <symbol id="p-scroll" viewBox="0 0 100 100"><g stroke="#2b2250" stroke-width="4" stroke-linejoin="round"><rect x="22" y="20" width="56" height="60" fill="#fff1c7"/><rect x="14" y="12" width="72" height="12" rx="6" fill="#e8a24a"/><rect x="14" y="76" width="72" height="12" rx="6" fill="#e8a24a"/></g><path d="M32 38h36M32 48h36M32 58h24" stroke="#5d54a6" stroke-width="3" stroke-linecap="round"/></symbol>
-  </defs>
-</svg>
-
-<header class="top">
-  <div class="wrap">
-    <a class="logo" href="#top" aria-label="Little Light home"><svg aria-hidden="true"><use href="#i-lantern"/></svg>little <em>light</em></a>
-    <div class="stats">
-      <button class="mute" id="mute-top" aria-pressed="true" aria-label="Sound on"><svg class="on" aria-hidden="true"><use href="#i-sound"/></svg><svg class="off" aria-hidden="true"><use href="#i-quiet"/></svg></button>
-      <span class="stat sun" title="Days shining"><svg aria-hidden="true"><use href="#i-sun"/></svg><span class="n-streak">0</span><span class="sr">days shining</span></span>
-      <span class="stat" title="Stars lit"><svg aria-hidden="true"><use href="#i-star"/></svg><span class="n-xp">0</span><span class="sr">stars</span></span>
-    </div>
-    <!-- Phone: one control in the bar; everything else lives in the panel below it -->
-    <button class="me" id="me" aria-expanded="false" aria-controls="panel">
-      <svg aria-hidden="true"><use href="#i-star"/></svg><span class="n-xp">0</span><span class="me-label">My light</span>
-    </button>
-  </div>
-  <div class="menu" id="panel" hidden>
-    <div class="wrap menu-in">
-      <div class="menu-stats">
-        <p><svg aria-hidden="true"><use href="#i-star"/></svg><b class="n-xp">0</b> stars lit</p>
-        <p><svg aria-hidden="true"><use href="#i-sun"/></svg><b class="n-streak">0</b> days shining</p>
-      </div>
-      <button class="mute row" id="mute-panel" aria-pressed="true" aria-label="Sound on"><svg class="on" aria-hidden="true"><use href="#i-sound"/></svg><svg class="off" aria-hidden="true"><use href="#i-quiet"/></svg><span class="row-text">Sound</span><span class="row-state"></span></button>
-      <button class="row" id="panel-help"><svg aria-hidden="true"><use href="#i-ear"/></svg><span class="row-text">Can't hear the sounds?</span></button>
-    </div>
-  </div>
-</header>
-
-<main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <span class="sabbath" id="sabbath"><svg aria-hidden="true" viewBox="0 0 100 100"><use href="#p-sunset"/></svg>Happy Sabbath!</span>
-        <h1>Little stories, <span class="mark">big light</span></h1>
-        <p>Five-minute Bible stories and games for kids aged 5 to 7. Hear the story, learn a verse by heart, and light a star in the night sky every time you finish. Twenty-one stories, from Creation and the Sabbath to the Good Samaritan.</p>
-        <div class="ctas">
-          <a class="btn" href="#sky">Light the first star</a>
-          <button class="btn paper" id="quick">Play today's story</button>
-        </div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 500 430">
-          <circle class="scene-sky" cx="330" cy="190" r="150" fill="#ffe1d3"/>
-          <circle class="scene-sun" cx="330" cy="190" r="104" fill="#fff1c7"/><path class="scene-moon" d="M397 85a35 35 0 1 0 22 52A30 30 0 0 1 397 85z" fill="#fff8ec" stroke="#2b2250" stroke-width="4" opacity="0"/>
-          <g stroke="#2b2250" stroke-width="5" stroke-linejoin="round">
-            <path d="M-10 330q130-70 260-30t270-20v170H-10z" fill="#3bb3a6"/>
-            <path d="M-10 380q160-40 300-6t230-14v90H-10z" fill="#d4f3ee"/>
-          </g>
-          <path d="M60 404q60-14 130-4" fill="none" stroke="#3bb3a6" stroke-width="5" stroke-linecap="round"/>
-          <g fill="#ffc94a" stroke="#2b2250" stroke-width="4" stroke-linejoin="round">
-            <use href="#star5" x="40" y="40" width="44" height="44" class="twinkle"/>
-            <use href="#star5" x="440" y="70" width="30" height="30" class="twinkle"/>
-            <use href="#star5" x="120" y="150" width="24" height="24" class="twinkle"/>
-          </g>
-          <circle cx="470" cy="230" r="7" fill="#ffb3c7" stroke="#2b2250" stroke-width="3" class="twinkle"/>
-          <g class="pip-arrival"><svg class="hero-pip" x="130" y="130" width="260" height="250" viewBox="0 0 240 230"><use href="#pip"/></svg></g><g class="fireflies" fill="#ffc94a" stroke="#2b2250" stroke-width="2"><circle cx="95" cy="320" r="4"/><circle cx="415" cy="290" r="4"/><circle cx="450" cy="355" r="3"/><circle cx="75" cy="245" r="3"/></g>
-        </svg>
-      </div>
-    </div>
-    <div class="wrap motion-tools"><button id="motion-toggle" class="motion-toggle" aria-pressed="false" hidden>Pause motion</button></div>
-    <svg class="scallop" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 48V24q25-24 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0V48z" fill="#221a48"/>
-    </svg>
-  </section>
-
-  <section class="sky" id="sky">
-    <svg class="dust" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" id="dust"></svg>
-    <div class="wrap">
-      <div class="sky-head">
-        <h2>Your night sky</h2>
-        <p>Finish a story to light its star. Each week has seven stars, one for each day of creation week.</p>
-      </div>
-      <div class="constellation" id="constellation"></div>
-    </div>
-  </section>
-
-  <section class="panels">
-    <div class="wrap">
-      <article class="panel">
-        <h2>Build the verse, word by word</h2>
-        <p>Kids tap the words into order and meet the story's verse again and again, until it's theirs to keep.</p>
-        <svg viewBox="0 0 420 200" aria-hidden="true">
-          <path d="M10 76h400M10 146h400" stroke="#d9c9ab" stroke-width="3"/>
-          <g stroke="#2b2250" stroke-width="3">
-            <rect x="10" y="22" width="80" height="44" rx="22" fill="#e3f4ff"/><rect x="104" y="22" width="88" height="44" rx="22" fill="#e3f4ff"/>
-            <rect x="206" y="22" width="52" height="44" rx="22" fill="#e3f4ff"/>
-            <rect x="40" y="96" width="70" height="44" rx="22" fill="#fff"/><rect x="124" y="96" width="140" height="44" rx="22" fill="#ffc94a"/>
-            <rect x="278" y="96" width="90" height="44" rx="22" fill="#fff"/>
-          </g>
-          <g font-family="Fredoka, sans-serif" font-weight="600" font-size="21" fill="#2b2250" text-anchor="middle">
-            <text x="50" y="51">The</text><text x="148" y="51">Lord</text><text x="232" y="51">is</text>
-            <text x="75" y="125">my</text><text x="194" y="125">shepherd</text><text x="323" y="125">king</text>
-          </g>
-        </svg>
-      </article>
-      <article class="panel">
-        <h2>A little light, every day</h2>
-        <p>One short story a day keeps the sun up. Big buttons, pictures before words, and when an answer isn't right yet, it simply comes back later. Nobody fails here.</p>
-        <svg viewBox="0 0 420 200" aria-hidden="true">
-          <g stroke="#2b2250" stroke-width="3">
-            <g fill="#ff7a45"><circle cx="40" cy="100" r="28"/><circle cx="108" cy="100" r="28"/><circle cx="176" cy="100" r="28"/><circle cx="244" cy="100" r="28"/></g>
-            <circle cx="312" cy="100" r="34" fill="#ffc94a" class="glow"/>
-            <circle cx="384" cy="100" r="28" fill="#fff8ec" stroke-dasharray="6 6"/>
-          </g>
-          <g fill="#2b2250" font-family="Fredoka, sans-serif" font-weight="600" font-size="18" text-anchor="middle">
-            <text x="40" y="150">Mon</text><text x="108" y="150">Tue</text><text x="176" y="150">Wed</text><text x="244" y="150">Thu</text><text x="312" y="158">Today</text><text x="384" y="150">Sabbath</text>
-          </g>
-        </svg>
-      </article>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <svg class="dust" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" id="dust2"></svg>
-  <div class="wrap">
-    <div>
-      <blockquote>"Let your light shine before others."<cite>Matthew 5:16</cite></blockquote>
-      <p>Made for Sabbath-keeping families and Sabbath School, and for any child who loves Bible stories. Little Light is a design study.</p>
-      <p class="niv-note">Scripture quotations taken from The Holy Bible, New International Version® NIV®. Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.™ Used by permission. All rights reserved worldwide. Story pages are simple retellings for children; quoted lines are NIV. Story and quiz narration voice: Kokoro-82M "Heart" (Apache 2.0).</p>
-    </div>
-    <div><a class="btn gold" href="#sky">Pick a star</a></div>
-  </div>
-</footer>
-
-<div class="lesson" id="lesson" role="dialog" aria-modal="true" aria-labelledby="l-q">
-  <div class="l-top">
-    <button class="close" id="close" aria-label="Close lesson"><svg><use href="#i-x"/></svg></button>
-    <div class="trail" id="trail" role="progressbar" aria-valuemin="0"></div>
-    <button class="mute" id="mute-lesson" aria-pressed="true" aria-label="Sound on"><svg class="on" aria-hidden="true"><use href="#i-sound"/></svg><svg class="off" aria-hidden="true"><use href="#i-quiet"/></svg></button>
-  </div>
-  <div class="l-body"><div class="l-inner" id="stage"></div></div>
-  <div class="l-foot" id="foot">
-    <div class="in">
-      <button class="btn paper skip" id="skip">Skip for now</button>
-      <div class="msg" aria-live="assertive">
-        <svg viewBox="0 0 240 230" aria-hidden="true"><use href="#pip"/></svg>
-        <div><h3 id="msg-h"></h3><p id="msg-p"></p></div>
-      </div>
-      <button class="btn" id="check" disabled>Check</button>
-    </div>
-  </div>
-</div>
-<!-- Sound check: a page can't tell if the phone is on silent or turned down, so Pip asks -->
-<div class="hear" id="hear" role="dialog" aria-modal="true" aria-labelledby="hear-h" hidden>
-  <div class="hear-card">
-    <svg class="hear-pip" viewBox="0 0 240 230" aria-hidden="true"><use href="#pip"/></svg>
-    <h2 id="hear-h">Can you hear me?</h2>
-    <p>Tap the button. You should hear a chime and Pip saying hello.</p>
-    <button class="btn paper" id="hear-play"><svg aria-hidden="true"><use href="#i-sound"/></svg>Play a sound</button>
-    <ul class="hear-tips">
-      <li><svg aria-hidden="true"><use href="#i-volume"/></svg><span><b>Turn the volume up</b> with the buttons on the side of your device.</span></li>
-      <li class="ios-only"><svg aria-hidden="true"><use href="#i-bell"/></svg><span><b>Turn off Silent Mode.</b> On iPhone, swipe down from the top right corner and tap the bell, or use the switch or Action button on the side.</span></li>
-    </ul>
-    <button class="btn" id="hear-yes">Yes, I can hear it</button>
-    <button class="hear-skip" id="hear-skip">Play without sound</button>
-  </div>
-</div>
-<canvas class="confetti" id="confetti" aria-hidden="true" hidden></canvas>
-<pre class="debug" id="debug" hidden></pre>
-
+<a class="skip-link" href="#content" data-od-id="skip-content">Skip to content</a>
+<style>[hidden]{display:none!important}</style><header class="topnav" data-od-id="navigation"><div class="container topnav-inner"><a class="logo" href="#home" data-od-id="brand"><img class="" src="assets/landing/logo-lantern.svg" width="40" height="40" alt="">little light</a><nav aria-label="Main navigation"><a href="#stories" data-od-id="stories-link">Your journey</a><a href="#how" data-od-id="how-link">How it works</a><a href="#play" data-od-id="play-link">Try a little game</a></nav><details class="light-collection" id="light-collection" data-od-id="my-light"><summary aria-label="My light collection" id="light-toggle" data-od-id="my-light-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg><span>My light</span><strong id="light-nav-count">0</strong></summary><div class="light-panel" data-od-id="my-light-panel"><div class="light-panel-top"><span class="light-eyebrow">YOUR LITTLE COLLECTION</span><button type="button" id="light-close" aria-label="Close My light" data-od-id="my-light-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><h2 id="light-title" data-od-id="my-light-title">Every little star begins somewhere.</h2><p id="light-message">Your first story is waiting.</p><div class="light-treasure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg><strong id="light-stars">0</strong><span>stars collected</span></div><dl class="light-stats"><div><dt>Stories completed</dt><dd><span id="light-stories">0</span><small> / 21</small></dd></div><div><dt>Days shining</dt><dd id="light-days">0</dd></div></dl><a class="btn btn-secondary" href="play/" id="light-continue" data-od-id="my-light-continue">Start my first story</a><button type="button" class="btn btn-secondary session-settings" id="landing-sound" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4 6 8H3v8h3l5 4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg><span id="sound-setting-label">Sound: on</span></button><div class="light-device"><strong>No account needed</strong><p id="light-device-note">Progress is saved in this browser on this device. It won’t follow you to another browser, and clearing site data removes it.</p></div><noscript>Turn on JavaScript to read your saved collection.</noscript></div></details></div></header>
+<main id="content"><section class="section hero storyworld" id="home" data-od-id="hero"><div class="storyworld-art" aria-hidden="true"><img id="storybook-landscape" src="assets/landing/storybook-meadow.webp" width="1792" height="1024" alt="" fetchpriority="high" decoding="async"><svg class="pip-life" viewBox="0 0 1792 1024" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"><defs><linearGradient id="pip-lid-left" x1="0" y1="0" x2="1" y2="1"><stop stop-color="oklch(0.61616 0.05411 14.114)"/><stop offset="1" stop-color="oklch(0.53089 0.05808 2.468)"/></linearGradient><linearGradient id="pip-lid-right" x1="0" y1="0" x2="1" y2="1"><stop stop-color="oklch(0.42922 0.05476 351.400)"/><stop offset="1" stop-color="oklch(0.38381 0.05251 342.473)"/></linearGradient><radialGradient id="pip-lantern-light"><stop stop-color="var(--accent)" stop-opacity=".65"/><stop offset=".35" stop-color="var(--accent)" stop-opacity=".18"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></radialGradient></defs><g class="pip-blink"><g transform="rotate(12 1258 591)"><ellipse cx="1258" cy="591" rx="13" ry="17" fill="url(#pip-lid-left)"/><path d="M1249 592 Q1258 599 1267 592" fill="none" stroke="var(--fg)" stroke-width="2.5" stroke-linecap="round"/></g><g transform="rotate(14 1330 608)"><ellipse cx="1330" cy="608" rx="13" ry="17" fill="url(#pip-lid-right)"/><path d="M1321 609 Q1330 616 1339 609" fill="none" stroke="var(--fg)" stroke-width="2.5" stroke-linecap="round"/></g></g><ellipse class="pip-lantern-glow" cx="1325" cy="815" rx="62" ry="72" fill="url(#pip-lantern-light)"/></svg></div><div class="container storyworld-copy"><h1 data-od-id="hero-title">Little stories.<br>Big light.</h1><p class="lead">Bible stories. Little games. Growing faith.<br>Five minutes of wonder for curious kids aged 5–7.</p><div class="hero-cta"><a class="btn btn-primary" href="play/" data-od-id="start-adventure">Light the first star <svg class="action-icon" data-icon="star" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 2.8 5.7 6.3.9-4.5 4.4 1.1 6.2-5.7-3-5.7 3 1.1-6.2L2.9 9.6l6.3-.9Z"/></svg></a><a class="btn btn-ghost" href="#stories" data-od-id="browse-stories">Explore the journey <svg class="action-icon" data-icon="book" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C9 4.5 5.5 4.2 3 5v14c2.5-.8 6-.5 9 1.5 3-2 6.5-2.3 9-1.5V5c-2.5-.8-6-.5-9 1.5Zm0 0v14"/></svg></a></div><p class="hero-note">A little adventure in faith, with Pip by your side.</p></div><div class="storyworld-caption" data-od-id="scene-caption"><span>Meet Pip, your little guide.</span><span>Let’s see where the path leads.</span></div></section>
+<div class="container"><div class="fact-strip" data-od-id="product-facts"><span><strong>21 stories</strong> to discover</span><span><strong>5 minutes</strong> for a little wonder</span><span>Made for <strong>ages 5–7</strong></span><span>One bright star at a time</span></div><div style="text-align:right"><button class="motion-control" id="motion" aria-pressed="false" data-od-id="motion-toggle">Pause playful motion</button></div></div>
+<section class="section journey" id="stories" data-od-id="weekly-journey"><svg class="journey-wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0H1440V16Q1410 0 1380 16Q1350 32 1320 16Q1290 0 1260 16Q1230 32 1200 16Q1170 0 1140 16Q1110 32 1080 16Q1050 0 1020 16Q990 32 960 16Q930 0 900 16Q870 32 840 16Q810 0 780 16Q750 32 720 16Q690 0 660 16Q630 32 600 16Q570 0 540 16Q510 32 480 16Q450 0 420 16Q390 32 360 16Q330 0 300 16Q270 32 240 16Q210 0 180 16Q150 32 120 16Q90 0 60 16Q30 32 0 16Z"/></svg><svg class="journey-wave journey-wave-mobile" viewBox="0 0 480 32" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0H1440V16Q1410 0 1380 16Q1350 32 1320 16Q1290 0 1260 16Q1230 32 1200 16Q1170 0 1140 16Q1110 32 1080 16Q1050 0 1020 16Q990 32 960 16Q930 0 900 16Q870 32 840 16Q810 0 780 16Q750 32 720 16Q690 0 660 16Q630 32 600 16Q570 0 540 16Q510 32 480 16Q450 0 420 16Q390 32 360 16Q330 0 300 16Q270 32 240 16Q210 0 180 16Q150 32 120 16Q90 0 60 16Q30 32 0 16Z"/></svg><div class="container">
+<div class="journey-heading"><div><h2 data-od-id="journey-title">A little step.<br>A brighter journey.</h2><p>Three weeks of faith, wonder, and kindness.<br>One story at a time, at your own pace.</p></div><div class="journey-total"><strong id="journey-total">21</strong><span id="journey-total-label">stories to discover</span></div></div>
+<div class="journey-tabs" id="journey-tabs" aria-label="Choose a week"></div>
+<div class="journey-map" data-od-id="journey-map"><div class="journey-week-heading"><img class="journey-guide-art" src="assets/landing/journey-guide.webp" width="1024" height="1024" alt="Pip the lamb with an open storybook and a glowing lantern"><div class="journey-chapter-intro"><p class="journey-guide-message" id="journey-guide-message">Your next adventure is waiting.</p><h3 id="journey-week-title"></h3><p id="journey-week-note"></p></div><div class="journey-meter"><span id="journey-count"></span><progress id="journey-progress" max="7" value="0" aria-label="Stories completed this week"></progress></div></div>
+<div class="journey-trail" id="journey-trail"><svg id="journey-connections" class="journey-connections" aria-hidden="true" focusable="false"></svg><ol class="journey-path" id="journey-path" aria-label="Stories in this week"></ol></div>
+<div class="journey-detail" id="journey-detail" aria-live="polite"><div><span class="journey-status" id="journey-status"></span><h3 id="journey-story-title"></h3><p id="journey-intro"></p></div><div class="journey-verse"><blockquote id="journey-verse"></blockquote><cite id="journey-ref"></cite><a class="btn btn-primary" id="journey-open" href="play/" data-od-id="journey-open-app">Read this story <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C9 4.5 5.5 4.2 3 5v14c2.5-.8 6-.5 9 1.5 3-2 6.5-2.3 9-1.5V5c-2.5-.8-6-.5-9 1.5Zm0 0v14"/></svg></a><p id="journey-unlock" hidden></p></div></div>
+</div><p class="journey-storage" id="journey-storage"></p><noscript><p>Explore three weeks: In the beginning, God hears and helps, and Brave and kind. <a href="play/">Open the story map in Little Light.</a></p></noscript></div></section>
+<section class="section" id="how" data-od-id="how-it-works"><div class="container"><h2 data-od-id="how-title">Faith grows in little moments.</h2><div class="grid-3 steps"><article class="feature reveal" data-od-id="step-listen"><span class="num">Hear the story</span><h3>A story comes alive.</h3><p>Settle in with Pip and hear a Bible story told for little ears and big imaginations.</p></article><article class="feature reveal" data-od-id="step-play"><span class="num">Play with purpose</span><h3>A little learning by doing.</h3><p>Choose pictures, match pairs, and put a verse together, one word at a time.</p></article><article class="feature reveal" data-od-id="step-shine"><span class="num">Light a star</span><h3>One more star in your sky.</h3><p>Finish a story to light its star. Come back for another little adventure.</p></article></div></div></section>
+<section class="section play-section" id="play" data-od-id="verse-demo"><div class="container hero-split"><div><h2 data-od-id="play-title">Little words.<br>A lasting light.</h2><p class="lead">A verse becomes something to discover. Tap the words in order and try a little of the play for yourself.</p><p class="meta">A small preview of the verse-building game</p></div><div class="verse-game reveal" data-od-id="interactive-verse"><h3 data-od-id="verse-title">Can you build the verse?</h3><div class="verse-line" id="verse" aria-live="polite">Your words go here…</div><div class="word-bank" id="words"></div><div class="star-progress" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 5 1.3 7-6.1-3.4-6.1 3.4 1.3-7L2 9.5l7-.9Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 5 1.3 7-6.1-3.4-6.1 3.4 1.3-7L2 9.5l7-.9Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 5 1.3 7-6.1-3.4-6.1 3.4 1.3-7L2 9.5l7-.9Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 5 1.3 7-6.1-3.4-6.1 3.4 1.3-7L2 9.5l7-.9Z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 5 1.3 7-6.1-3.4-6.1 3.4 1.3-7L2 9.5l7-.9Z"/></svg><span>One word at a time</span></div><noscript><p>The Lord is my shepherd. — Psalm 23:1<br>Enable JavaScript to try the word game.</p></noscript><p class="game-status" id="status" role="status">Start with “The”. You can do it.</p><div class="row-between"><span class="meta">Psalm 23:1</span><button class="reset" id="reset" data-od-id="reset-verse">Start again</button></div></div></div></section>
+<section class="section closing" data-od-id="closing-invitation"><img class="" src="assets/landing/closing-lantern.svg" width="40" height="40" alt=""><div class="container"><h2 data-od-id="closing-title">Every little light<br>starts somewhere.</h2><p class="lead">Make room for a story, a smile, and a little wonder. Pip will meet you there.</p><a class="btn btn-primary" href="play/" data-od-id="closing-start">Begin your first story <svg class="action-icon" data-icon="play" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5.5a1 1 0 0 1 1.5-.9l10 6.5a1 1 0 0 1 0 1.8l-10 6.5a1 1 0 0 1-1.5-.9Z"/></svg></a></div></section></main><footer class="pagefoot" data-od-id="footer"><div class="container row-between"><span>Little Light · Little stories, big light.</span><a href="play/" data-od-id="original-app">Visit the Little Light app <svg class="action-icon" data-icon="compass" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5Z"/></svg></a></div></footer>
 <script src="stories/week-1.js"></script>
 <script src="stories/week-2.js"></script>
 <script src="stories/week-3.js"></script>
-<script src="app.js"></script>
+<script src="landing.js"></script>
 </body>
 </html>
