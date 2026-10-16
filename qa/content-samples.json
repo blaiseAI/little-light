@@ -1,0 +1,63 @@
+[
+  {
+    "week": "In the beginning",
+    "samples": [
+      {
+        "id": "creation",
+        "text": "In the beginning, everything was dark and empty. Then God spoke.",
+        "quote": "And God said, “Let there be light,” and there was light."
+      },
+      {
+        "id": "noah",
+        "text": "Long ago, people had filled the earth with wrong things. But Noah loved God and walked with Him."
+      }
+    ],
+    "longVerses": [
+      {
+        "story": "God makes the world",
+        "words": 10,
+        "verse": "In the beginning God created the heavens and the earth"
+      }
+    ]
+  },
+  {
+    "week": "God hears and helps",
+    "samples": [
+      {
+        "id": "commandments",
+        "text": "God led His people to a tall mountain called Sinai. Thunder rumbled, and a thick cloud covered the top of the mountain."
+      },
+      {
+        "id": "samuel",
+        "text": "Hannah prayed for a baby, and God gave her a son named Samuel. When he was older, Samuel lived at God's house to help Eli the priest."
+      }
+    ],
+    "longVerses": [
+      {
+        "story": "Zacchaeus climbs a tree",
+        "words": 12,
+        "verse": "The Son of Man came to seek and to save the lost"
+      }
+    ]
+  },
+  {
+    "week": "Brave and kind",
+    "samples": [
+      {
+        "id": "joseph",
+        "text": "Jacob loved his son Joseph very much, and he made him a beautiful, colorful robe. Joseph's brothers were jealous."
+      },
+      {
+        "id": "moses",
+        "text": "A cruel king of Egypt, called Pharaoh, gave an order that the baby boys of God's people must be thrown into the river."
+      }
+    ],
+    "longVerses": [
+      {
+        "story": "Baby Moses in the basket",
+        "words": 10,
+        "verse": "When I am afraid I put my trust in you"
+      }
+    ]
+  }
+]

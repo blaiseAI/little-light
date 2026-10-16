@@ -1,0 +1,228 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "tests/e2e/webkit.config.mjs"
+    ],
+    "configFile": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\webkit.config.mjs",
+    "rootDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit-iphone26",
+        "name": "webkit-iphone26",
+        "testDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "journeys.spec.mjs"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "webkit-iphone26",
+        "testDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "journeys.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4183",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "webkit",
+          "browserName": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "webkit-iphone26"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/webkit-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "journeys.spec.mjs",
+      "file": "journeys.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "fresh entry, sound gate, reader back, resume and rotation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit-iphone26",
+              "projectName": "webkit-iphone26",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:19:17.034Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-089de68a6d3a3bd1e6fa",
+          "file": "journeys.spec.mjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "layout, week locking, verse retry and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit-iphone26",
+              "projectName": "webkit-iphone26",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6243,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:19:22.544Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-bd94a821e820d71edab4",
+          "file": "journeys.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "complete first story, saved counts and next stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit-iphone26",
+              "projectName": "webkit-iphone26",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16245,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:19:28.797Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-3a07f77a74c74a364ff8",
+          "file": "journeys.spec.mjs",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T19:19:16.498Z",
+    "duration": 28612.938,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

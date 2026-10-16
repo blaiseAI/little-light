@@ -1,0 +1,1977 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "tests/e2e/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\playwright.config.mjs",
+    "rootDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "iphone-safari26",
+        "name": "iphone-safari26",
+        "testDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "journeys.spec.mjs"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "iphone-chrome",
+        "name": "iphone-chrome",
+        "testDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "journeys.spec.mjs"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "pixel7",
+        "name": "pixel7",
+        "testDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "journeys.spec.mjs"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "ipad-mini",
+        "name": "ipad-mini",
+        "testDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "journeys.spec.mjs"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "narrow360",
+        "name": "narrow360",
+        "testDir": "C:/Users/bsebagabo/Documents/GitHub/little-light/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "journeys.spec.mjs"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "desktop",
+        "testDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4183",
+          "channel": "chrome",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1280,
+            "height": 860
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "iphone-safari26",
+        "testDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "journeys.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4183",
+          "channel": "chrome",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "iphone-safari26"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "iphone-chrome",
+        "testDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "journeys.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4183",
+          "channel": "chrome",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/141.0.7390.96 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "iphone-chrome"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "pixel7",
+        "testDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "journeys.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4183",
+          "channel": "chrome",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "screen": {
+            "width": 412,
+            "height": 915
+          },
+          "deviceScaleFactor": 2.625,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "pixel7"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "ipad-mini",
+        "testDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "journeys.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4183",
+          "channel": "chrome",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "deviceScaleFactor": 2,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "ipad-mini"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "narrow360",
+        "testDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "journeys.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4183",
+          "channel": "chrome",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 800
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "narrow360"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "additional.spec.mjs",
+      "file": "additional.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "keyboard activation through all first-story exercises",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3447,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:25.865Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97ccb6d7cac63628d786-7e9c85dc1368b0fc6ec4",
+          "file": "additional.spec.mjs",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "complete offline after save-all, and inspect content and clip metadata",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6166,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:30.224Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97ccb6d7cac63628d786-699ddb1207753285d993",
+          "file": "additional.spec.mjs",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "audit.spec.mjs",
+      "file": "audit.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "collect axe, target sizes, keyboard modal behavior and invalid links",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6723,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:25.924Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "195cb0d734c7fb6d1c64-e2a3156ff7de5f59e935",
+          "file": "audit.spec.mjs",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "saved states, stale resume, storage blocked and reduced motion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:33.731Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "195cb0d734c7fb6d1c64-ba24c78d6bebf0b96334",
+          "file": "audit.spec.mjs",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "offline shell and all recordings download",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:36.503Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "195cb0d734c7fb6d1c64-a2309fdc23213f595039",
+          "file": "audit.spec.mjs",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "Slow 4G cold navigation measurements",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9577,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:39.862Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "195cb0d734c7fb6d1c64-bdcd11e9fe8ab1ac1067",
+          "file": "audit.spec.mjs",
+          "line": 45,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "edge-cases.spec.mjs",
+      "file": "edge-cases.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "install timing, Safari instructions, dismissal cooldown and Android prompt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3414,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:36.411Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e53dbfa5390122c520ae-a07a09d2d68eb7867fe6",
+          "file": "edge-cases.spec.mjs",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "edge links and history observed with human webdriver flag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2707,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:39.834Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e53dbfa5390122c520ae-ffba96e71da15393ce34",
+          "file": "edge-cases.spec.mjs",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "muted quiz still requests and plays answer narration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:42.571Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e53dbfa5390122c520ae-8ad2622183b7d059acf7",
+          "file": "edge-cases.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "keyboard Enter on sound check advances hidden story; Escape leaves blank page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1915,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:44.810Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e53dbfa5390122c520ae-d060a6e9e81f508b7bc6",
+          "file": "edge-cases.spec.mjs",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "wrong answer repeats; double tap advances twice; reader narration stops",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:46.781Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e53dbfa5390122c520ae-e082299aa7658a0cfc5e",
+          "file": "edge-cases.spec.mjs",
+          "line": 21,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.mjs",
+      "file": "journeys.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "fresh entry, sound gate, reader back, resume and rotation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:49.135Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-25d535b8ee79e42c266c",
+          "file": "journeys.spec.mjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "layout, week locking, verse retry and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:52.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-adbc312426626695c733",
+          "file": "journeys.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "complete first story, saved counts and next stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6178,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:57.460Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-a65484e760945758ccaf",
+          "file": "journeys.spec.mjs",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "fresh entry, sound gate, reader back, resume and rotation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-safari26",
+              "projectName": "iphone-safari26",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4213,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:10.962Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-ab4d198347163fcae3ae",
+          "file": "journeys.spec.mjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "layout, week locking, verse retry and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-safari26",
+              "projectName": "iphone-safari26",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5004,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:16.206Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-110496d762171c00cda5",
+          "file": "journeys.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "complete first story, saved counts and next stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-safari26",
+              "projectName": "iphone-safari26",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6223,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:21.256Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-9ce9605e318ceb7669af",
+          "file": "journeys.spec.mjs",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "fresh entry, sound gate, reader back, resume and rotation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-chrome",
+              "projectName": "iphone-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4398,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:15.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-4ae0d6488ca570664e9b",
+          "file": "journeys.spec.mjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "layout, week locking, verse retry and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-chrome",
+              "projectName": "iphone-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5021,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:20.751Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-d4befc05b6a4eb6f8b1a",
+          "file": "journeys.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "complete first story, saved counts and next stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-chrome",
+              "projectName": "iphone-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7176,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:25.813Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-f43f618e6e3ba7bbbf34",
+          "file": "journeys.spec.mjs",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "fresh entry, sound gate, reader back, resume and rotation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pixel7",
+              "projectName": "pixel7",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4100,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:36.630Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-ac7a64e4176632c6016a",
+          "file": "journeys.spec.mjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "layout, week locking, verse retry and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pixel7",
+              "projectName": "pixel7",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4853,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:41.712Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-31603548115427b38936",
+          "file": "journeys.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "complete first story, saved counts and next stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pixel7",
+              "projectName": "pixel7",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6304,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:46.624Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-1bb75b86b1a2ac553597",
+          "file": "journeys.spec.mjs",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "fresh entry, sound gate, reader back, resume and rotation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-mini",
+              "projectName": "ipad-mini",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3898,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:37.313Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-ec5313fe920779cb65c7",
+          "file": "journeys.spec.mjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "layout, week locking, verse retry and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-mini",
+              "projectName": "ipad-mini",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4704,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:42.432Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-064a0d1bd9728cb51731",
+          "file": "journeys.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "complete first story, saved counts and next stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-mini",
+              "projectName": "ipad-mini",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6751,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:47.197Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-80316904d1993188014a",
+          "file": "journeys.spec.mjs",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "fresh entry, sound gate, reader back, resume and rotation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow360",
+              "projectName": "narrow360",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4191,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:56.860Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-5cad45467db36e40f2d6",
+          "file": "journeys.spec.mjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "layout, week locking, verse retry and completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow360",
+              "projectName": "narrow360",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3598,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:24:02.093Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-01369b1f964b54378722",
+          "file": "journeys.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "complete first story, saved counts and next stop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow360",
+              "projectName": "narrow360",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5974,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:24:05.732Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a79390d111f42c6b290-7047ebc8afddc19eab79",
+          "file": "journeys.spec.mjs",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "regressions.spec.mjs",
+      "file": "regressions.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "QA-01: invalid or locked link provides recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Confirmed blank screen",
+                  "location": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "line": 5,
+                    "column": 147
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 1222,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:5:285",
+                    "location": {
+                      "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                      "column": 285,
+                      "line": 5
+                    },
+                    "snippet": "  3 | // Expected failures assert the intended behavior. Remove test.fail after an app fix.\n  4 | test.beforeEach(async({page},info)=>{test.skip(info.project.name!=='desktop');await quiet(page);});\n> 5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n    |                                                                                                                                                                                                                                                                                             ^\n  6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "column": 285,
+                        "line": 5
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  3 | // Expected failures assert the intended behavior. Remove test.fail after an app fix.\n  4 | test.beforeEach(async({page},info)=>{test.skip(info.project.name!=='desktop');await quiet(page);});\n> 5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n    |                                                                                                                                                                                                                                                                                             ^\n  6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:5:285"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:49.529Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Confirmed blank screen",
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "line": 5,
+                        "column": 147
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results\\regressions-QA-01-invalid-or-locked-link-provides-recovery-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "column": 285,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e384a31ebc52fb38593-fef0bc5541caff81b304",
+          "file": "regressions.spec.mjs",
+          "line": 5,
+          "column": 71
+        },
+        {
+          "title": "QA-02: invalid or locked link provides recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Confirmed blank screen",
+                  "location": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "line": 5,
+                    "column": 147
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 1128,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:5:285",
+                    "location": {
+                      "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                      "column": 285,
+                      "line": 5
+                    },
+                    "snippet": "  3 | // Expected failures assert the intended behavior. Remove test.fail after an app fix.\n  4 | test.beforeEach(async({page},info)=>{test.skip(info.project.name!=='desktop');await quiet(page);});\n> 5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n    |                                                                                                                                                                                                                                                                                             ^\n  6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "column": 285,
+                        "line": 5
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  3 | // Expected failures assert the intended behavior. Remove test.fail after an app fix.\n  4 | test.beforeEach(async({page},info)=>{test.skip(info.project.name!=='desktop');await quiet(page);});\n> 5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n    |                                                                                                                                                                                                                                                                                             ^\n  6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:5:285"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:50.794Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Confirmed blank screen",
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "line": 5,
+                        "column": 147
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results\\regressions-QA-02-invalid-or-locked-link-provides-recovery-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "column": 285,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e384a31ebc52fb38593-99cda9922fe447852309",
+          "file": "regressions.spec.mjs",
+          "line": 5,
+          "column": 71
+        },
+        {
+          "title": "QA-06: all complete continue provides replay or completion screen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Confirmed blank screen",
+                  "location": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "line": 6,
+                    "column": 95
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 3547,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:6:527",
+                    "location": {
+                      "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                      "column": 527,
+                      "line": 6
+                    },
+                    "snippet": "  4 | test.beforeEach(async({page},info)=>{test.skip(info.project.name!=='desktop');await quiet(page);});\n  5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n> 6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n  9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "column": 527,
+                        "line": 6
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  4 | test.beforeEach(async({page},info)=>{test.skip(info.project.name!=='desktop');await quiet(page);});\n  5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n> 6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n  9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:6:527"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:51.960Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Confirmed blank screen",
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "line": 6,
+                        "column": 95
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results\\regressions-QA-06-all-comp-cefee-replay-or-completion-screen-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "column": 527,
+                    "line": 6
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e384a31ebc52fb38593-65ec5e28b7394c5ef3de",
+          "file": "regressions.spec.mjs",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "QA-03: sound off prevents answer narration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Answer narration bypasses sound preference",
+                  "location": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "line": 7,
+                    "column": 72
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 1906,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"http://localhost:4183/audio/w/light.mp3\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"http://localhost:4183/audio/w/light.mp3\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:7:515",
+                    "location": {
+                      "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                      "column": 515,
+                      "line": 7
+                    },
+                    "snippet": "   5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n   6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n>  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n   8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n   9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n  10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "column": 515,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"http://localhost:4183/audio/w/light.mp3\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n   5 | for(const [id,query] of [['QA-01','does-not-exist'],['QA-02','noah']])test(`${id}: invalid or locked link provides recovery`,async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/play/?story='+query);expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n   6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n>  7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n   8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n   9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n  10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:7:515"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:55.555Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Answer narration bypasses sound preference",
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "line": 7,
+                        "column": 72
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results\\regressions-QA-03-sound-off-prevents-answer-narration-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "column": 515,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e384a31ebc52fb38593-d9ab2d73d00ba5861ab4",
+          "file": "regressions.spec.mjs",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "QA-04: Enter in sound check leaves reader on page one",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Global key handler advances hidden lesson",
+                  "location": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "line": 8,
+                    "column": 83
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6906,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#reading-label')\nExpected substring: \u001b[32m\"page 1\"\u001b[39m\nReceived string:    \u001b[31m\"Story time · page 2 of 5\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#reading-label') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#reading-label')\u001b[22m\n\u001b[2m    14 × locator resolved to <p id=\"reading-label\" aria-live=\"polite\" class=\"reading-label\">Story time · page 2 of 5</p>\u001b[22m\n\u001b[2m       - unexpected value \"Story time · page 2 of 5\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#reading-label')\nExpected substring: \u001b[32m\"page 1\"\u001b[39m\nReceived string:    \u001b[31m\"Story time · page 2 of 5\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#reading-label') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#reading-label')\u001b[22m\n\u001b[2m    14 × locator resolved to <p id=\"reading-label\" aria-live=\"polite\" class=\"reading-label\">Story time · page 2 of 5</p>\u001b[22m\n\u001b[2m       - unexpected value \"Story time · page 2 of 5\"\u001b[22m\n\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:8:336",
+                    "location": {
+                      "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                      "column": 336,
+                      "line": 8
+                    },
+                    "snippet": "   6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n   7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n>  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n     |                                                                                                                                                                                                                                                                                                                                                ^\n   9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n  10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});\n  11 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "column": 336,
+                        "line": 8
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#reading-label')\nExpected substring: \u001b[32m\"page 1\"\u001b[39m\nReceived string:    \u001b[31m\"Story time · page 2 of 5\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#reading-label') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#reading-label')\u001b[22m\n\u001b[2m    14 × locator resolved to <p id=\"reading-label\" aria-live=\"polite\" class=\"reading-label\">Story time · page 2 of 5</p>\u001b[22m\n\u001b[2m       - unexpected value \"Story time · page 2 of 5\"\u001b[22m\n\n\n   6 | test('QA-06: all complete continue provides replay or completion screen',async({page})=>{test.fail(true,'Confirmed blank screen');await page.goto('/');await page.evaluate(()=>localStorage.setItem('little-light',JSON.stringify({done:LL_WEEKS.flatMap(w=>w.stories.map(s=>s.id)),xp:210,streak:3})));await page.reload();await page.locator('#light-toggle').click();await page.locator('#light-continue').click();await page.screenshot({path:'qa/screenshots/QA-06.png'});expect((await page.locator('body').innerText()).trim().length).toBeGreaterThan(0);});\n   7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n>  8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n     |                                                                                                                                                                                                                                                                                                                                                ^\n   9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n  10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});\n  11 |\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:8:336"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:22:57.498Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Global key handler advances hidden lesson",
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "line": 8,
+                        "column": 83
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results\\regressions-QA-04-Enter-in-b4105-k-leaves-reader-on-page-one-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "column": 336,
+                    "line": 8
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e384a31ebc52fb38593-d0585c64f965a6833243",
+          "file": "regressions.spec.mjs",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "QA-05: Escape returns to journey",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "Escape closes only visible content",
+                  "location": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "line": 9,
+                    "column": 62
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6604,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/#stories$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:4183/play/\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    13 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:4183/play/\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/#stories$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:4183/play/\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    13 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:4183/play/\"\u001b[22m\n\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:9:202",
+                    "location": {
+                      "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                      "column": 202,
+                      "line": 9
+                    },
+                    "snippet": "   7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n   8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n>  9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n     |                                                                                                                                                                                                          ^\n  10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});\n  11 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "column": 202,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/#stories$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:4183/play/\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    13 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://localhost:4183/play/\"\u001b[22m\n\n\n   7 | test('QA-03: sound off prevents answer narration',async({page})=>{test.fail(true,'Answer narration bypasses sound preference');await page.addInitScript(()=>{localStorage.setItem('little-light-sound','off');window.plays=[];HTMLMediaElement.prototype.play=function(){window.plays.push(this.src);return Promise.resolve();};});await page.goto('/play/?story=next');await page.locator('#skip').click();await page.locator('.choice').first().click();expect(await page.evaluate(()=>plays.filter(s=>s.includes('/audio/')))).toEqual([]);});\n   8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n>  9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n     |                                                                                                                                                                                                          ^\n  10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});\n  11 |\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:9:202"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:04.435Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Escape closes only visible content",
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "line": 9,
+                        "column": 62
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results\\regressions-QA-05-Escape-returns-to-journey-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "column": 202,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e384a31ebc52fb38593-711c9727e18001e94038",
+          "file": "regressions.spec.mjs",
+          "line": 9,
+          "column": 1
+        },
+        {
+          "title": "QA-07: install modal traps keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "fail",
+                  "description": "No modal focus trap",
+                  "location": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "line": 10,
+                    "column": 71
+                  }
+                }
+              ],
+              "expectedStatus": "failed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 1943,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:10:326",
+                    "location": {
+                      "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                      "column": 326,
+                      "line": 10
+                    },
+                    "snippet": "   8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n   9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n> 10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});\n     |                                                                                                                                                                                                                                                                                                                                      ^\n  11 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "column": 326,
+                        "line": 10
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   8 | test('QA-04: Enter in sound check leaves reader on page one',async({page})=>{test.fail(true,'Global key handler advances hidden lesson');await page.goto('/play/?story=next');await page.evaluate(()=>openHear(null));await page.locator('#hear-play').focus();await page.keyboard.press('Enter');await expect(page.locator('#reading-label')).toContainText('page 1');});\n   9 | test('QA-05: Escape returns to journey',async({page})=>{test.fail(true,'Escape closes only visible content');await page.goto('/play/?story=next');await page.keyboard.press('Escape');await expect(page).toHaveURL(/#stories$/);});\n> 10 | test('QA-07: install modal traps keyboard focus',async({page})=>{test.fail(true,'No modal focus trap');await page.goto('/');await page.evaluate(()=>LL_install.open());for(let i=0;i<5;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.querySelector('.ll-install').contains(document.activeElement))).toBe(true);}});\n     |                                                                                                                                                                                                                                                                                                                                      ^\n  11 |\n    at C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs:10:326"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T19:23:11.092Z",
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "No modal focus trap",
+                      "location": {
+                        "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                        "line": 10,
+                        "column": 71
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\qa\\test-results\\regressions-QA-07-install-modal-traps-keyboard-focus-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\bsebagabo\\Documents\\GitHub\\little-light\\tests\\e2e\\regressions.spec.mjs",
+                    "column": 326,
+                    "line": 10
+                  }
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e384a31ebc52fb38593-19159b640f6c6ca6d898",
+          "file": "regressions.spec.mjs",
+          "line": 10,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T19:22:25.251Z",
+    "duration": 107431.19200000001,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

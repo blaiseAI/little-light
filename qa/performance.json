@@ -1,0 +1,158 @@
+[
+  {
+    "url": "http://localhost:4183/",
+    "navigation": [
+      {
+        "domContentLoaded": 1876.3999999910593,
+        "load": 3337.5999999940395,
+        "transferSize": 16870
+      }
+    ],
+    "resources": [
+      {
+        "name": "https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;500;600&display=swap",
+        "transferSize": 968,
+        "encodedBodySize": 668,
+        "duration": 415
+      },
+      {
+        "name": "http://localhost:4183/landing.css",
+        "transferSize": 57772,
+        "encodedBodySize": 57472,
+        "duration": 1525.0999999940395
+      },
+      {
+        "name": "http://localhost:4183/assets/brand/web/logo-icon-96.webp",
+        "transferSize": 5210,
+        "encodedBodySize": 4910,
+        "duration": 257
+      },
+      {
+        "name": "http://localhost:4183/assets/landing/storybook-meadow.webp",
+        "transferSize": 203408,
+        "encodedBodySize": 203108,
+        "duration": 3152.7000000029802
+      },
+      {
+        "name": "http://localhost:4183/assets/landing/journey-guide.webp",
+        "transferSize": 159624,
+        "encodedBodySize": 159324,
+        "duration": 2890.9000000059605
+      },
+      {
+        "name": "http://localhost:4183/assets/brand/web/logo-icon-256.webp",
+        "transferSize": 15998,
+        "encodedBodySize": 15698,
+        "duration": 609.4000000059605
+      },
+      {
+        "name": "http://localhost:4183/stories/week-1.js",
+        "transferSize": 13173,
+        "encodedBodySize": 12873,
+        "duration": 531.7000000029802
+      },
+      {
+        "name": "http://localhost:4183/stories/week-2.js",
+        "transferSize": 13178,
+        "encodedBodySize": 12878,
+        "duration": 674.6000000089407
+      },
+      {
+        "name": "http://localhost:4183/stories/week-3.js",
+        "transferSize": 12879,
+        "encodedBodySize": 12579,
+        "duration": 1016.5
+      },
+      {
+        "name": "http://localhost:4183/sound.js",
+        "transferSize": 6494,
+        "encodedBodySize": 6194,
+        "duration": 938
+      },
+      {
+        "name": "http://localhost:4183/landing.js",
+        "transferSize": 15968,
+        "encodedBodySize": 15668,
+        "duration": 1235.199999988079
+      },
+      {
+        "name": "http://localhost:4183/pwa.js",
+        "transferSize": 13427,
+        "encodedBodySize": 13127,
+        "duration": 1391.0999999940395
+      },
+      {
+        "name": "http://localhost:4183/assets/icons/favicon.svg",
+        "transferSize": 938,
+        "encodedBodySize": 638,
+        "duration": 181.59999999403954
+      }
+    ]
+  },
+  {
+    "url": "http://localhost:4183/play/",
+    "navigation": [
+      {
+        "domContentLoaded": 1129,
+        "load": 1865.7000000029802,
+        "transferSize": 28969
+      }
+    ],
+    "resources": [
+      {
+        "name": "https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;500;600&display=swap",
+        "transferSize": 968,
+        "encodedBodySize": 668,
+        "duration": 429.5
+      },
+      {
+        "name": "http://localhost:4183/styles.css",
+        "transferSize": 34779,
+        "encodedBodySize": 34479,
+        "duration": 616.6999999880791
+      },
+      {
+        "name": "http://localhost:4183/stories/week-1.js",
+        "transferSize": 13173,
+        "encodedBodySize": 12873,
+        "duration": 514.2999999970198
+      },
+      {
+        "name": "http://localhost:4183/stories/week-2.js",
+        "transferSize": 13178,
+        "encodedBodySize": 12878,
+        "duration": 514.3000000119209
+      },
+      {
+        "name": "http://localhost:4183/stories/week-3.js",
+        "transferSize": 12879,
+        "encodedBodySize": 12579,
+        "duration": 529.3999999910593
+      },
+      {
+        "name": "http://localhost:4183/sound.js",
+        "transferSize": 6494,
+        "encodedBodySize": 6194,
+        "duration": 373.40000000596046
+      },
+      {
+        "name": "http://localhost:4183/pwa.js",
+        "transferSize": 13427,
+        "encodedBodySize": 13127,
+        "duration": 653.7999999970198
+      },
+      {
+        "name": "http://localhost:4183/app.js",
+        "transferSize": 37315,
+        "encodedBodySize": 37015,
+        "duration": 715.5999999940395
+      },
+      {
+        "name": "http://localhost:4183/assets/icons/favicon.svg",
+        "transferSize": 938,
+        "encodedBodySize": 638,
+        "duration": 179
+      }
+    ]
+  }
+]
