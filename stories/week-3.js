@@ -30,7 +30,7 @@ LL_WEEKS.push({ id: "week-3", title: "Brave and kind",
         {type: "choose", q: "Where was baby Moses hidden?", options: [["In a basket", "p-basket"], ["In a palace", "p-palace"], ["In an ark", "p-ark"]], answer: 0},
         {type: "choose", q: "Who watched over the basket?", options: [["His big sister"], ["A lion"], ["The king"]], answer: 0},
         {type: "pairs", q: "Match the pairs", pairs: [["Moses", "Baby in the basket"], ["Sister", "Watched nearby"], ["Princess", "Found the baby"], ["Basket", "Floated in the reeds"]]},
-        {type: "build", q: "Build the verse", ref: "Psalm 56:3", words: ["When", "I", "am", "afraid", "I", "put", "my", "trust", "in", "you"], extra: ["river", "baby"]},
+        {type: "build", q: "Build the verse", ref: "Psalm 56:3", given: 4, words: ["When", "I", "am", "afraid", "I", "put", "my", "trust", "in", "you"], extra: ["river", "baby"]},
       ] },
     { id: "jericho", title: "The walls of Jericho", icon: "p-walls", verse: "Be strong and courageous.", ref: "Joshua 1:9",
       pages: [

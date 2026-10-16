@@ -4,7 +4,7 @@ Date: 2026-10-16. Source: `d01445c05ee246c27bd19fb6bb7792abe3a4c9d2` (main at br
 
 ## Fix status (after review, 2026-10-16)
 
-Every finding was confirmed against the code and fixed on `main`, except QA-11 (verse length, a design change still to come). The regression tests no longer use `test.fail`, and the observational tests now assert the fixed behaviour. Full suite: 36 passed; `tools/check.mjs`: CHECK PASSED. Screenshots and JSON below are Codex's original evidence from before the fixes.
+Every finding was confirmed against the code and fixed on `main`. The regression tests no longer use `test.fail`, and the observational tests now assert the fixed behaviour. Full suite: 37 passed; `tools/check.mjs`: CHECK PASSED. Screenshots and JSON below are Codex's original evidence from before the fixes.
 
 | ID | Fix |
 | --- | --- |
@@ -17,6 +17,7 @@ Every finding was confirmed against the code and fixed on `main`, except QA-11 (
 | QA-08 | After the service worker is ready, the landing page quietly saves the next story's recordings, so the first story reads aloud offline too. |
 | QA-09 | Install ✕ is 44×44; Start over is 44 px high. |
 | QA-10 | Quiz progress bar is named "Questions answered", with "n of m questions answered" as its value. Axe on the quiz reports no violations. |
+| QA-11 | Build the verse is now made for nonreaders. Pip reads the whole verse in the instruction, and a Hear the verse button replays it. Long verses start with their opening words in place (`given` in the story files), so a child places at most 7 words. Each tap is checked at once: a right word fills the glowing slot, a wrong one wobbles back, and after two misses the right word glows and Pip says it. A finished verse is read back and never re-queued. 42 new Heart clips (`audio/v/`, updated `audio/q/`). |
 | Double tap | A double tap on Next page/Back turns one page, not two. |
 
 ## Summary

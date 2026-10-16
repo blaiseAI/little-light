@@ -236,6 +236,20 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
 .answer-line .tile { background: var(--sky-wash); }
 .tile.ghost { background: var(--paper-2); border-color: #d9c9ab; color: transparent; box-shadow: none; cursor: default; }
 .tile.pop { animation: pop .2s cubic-bezier(.3, 1.6, .5, 1); }
+/* build the verse: words already in place, empty slots (the glowing one is next), a wrong tap, Pip's hint */
+.answer-line span.tile { cursor: default; box-shadow: 0 3px 0 var(--ink); }
+.answer-line .tile.given { background: var(--surface); border-color: var(--line); box-shadow: 0 3px 0 var(--line); color: var(--ink-soft); }
+.slot { min-width: 58px; height: 46px; border: var(--stroke) dashed #d9c9ab; border-radius: var(--r-pill); }
+.slot.next { border-color: var(--coral); background: var(--coral-wash); animation: slot-glow 1.4s ease-in-out infinite; }
+@keyframes slot-glow { 50% { box-shadow: 0 0 0 5px var(--coral-wash); } }
+.tile.bad { background: var(--coral-wash); animation: wobble .4s; }
+.tile.hint { background: var(--gold); animation: hint-glow 1s ease-in-out infinite; }
+@keyframes hint-glow { 50% { box-shadow: 0 4px 0 var(--ink), 0 0 0 7px var(--gold-wash); } }
+.verse-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s3); margin: -16px 0 var(--s4); }
+.verse-ref { margin: 0; color: var(--ink-soft); }
+.hear-verse { min-height: 44px; }
+.build-hint { min-height: 1.5em; margin: calc(-1 * var(--s4)) 0 var(--s4); text-align: center; font-family: var(--display); font-weight: 500; font-size: 18px; color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .slot.next, .tile.hint, .tile.bad { animation: none; } }
 @keyframes pop { from { transform: scale(.7); } to { transform: scale(1); } }
 
 .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }

@@ -19,6 +19,9 @@ const spokenRef = (r) => r.replace(/(\d+):(\d+)/, '$1, verse $2');
 const word = (t) => (/[.!?]$/.test(t) ? t : t + '.');
 const plain = (t) => t.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
 
+export const verseSay = (ex) => ex.words.join(' ') + '.';
+export const buildSay = (ex) => `Build the verse from ${spokenRef(ex.ref)}. Listen: ${verseSay(ex)} Now tap the words in order.${ex.given ? ' The first words are there for you.' : ''}`;
+
 // Every clip: { file (relative to audio/), text (what Heart says), lead (ms of air before speech) }
 export function clipList(weeks) {
   const clips = new Map();
@@ -30,9 +33,10 @@ export function clipList(weeks) {
   for (const s of weeks.flatMap((w) => w.stories)) {
     s.pages.forEach((p, i) => add(`${s.id}-${i + 1}.mp3`, p.text + (p.quote ? ' ' + p.quote : ''), 250));
     s.ex.forEach((ex, i) => {
-      add(`q/${s.id}-${i + 1}.mp3`, ex.type === 'build'
-        ? `Build the verse from ${spokenRef(ex.ref)}. Tap the words in the right order.`
-        : ex.q + (ex.say ? ' ' + ex.say : ''), 120);
+      // Build the verse: Pip reads the whole verse first, so a child who can't read yet knows what to make.
+      // Must match buildSay() in app.js. v/ is the verse on its own (Hear the verse, and when it's finished).
+      add(`q/${s.id}-${i + 1}.mp3`, ex.type === 'build' ? buildSay(ex) : ex.q + (ex.say ? ' ' + ex.say : ''), 120);
+      if (ex.type === 'build') add(`v/${s.id}-${i + 1}.mp3`, verseSay(ex), 120);
       const words = ex.type === 'choose' ? ex.options.map((o) => o[0]) : ex.type === 'pairs' ? ex.pairs.flat() : [...ex.words, ...ex.extra];
       for (const t of words) add(`w/${slug(t)}.mp3`, word(t), 120);
     });

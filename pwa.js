@@ -153,6 +153,7 @@
       s.pages.forEach((_, i) => set.add(`${s.id}-${i + 1}.mp3`));
       s.ex.forEach((ex, i) => {
         set.add(`q/${s.id}-${i + 1}.mp3`);
+        if (ex.type === 'build') set.add(`v/${s.id}-${i + 1}.mp3`);
         const words = ex.type === 'choose' ? ex.options.map((o) => o[0]) : ex.type === 'pairs' ? ex.pairs.flat() : [...ex.words, ...ex.extra];
         words.forEach((w) => set.add(`w/${slug(w)}.mp3`));
       });

@@ -42,7 +42,7 @@ for (let si = 0; si < n; si++) {
       await page.waitForTimeout(800); await page.click('#check');
     } else {
       const tiles = await page.$$eval('#bank .tile', (t) => t.map((x) => x.textContent)); const used = new Set();
-      for (const w of ex.words) { const i = tiles.findIndex((x, k) => x === w && !used.has(k)); used.add(i); await page.click(`#bank .tile[data-i="${i}"]`); }
+      for (const w of ex.words.slice(ex.given || 0)) { const i = tiles.findIndex((x, k) => x === w && !used.has(k)); used.add(i); await page.click(`#bank .tile[data-i="${i}"]`); }
       await page.click('#check'); await page.click('#check');
     }
   }

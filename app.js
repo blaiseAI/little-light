@@ -252,12 +252,14 @@ function next() {
   let html = `<div class="l-head"><span class="l-kind"><svg><use href="#${kicon}"/></svg>${klabel}</span><button class="qplay" id="qplay" aria-label="Hear the question"><svg aria-hidden="true"><use href="#i-sound"/></svg></button></div><h2 class="l-q" id="l-q">${esc(ex.q)}</h2>`;
   if (ex.say) html += `<div class="speaker"><svg viewBox="0 0 240 230"><use href="#pip"/></svg><div class="bubble">${esc(ex.say)}</div></div>`;
   if (ex.type === 'choose') html += renderChoose(ex);
-  if (ex.type === 'build') html += `<p style="color:var(--ink-soft);margin:-16px 0 20px">${esc(ex.ref)}</p><div class="lines"><div class="answer-line" id="line"></div></div><div class="bank" id="bank"></div>`;
+  if (ex.type === 'build') html += `<div class="verse-tools"><p class="verse-ref">${esc(ex.ref)}</p>
+    <button class="btn soft hear-verse" id="hear-verse" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sound"/></svg>Hear the verse</button></div>
+    <div class="lines"><div class="answer-line" id="line"></div></div><p class="build-hint" id="build-hint" aria-live="polite"></p><div class="bank" id="bank"></div>`;
   if (ex.type === 'pairs') html += renderPairs(ex);
   stage.innerHTML = html;
   stage.parentElement.scrollTop = 0;
   if (ex.type === 'build') wireBuild(ex); else if (ex.type === 'pairs') wirePairs(ex); else wireChoose(ex);
-  const qid = `q/${L.story.id}-${L.story.ex.indexOf(ex) + 1}`, qtext = ex.type === 'build' ? 'Build the verse. Tap the words in the right order.' : ex.q + (ex.say ? ' ' + ex.say : '');
+  const qid = `q/${L.story.id}-${L.story.ex.indexOf(ex) + 1}`, qtext = ex.type === 'build' ? buildSay(ex) :ex.q + (ex.say ? ' ' + ex.say : '');
   $('#qplay').addEventListener('click', () => sayClip(qid, qtext));
   hush();
   if (Sound.isOn()) setTimeout(() => { if (L && L.current === ex && L.phase === 'answer') sayClip(qid, qtext); }, 350);
@@ -279,24 +281,54 @@ function wireChoose(ex) {
   }));
   L.check = () => ({ ok: L.pick === ex.answer, right: ex.options[ex.answer][0] });
 }
+/* ---------- build the verse ----------
+   Made for children who can't read yet: Pip reads the whole verse first, a long verse starts with its
+   opening words in place (ex.given), and each word is checked as it's tapped. A right word drops into the
+   glowing slot; a wrong one wobbles back. After two misses Pip lights up the right word and says it. */
+const verseSay = (ex) => ex.words.join(' ') + '.';
+const spokenRef = (r) => r.replace(/(\d+):(\d+)/, '$1, verse $2');
+// Must match buildSay() in tools/stories.mjs (it's the recorded question)
+const buildSay = (ex) => `Build the verse from ${spokenRef(ex.ref)}. Listen: ${verseSay(ex)} Now tap the words in order.${ex.given ? ' The first words are there for you.' : ''}`;
+const buildGiven = (ex) => ex.given || 0;
 function wireBuild(ex) {
-  const bank = $('#bank'), line = $('#line');
-  bank.innerHTML = shuffle([...ex.words, ...ex.extra]).map((w, i) => `<button class="tile" data-i="${i}">${esc(w)}</button>`).join('');
-  L.built = [];
-  const sync = () => { L.built = [...line.children].map((c) => c.textContent); checkBtn.disabled = L.built.length === 0; };
+  const bank = $('#bank'), line = $('#line'), hint = $('#build-hint'), hear = $('#hear-verse');
+  const given = buildGiven(ex), need = ex.words.slice(given), vid = `v/${L.story.id}-${exIndex(ex) + 1}`;
+  line.innerHTML = ex.words.map((w, k) => k < given ? `<span class="tile given">${esc(w)}</span>`
+    : `<span class="slot${k === given ? ' next' : ''}" aria-hidden="true"></span>`).join('');
+  bank.innerHTML = shuffle([...need, ...ex.extra]).map((w, i) => `<button class="tile" data-i="${i}">${esc(w)}</button>`).join('');
+  let at = 0, misses = 0;
+  hear.addEventListener('click', () => {
+    if (hear.getAttribute('aria-pressed') === 'true') { hush(); hear.setAttribute('aria-pressed', 'false'); return; }
+    narrate(`${ROOT}audio/${vid}.mp3`, verseSay(ex), hear);   // asked for, so it plays even with sound off (like Read to me)
+  });
   bank.addEventListener('click', (e) => {
-    const t = e.target.closest('.tile'); if (!t || t.classList.contains('ghost') || L.phase !== 'answer') return;
-    t.classList.add('ghost'); t.disabled = true;
-    const placed = document.createElement('button');
-    placed.className = 'tile pop'; placed.textContent = t.textContent; placed.dataset.i = t.dataset.i;
-    line.appendChild(placed); sync(); Sound.play('tap'); sayWord(placed.textContent);
+    const t = e.target.closest('.tile'); if (!t || t.disabled || L.phase !== 'answer' || at >= need.length) return;
+    const want = need[at];
+    if (t.textContent !== want) {
+      Sound.play('miss'); t.classList.remove('bad'); void t.offsetWidth; t.classList.add('bad'); setTimeout(() => t.classList.remove('bad'), 450);
+      if (++misses < 2) { hint.textContent = 'Not that one yet. Try another word.'; return; }
+      bank.querySelectorAll('.hint').forEach((b) => b.classList.remove('hint'));
+      [...bank.querySelectorAll('.tile:not(:disabled)')].find((b) => b.textContent === want)?.classList.add('hint');
+      hint.textContent = `Look for the glowing word: “${want}”`;
+      setTimeout(() => { if (L && L.current === ex && need[at] === want) sayWord(want); }, 450);
+      return;
+    }
+    misses = 0; bank.querySelectorAll('.hint').forEach((b) => b.classList.remove('hint'));
+    t.classList.remove('bad'); t.classList.add('ghost'); t.disabled = true;
+    const placed = document.createElement('span');
+    placed.className = 'tile pop'; placed.textContent = want;
+    line.querySelector('.slot.next').replaceWith(placed);
+    line.querySelector('.slot')?.classList.add('next');
+    Sound.play('tap'); at++;
+    if (at < need.length) { hint.textContent = ''; sayWord(want); return; }
+    // the whole verse is built: it checks itself, then Pip reads it back
+    hint.textContent = 'You built the verse!'; checkBtn.disabled = false;
+    setTimeout(() => { if (L && L.current === ex && L.phase === 'answer') checkBtn.click(); }, 600);
   });
-  line.addEventListener('click', (e) => {
-    const t = e.target.closest('.tile'); if (!t || L.phase !== 'answer') return;
-    const src = bank.querySelector(`[data-i="${t.dataset.i}"]`); src.classList.remove('ghost'); src.disabled = false;
-    t.remove(); sync(); Sound.play('untap');
-  });
-  L.check = () => ({ ok: L.built.join(' ') === ex.words.join(' '), right: ex.words.join(' ') });
+  L.check = () => {
+    setTimeout(() => { if (L && L.current === ex && L.phase === 'feedback') sayClip(vid, verseSay(ex)); }, 700);
+    return { ok: at === need.length, right: ex.words.join(' ') };
+  };
 }
 function renderPairs(ex) {
   const left = shuffle(ex.pairs.map((p, i) => [p[0], i])), right = shuffle(ex.pairs.map((p, i) => [p[1], i]));
