@@ -508,7 +508,7 @@ measureViewport(); syncDebug();
 
 renderStats(); renderSky();
 (() => { const d = new Date(), day = d.getDay(), h = d.getHours();
-  if ((day === 5 && h >= 18) || (day === 6 && h < 19)) $('#sabbath').classList.add('show'); })();
+  if ((day === 5 && h >= 18) || (day === 6 && h < 19)) $('#sabbath')?.classList.add('show'); })();   // the redesigned game page has no banner; never let it stop a story
 // Preview hooks: #play=<n> opens a story, &step=<k> jumps ahead, &done=1 shows the finish screen
 const m = location.hash.match(/play=(\d)(?:&step=(\d))?(&done=1)?/);
 if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next(); } else if (m[2]) { L.queue = L.story.ex.slice(+m[2]); next(); } }
