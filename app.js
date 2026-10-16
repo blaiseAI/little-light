@@ -82,6 +82,15 @@ $('#quick')?.addEventListener('click', () => {
 });
 
 /* ---------- the lesson ---------- */
+// Tab and Shift+Tab wrap around a dialog's own controls instead of wandering off into the page or the browser
+function keepFocusIn(box, e) {
+  if (e.key !== 'Tab') return;
+  const f = [...box.querySelectorAll('button:not([disabled]), a[href], input, [tabindex]:not([tabindex="-1"])')].filter((n) => n.getClientRects().length);
+  if (!f.length) return;
+  const at = f.indexOf(document.activeElement);
+  if (e.shiftKey && at <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+  else if (!e.shiftKey && (at === f.length - 1 || !box.contains(document.activeElement))) { e.preventDefault(); f[0].focus(); }
+}
 let L = null;
 const lessonEl = $('#lesson'), stage = $('#stage'), foot = $('#foot'), checkBtn = $('#check');
 
@@ -149,7 +158,8 @@ function hush() {
 }
 // Quiz clips: q/<story>-<n> for questions, w/<slug> for answers, tiles and cards (recorded in Heart)
 const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const sayClip = (id, text) => narrate(`${ROOT}audio/${id}.mp3`, text, null);
+// Only when sound is on: Read to me is the one voice a child asks for themselves
+const sayClip = (id, text) => { if (Sound.isOn()) narrate(`${ROOT}audio/${id}.mp3`, text, null); };
 const sayWord = (t) => sayClip('w/' + slug(t), t);
 function narrate(src, text, btn) {
   hush();
@@ -208,19 +218,22 @@ const JOURNEY = ROOT && !window.LL_STAY ? `${ROOT}#stories` : null;   // LL_STAY
 function backToJourney() { closeLesson(); if (JOURNEY) location.href = JOURNEY; }
 $('#close').addEventListener('click', backToJourney);
 document.addEventListener('keydown', (e) => {
-  if (!L) return;
-  if (e.key === 'Escape') closeLesson();
+  if (!L || document.querySelector('.ll-install')) return;   // the install sheet handles its own keys
+  if (!hearEl.hidden) { if (e.key === 'Escape') $('#hear-close').click(); return; }   // keys belong to the sound check while it's open
+  if (e.key === 'Escape') { backToJourney(); return; }
   if (e.key === 'Enter' && !checkBtn.disabled && !e.target.closest('.choice, .tile, .pair')) { e.preventDefault(); checkBtn.click(); }
   if (L && L.phase === 'story' && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) (e.key === 'ArrowRight' ? checkBtn : $('#skip')).click();
   if (L && L.phase === 'answer' && L.current?.type === 'choose' && /^[1-3]$/.test(e.key)) stage.querySelectorAll('.choice')[+e.key - 1]?.click();
 });
-$('#skip').addEventListener('click', () => {
+$('#skip').addEventListener('click', (e) => {
+  if (L && L.phase === 'story' && e.detail > 1) return;   // a double tap turns one page, not two
   if (L && L.phase === 'story') { hush(); Sound.play('page'); if (L.page) { L.page--; renderPage(); } else next(); return; }
   if (L && L.phase === 'answer') { Sound.play('whoosh'); L.queue.push(L.current); next(); } });
 
 function setProgress() {
   [...$('#trail').children].forEach((s, i) => s.classList.toggle('lit', i < L.answered));
   $('#trail').setAttribute('aria-valuenow', L.answered);
+  $('#trail').setAttribute('aria-valuetext', `${L.answered} of ${L.total} questions answered`);
 }
 function setFoot(mode, h = '', p = '') {
   foot.className = 'l-foot' + (mode ? ' ' + mode : '');
@@ -310,8 +323,8 @@ function wirePairs(ex) {
 }
 
 const PRAISE = ['You shine!', 'Wonderful!', 'Yes, that\'s it!', 'Bright work!', 'Hooray!'];
-checkBtn.addEventListener('click', () => {
-  if (!L) return;
+checkBtn.addEventListener('click', (e) => {
+  if (!L || (L.phase === 'story' && e.detail > 1)) return;   // a double tap turns one page, not two
   if (L.phase === 'done') { if (JOURNEY) { backToJourney(); return; } closeLesson(); renderSky(); $('#sky').scrollIntoView(); return; }
   if (L.phase === 'feedback') { next(); return; }
   if (L.phase === 'story') { hush(); Sound.play('page'); if (L.page < L.story.pages.length - 1) { L.page++; renderPage(); } else next(); return; }
@@ -391,12 +404,23 @@ if (IS_IOS) document.documentElement.classList.add('is-ios');
 const hearEl = $('#hear');
 let hearThen = null;
 function heardBefore() { try { return sessionStorage.getItem('little-light-session-heard') === 'yes'; } catch { return true; } }
+// While it's open the page behind is out of reach (inert) and Tab stays inside; closing returns focus.
+let hearFrom = null;
 function openHear(then) {
+  hearFrom = document.activeElement;
   hearThen = then; hearEl.classList.remove('listening'); hearEl.hidden = false;
+  [...document.body.children].forEach((n) => { if (n !== hearEl) n.inert = true; });
   $('#hear-yes').disabled = true; $('#hear-hint').textContent = 'Turn your volume up, then tap play.'; $('#hear-play').focus();
 }
+function hideHear() {
+  hearEl.hidden = true;
+  [...document.body.children].forEach((n) => { n.inert = false; });
+  const back = hearFrom && hearFrom.isConnected && hearFrom !== document.body && hearFrom.getClientRects().length ? hearFrom : L ? checkBtn : null;
+  hearFrom = null; if (back) back.focus({ preventScroll: true });
+}
+hearEl.addEventListener('keydown', (e) => keepFocusIn(hearEl, e));
 function closeHear(heard) {
-  hush(); hearEl.hidden = true;
+  hush(); hideHear();
   if (heard) { try { sessionStorage.setItem('little-light-session-heard', 'yes'); } catch {} }
   const go = hearThen; hearThen = null; if (go) go();
 }
@@ -411,7 +435,7 @@ $('#hear-play').addEventListener('click', (e) => {
 });
 $('#hear-yes').addEventListener('click', () => closeHear(true));
 // Closing the check cancels the story; the child can open it again from the sky
-$('#hear-close').addEventListener('click', () => { hush(); hearEl.hidden = true; hearThen = null; if (JOURNEY) backToJourney(); else closeLesson(); });
+$('#hear-close').addEventListener('click', () => { hush(); hideHear(); hearThen = null; if (JOURNEY) backToJourney(); else closeLesson(); });
 $('#hear-skip').addEventListener('click', () => { Sound.set(false); closeHear(true); });
 
 /* ---------- Safari 26 floats its toolbar over the bottom of the page ----------
@@ -468,6 +492,8 @@ if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next
   // "next" = the start buttons on the landing page: open the child's next story straight away
   const i = wanted === 'next' ? firstOpen : STORIES.findIndex((s) => s.id === wanted);
   if (i >= 0 && (i === firstOpen || state.done.includes(STORIES[i].id))) openLesson(i);
+  // Unknown, not reached yet, or every star already lit: the journey shows what is open and how to unlock the rest
+  else if (JOURNEY) location.replace(JOURNEY);
   else $('#sky').scrollIntoView();
 })();
 

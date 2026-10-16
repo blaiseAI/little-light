@@ -430,5 +430,5 @@ body.story-only { background: #fff; min-height: 100svh; }
   background: var(--gold-wash); border: 2px solid var(--ink); border-radius: var(--r-pill); box-shadow: 0 3px 0 var(--ink);
   font-family: var(--display); font-weight: 500; font-size: 16px; animation: slideup .3s cubic-bezier(.3, 1.4, .5, 1); }
 .resume-note svg { width: 20px; height: 20px; flex: none; color: var(--coral); }
-.resume-note button { min-height: 36px; padding: 0 14px; border: 2px solid var(--line); border-radius: var(--r-pill); background: #fff; font: inherit; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.resume-note button { min-height: 44px; padding: 0 14px; border: 2px solid var(--line); border-radius: var(--r-pill); background: #fff; font: inherit; font-weight: 600; cursor: pointer; white-space: nowrap; }
 @media (max-width: 640px) { .resume-note { font-size: 14px; } }

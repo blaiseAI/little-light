@@ -20,7 +20,7 @@ test('collect axe, target sizes, keyboard modal behavior and invalid links',asyn
    await page.screenshot({path:`qa/screenshots/focus-${state}.png`});
   }
  }
- for(const query of ['does-not-exist','next']){await page.goto('/play/?story='+query);if(query==='next')await page.keyboard.press('Escape');record[query]={text:(await page.locator('body').innerText()).slice(-1800),open:await page.locator('#lesson').evaluate(e=>e.classList.contains('open'))};await page.screenshot({path:`qa/screenshots/${query==='next'?'escape':'invalid'}.png`});}
+ for(const query of ['does-not-exist','next']){await page.goto('/play/?story='+query);if(query==='next')await page.keyboard.press('Escape');record[query]={text:(await page.locator('body').innerText()).slice(-1800),open:await page.evaluate(()=>!!document.querySelector('#lesson.open'))};await page.screenshot({path:`qa/screenshots/${query==='next'?'escape':'invalid'}.png`});}
  await writeFile('qa/audit-data.json',JSON.stringify(record,null,2));
 });
 test('saved states, stale resume, storage blocked and reduced motion',async({page})=>{
@@ -28,7 +28,7 @@ test('saved states, stale resume, storage blocked and reduced motion',async({pag
  for(const count of [3,21]){
  await page.evaluate(({ids,count})=>localStorage.setItem('little-light',JSON.stringify({done:ids.slice(0,count),xp:count*10,streak:3})),{ids,count});await page.reload();await page.locator('#light-toggle').click();await expect(page.locator('#light-stories')).toHaveText(String(count));await expect(page.locator('#light-stars')).toHaveText(String(count*10));
  await page.locator('#light-continue').click();await page.screenshot({path:`qa/screenshots/progress-${count}.png`});
- record['progress'+count]={lessonOpen:await page.locator('#lesson').evaluate(e=>e.classList.contains('open')),body:(await page.locator('body').innerText()).slice(-1000)};await page.goto('/');
+ record['progress'+count]={lessonOpen:await page.evaluate(()=>!!document.querySelector('#lesson.open')),body:(await page.locator('body').innerText()).slice(-1000)};await page.goto('/');
  }
  await page.evaluate(id=>{localStorage.removeItem('little-light');localStorage.setItem('little-light-resume',JSON.stringify({id,phase:'story',page:3,savedAt:Date.now()-8*864e5}));},ids[0]);await page.goto('/play/?story=next');await expect(page.locator('#reading-label')).toContainText('page 1');await expect(page.locator('#resume-note')).toBeHidden();
  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');await expect(page.locator('body')).toHaveClass(/motion-off/);

@@ -57,9 +57,10 @@
       step('add', 'Tap <b>Install app</b> or <b>Add to Home screen</b>.'),
     ].join('')}</ol>`;
   }
-  let sheet = null;
+  let sheet = null, from = null;
   function open(source) {
     close();
+    from = document.activeElement;
     sheet = document.createElement('div');
     sheet.className = 'll-install'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.setAttribute('aria-labelledby', 'll-install-h');
     sheet.innerHTML = `<div class="ll-card" tabindex="-1">
@@ -71,6 +72,14 @@
       <button class="ll-later">Not now</button>
     </div>`;
     document.body.append(sheet);
+    // a real modal: the page behind is out of reach and Tab wraps inside the card
+    [...document.body.children].forEach((n) => { if (n !== sheet) n.inert = true; });
+    sheet.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const f = [...sheet.querySelectorAll('button')], at = f.indexOf(document.activeElement);
+      if (e.shiftKey && at <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && at === f.length - 1) { e.preventDefault(); f[0].focus(); }
+    });
     const later = () => { const s = read(); write({ dismissals: (s.dismissals || 0) + (source === 'auto' ? 1 : 0), dismissedAt: Date.now() }); close(); };
     sheet.querySelector('.ll-x').onclick = later; sheet.querySelector('.ll-later').onclick = later;
     sheet.addEventListener('click', (e) => { if (e.target === sheet) later(); });
@@ -78,7 +87,13 @@
     if (go) go.onclick = async () => { const d = deferred; if (!d) return; d.prompt(); const c = await d.userChoice.catch(() => null); deferred = null; if (c && c.outcome === 'accepted') { installed = true; write({ installed: true }); } close(); paintPanel(); };
     (go || sheet.querySelector('.ll-card')).focus();   // land on the card itself; screen readers read the heading
   }
-  function close() { if (sheet) { sheet.remove(); sheet = null; } }
+  function close() {
+    if (!sheet) return;
+    sheet.remove(); sheet = null;
+    [...document.body.children].forEach((n) => { n.inert = false; });
+    if (from && from.isConnected && from !== document.body) from.focus({ preventScroll: true });
+    from = null;
+  }
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheet) close(); });
 
   const style = document.createElement('style');
@@ -98,7 +113,7 @@
   .ll-go svg{width:22px;height:22px}
   .ll-go:active{transform:translateY(4px);box-shadow:none}
   .ll-later{min-height:44px;background:none;border:0;color:#2b2250;text-decoration:underline;text-underline-offset:3px;font:inherit;font-size:15px;cursor:pointer}
-  .ll-x{position:absolute;right:12px;top:12px;width:40px;height:40px;border-radius:50%;border:2px solid #ddd8e4;background:#fff;color:#2b2250;display:grid;place-items:center;cursor:pointer}
+  .ll-x{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:2px solid #ddd8e4;background:#fff;color:#2b2250;display:grid;place-items:center;cursor:pointer}
   .ll-x svg{width:16px;height:16px}
   .ll-install :focus-visible{outline:3px solid #2b2250;outline-offset:3px;border-radius:12px}
   .ll-card:focus{outline:none}
@@ -131,9 +146,10 @@
   const button = $('light-offline'), status = $('light-offline-status');
   if (!canWork || !('caches' in window)) { button.hidden = true; return; }
   const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');   // same as app.js
-  function clips() {
+  const everyStory = (window.LL_WEEKS || []).flatMap((w) => w.stories);
+  function clips(list = everyStory) {
     const set = new Set(['help/hello.mp3', 'help/verse-psalm-23-1.mp3']);
-    for (const s of (window.LL_WEEKS || []).flatMap((w) => w.stories)) {
+    for (const s of list) {
       s.pages.forEach((_, i) => set.add(`${s.id}-${i + 1}.mp3`));
       s.ex.forEach((ex, i) => {
         set.add(`q/${s.id}-${i + 1}.mp3`);
@@ -146,6 +162,15 @@
   const all = clips(), stories = (window.LL_WEEKS || []).reduce((n, w) => n + w.stories.length, 0);
   const done = () => { button.hidden = true; status.textContent = `All ${stories} stories are saved on this device, ready without internet.`; };
   caches.open('ll-media-v1').then(async (c) => { const have = (await c.keys()).map((r) => r.url); if (all.every((u) => have.includes(u))) done(); }).catch(() => {});
+  // The pages are saved on the first visit; quietly save the child's next story's recordings too, so that one
+  // also reads aloud without internet (Save all covers the rest)
+  navigator.serviceWorker.ready.then(async () => {
+    if (!navigator.onLine) return;
+    let lit = []; try { lit = JSON.parse(localStorage.getItem('little-light') || '{}').done || []; } catch {}
+    const next = everyStory.find((s) => !lit.includes(s.id)); if (!next) return;
+    const cache = await caches.open('ll-media-v1'), have = new Set((await cache.keys()).map((r) => r.url));
+    for (const u of clips([next]).filter((u) => !have.has(u))) { try { const r = await fetch(u); if (r.ok) await cache.put(u, r); } catch { return; } }
+  }).catch(() => {});
   button.addEventListener('click', async () => {
     button.disabled = true;
     const cache = await caches.open('ll-media-v1'), have = new Set((await cache.keys()).map((r) => r.url));

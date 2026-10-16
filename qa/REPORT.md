@@ -2,6 +2,23 @@
 
 Date: 2026-10-16. Source: `d01445c05ee246c27bd19fb6bb7792abe3a4c9d2` (main at branch creation). Branch: `qa/codex-2026-10-16`. Tested the repository build at `http://localhost:4183`, served by `tools/serve.mjs`; not the potentially different live deployment. App code was not changed.
 
+## Fix status (after review, 2026-10-16)
+
+Every finding was confirmed against the code and fixed on `main`, except QA-11 (verse length, a design change still to come). The regression tests no longer use `test.fail`, and the observational tests now assert the fixed behaviour. Full suite: 36 passed; `tools/check.mjs`: CHECK PASSED. Screenshots and JSON below are Codex's original evidence from before the fixes.
+
+| ID | Fix |
+| --- | --- |
+| QA-01/02 | Unknown or locked story links go back to the journey (`location.replace`), which shows what is open and how to unlock the rest. |
+| QA-06 | When all 21 are done, every "next story" link on the landing page points to the journey, and My light says "See all my stars". `story=next` on the game page also returns to the journey. |
+| QA-03 | Question, answer, tile and card narration only plays with sound on. "Read to me" still works, because the child asks for it. |
+| QA-04 | While the sound check is open, story keys are ignored; Escape there works like its ✕. |
+| QA-05 | Escape does the same as the ✕ Journey button. |
+| QA-07 | Sound check and install sheet make the page behind `inert`, wrap Tab/Shift+Tab inside, and return focus to whatever opened them. |
+| QA-08 | After the service worker is ready, the landing page quietly saves the next story's recordings, so the first story reads aloud offline too. |
+| QA-09 | Install ✕ is 44×44; Start over is 44 px high. |
+| QA-10 | Quiz progress bar is named "Questions answered", with "n of m questions answered" as its value. Axe on the quiz reports no violations. |
+| Double tap | A double tap on Next page/Back turns one page, not two. |
+
 ## Summary
 
 The normal first-story journey works across the six requested emulations, and the existing smoke test completed all 21 stories: **CHECK PASSED**, 392 distinct clips played, no missing recordings, no media failures, no device-voice fallbacks, and no page errors. The three main journeys also passed in Playwright WebKit with the iOS 26 Safari user agent.
