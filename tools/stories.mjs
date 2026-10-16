@@ -25,6 +25,8 @@ export function clipList(weeks) {
   const add = (file, text, lead) => { if (!clips.has(file)) clips.set(file, { file, text: plain(text), lead }); };
   // The sound check ("Can you hear me?"); must match the text in app.js
   add('help/hello.mp3', "Hello! I'm Pip. If you can hear me, tap yes!", 120);
+  // The landing page verse demo reads the finished verse (single words reuse the w/ clips)
+  add('help/verse-psalm-23-1.mp3', 'The Lord is my shepherd.', 120);
   for (const s of weeks.flatMap((w) => w.stories)) {
     s.pages.forEach((p, i) => add(`${s.id}-${i + 1}.mp3`, p.text + (p.quote ? ' ' + p.quote : ''), 250));
     s.ex.forEach((ex, i) => {

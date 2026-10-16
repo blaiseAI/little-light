@@ -396,3 +396,20 @@ html:has(.story-reader[open]),body:has(.story-reader[open]){overflow:hidden;over
 
 /* ---- next style block ---- */
 [hidden]{display:none!important}
+/* ---- Verse demo (2026-10-16): slots, gold stars, wobble, invitation ---- */
+.verse-slots{display:flex;flex-wrap:wrap;gap:10px;min-height:56px;margin:18px 0 22px;padding:16px;border-radius:14px;background:color-mix(in oklch,var(--accent) 22%,var(--bg))}
+.verse-slots .slot{min-width:64px;height:48px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;border:2px dashed color-mix(in oklch,var(--fg) 28%,var(--bg));border-radius:999px;font:600 19px/1 var(--font-display);color:var(--fg)}
+.verse-slots .slot.filled{border-style:solid;border-color:var(--fg);background:var(--bg);box-shadow:0 3px 0 var(--fg);animation:slot-pop .3s cubic-bezier(.3,1.6,.5,1)}
+@keyframes slot-pop{from{transform:scale(.6)}to{transform:none}}
+.word-bank .word.used{visibility:hidden}
+.word-bank .word.wobble{border-color:#ff7a45;background:#ffe1d3;animation:word-wobble .4s}
+@keyframes word-wobble{25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+.star-progress svg path{transition:fill .25s,stroke .25s}
+.star-progress svg{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.star-progress svg.lit{transform:scale(1.18) rotate(8deg)}
+.star-progress svg.lit path{fill:#ffc94a;stroke:var(--fg)}
+.verse-game.complete .verse-slots{background:color-mix(in oklch,var(--accent) 45%,var(--bg))}
+.verse-cta{margin:4px 0 16px}
+.verse-cta[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.verse-slots .slot.filled,.word-bank .word.wobble{animation:none}.star-progress svg.lit{transform:none}}
+.verse-game.complete .word-bank{display:none}

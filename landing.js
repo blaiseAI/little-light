@@ -13,7 +13,55 @@ document.addEventListener('visibilitychange',restPip);
 
 
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelectorAll('[data-category]').forEach(c=>c.hidden=b.dataset.filter!=='all'&&c.dataset.category!==b.dataset.filter)});
-const answer=['The','Lord','is','my','shepherd'];let selected=[];const bank=document.getElementById('words'),status=document.getElementById('status');function setup(){selected=[];document.querySelector('.verse-game').classList.remove('complete');document.querySelectorAll('.star-progress svg').forEach(x=>x.classList.remove('lit'));document.getElementById('verse').textContent='Your words go here…';status.textContent='Start with “The”. You can do it.';bank.innerHTML='';['shepherd','The','my','Lord','is'].forEach(word=>{let b=document.createElement('button');b.textContent=word;b.dataset.odId='word-'+word.toLowerCase();b.onclick=()=>{if(word!==answer[selected.length]){status.textContent='Almost! Try “'+answer[selected.length]+'” next.';return}selected.push(word);document.querySelectorAll('.star-progress svg').forEach((x,i)=>x.classList.toggle('lit',i<selected.length));document.querySelector('.verse-game').classList.toggle('complete',selected.length===5);b.disabled=true;document.getElementById('verse').textContent=selected.join(' ')+(selected.length===5?'.':'');status.textContent=selected.length===5?'You did it! A little verse to carry with you.':'Lovely! Which word comes next?'};bank.append(b)})}setup();document.getElementById('reset').onclick=setup;
+/* Verse demo: a small taste of the game. Words fill slots in order; wrong words wobble, and the answer is
+   only named after a second miss. Sound and Heart narration follow the shared sound setting (sound.js). */
+(()=>{
+const answer=['The','Lord','is','my','shepherd'];
+const game=document.querySelector('.verse-game'); if(!game) return;
+const slots=document.getElementById('verse'), bank=document.getElementById('words'), status=document.getElementById('status'),
+  cta=document.getElementById('verse-cta'), stars=[...document.querySelectorAll('.star-progress svg')];
+let selected=[], misses=0;
+const soundOn=()=>typeof Sound!=='undefined'&&Sound.isOn();
+const sfx=(n)=>{ if(typeof Sound!=='undefined') Sound.play(n); };
+const voice=new Audio(); voice.preload='none';
+const say=(file)=>{ if(!soundOn()) return; try{ voice.pause(); voice.src='audio/'+file; const p=voice.play(); if(p&&p.catch) p.catch(()=>{}); }catch{} };
+const shuffle=(list)=>{ let x; do { x=list.slice(); for(let i=x.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [x[i],x[j]]=[x[j],x[i]]; } } while(x.join()===list.join()); return x; };
+function setup(){
+  selected=[]; misses=0; game.classList.remove('complete'); cta.hidden=true;
+  stars.forEach(st=>st.classList.remove('lit'));
+  slots.innerHTML=answer.map(()=>'<span class="slot"></span>').join(''); slots.setAttribute('aria-label','Your verse: empty');
+  status.textContent='Tap the words in order. Which word comes first?';
+  bank.innerHTML='';
+  shuffle(answer).forEach(word=>{
+    const b=document.createElement('button'); b.type='button'; b.className='word'; b.textContent=word; b.dataset.odId='word-'+word.toLowerCase();
+    b.onclick=()=>{
+      if(b.disabled||selected.length===answer.length) return;
+      const want=answer[selected.length];
+      if(word!==want){
+        misses++; sfx('miss');
+        b.classList.remove('wobble'); void b.offsetWidth; b.classList.add('wobble');
+        status.textContent=misses>=2?'Try “'+want+'” next.':'Not quite. Which word comes next?';
+        return;
+      }
+      misses=0; selected.push(word); b.disabled=true; b.classList.add('used');
+      const slot=slots.children[selected.length-1]; slot.textContent=word; slot.classList.add('filled');
+      if(stars[selected.length-1]) stars[selected.length-1].classList.add('lit');
+      slots.setAttribute('aria-label','Your verse: '+selected.join(' '));
+      sfx('tap'); say('w/'+word.toLowerCase()+'.mp3');
+      if(selected.length===answer.length){
+        game.classList.add('complete'); status.textContent='You did it! A little verse to carry with you.';
+        sfx('done'); setTimeout(()=>say('help/verse-psalm-23-1.mp3'),900);
+        cta.hidden=false;
+      } else status.textContent='Lovely! Which word comes next?';
+    };
+    bank.append(b);
+  });
+}
+// The invitation matches where the child is: first story, or the next one
+try{ const saved=JSON.parse(localStorage.getItem('little-light')||'{}'); if((saved.done||[]).length) document.getElementById('verse-cta-label').textContent='Continue my journey'; }catch{}
+setup();
+document.getElementById('reset').onclick=setup;
+})();
 
 /* Weekly journey reads the existing app progress without creating completion records. */
 (()=>{
@@ -48,4 +96,4 @@ window.addEventListener('focus',()=>{readProgress();first=all.findIndex(s=>!comp
 (()=>{const b=document.getElementById('landing-sound');if(!b)return;const label=document.getElementById('sound-setting-label');
 let on=true;try{on=localStorage.getItem('little-light-sound')!=='off'}catch{}
 const paint=()=>{b.setAttribute('aria-pressed',String(on));label.textContent=on?'Sound: on':'Sound: off'};paint();
-b.addEventListener('click',()=>{on=!on;try{localStorage.setItem('little-light-sound',on?'on':'off')}catch{}paint()})})();
+b.addEventListener('click',()=>{on=!on;if(typeof Sound!=='undefined'){Sound.set(on);if(on)Sound.play('tap')}else{try{localStorage.setItem('little-light-sound',on?'on':'off')}catch{}}paint()})})();
