@@ -414,3 +414,9 @@ html:has(.story-reader[open]),body:has(.story-reader[open]){overflow:hidden;over
 @media (prefers-reduced-motion:reduce){.verse-slots .slot.filled,.word-bank .word.wobble{animation:none}.star-progress svg.lit{transform:none}}
 .verse-game.complete .word-bank{display:none}
 .verse-cta-icon{display:inline-flex}
+/* My light: app and offline (2026-10-16) */
+.light-app{display:grid;gap:8px;margin:14px 0 4px;padding:14px;border:1px solid var(--border);border-radius:16px}
+.light-app strong{font-family:var(--font-display);font-size:16px}
+.light-app p{margin:0;font-size:13px;line-height:1.5;color:var(--muted)}
+.light-app .btn svg{width:20px;height:20px;flex-shrink:0}
+.light-ios b{color:var(--fg)}

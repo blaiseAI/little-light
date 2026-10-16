@@ -32,6 +32,28 @@ node tools/serve.mjs          # http://localhost:4173/  (game at /play/)
 Use the server rather than opening the files directly: links like `play/?story=creation` need a
 server that serves a folder's index.html, as GitHub Pages does.
 
+## Installable app (PWA)
+
+- `manifest.webmanifest` makes the site installable; `sw.js` (service worker) makes it work offline.
+  Pages, code and story files load fresh when online (3 s limit) and from the saved copy offline.
+  Recordings and fonts play from the saved copy and refresh in the background. No version bumps
+  are needed on deploy. If the list of core files in `sw.js` changes, bump `ll-shell-v1`.
+- `pwa.js` registers the service worker and runs the "Little Light on your home screen" part of
+  My light: an Add to home screen button where the browser supports it (Android, desktop Chrome),
+  the Share > Add to Home Screen steps on iPhone/iPad, and "Save all stories for offline".
+- On iPhone, progress saved in Safari and in the home-screen app is kept separately.
+
+### App icon
+
+`assets/icons/` holds a temporary lantern icon. To use a new logo, replace these files and keep the names:
+
+| File | Size | Notes |
+| --- | --- | --- |
+| `icon-192.png` | 192 × 192 | Square, full-bleed background |
+| `icon-512.png` | 512 × 512 | Square, full-bleed background |
+| `icon-maskable-512.png` | 512 × 512 | Keep the logo inside the centre 80% (Android crops to circles and squircles) |
+| `apple-touch-icon.png` | 180 × 180 | iPhone and iPad home screen; no transparency (iOS fills it black) |
+
 ## Content rules
 
 - Story pages are simple retellings in plain words. Anything in `quote` is **NIV, word for word**,

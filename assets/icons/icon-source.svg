@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Temporary app icon (lantern on cream). Replace the PNGs in this folder with the new logo; keep names and sizes. -->
+  <rect width="512" height="512" fill="#fff8ec"/>
+  <circle cx="256" cy="282" r="150" fill="#ffc94a" opacity=".22"/>
+  <g transform="translate(256 262) scale(6.4) translate(-20 -20)" stroke="#2b2250" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M20 3v4"/><rect x="11" y="7" width="18" height="5" rx="2" fill="#2b2250"/>
+    <rect x="9" y="12" width="22" height="22" rx="7" fill="#ffc94a"/><path d="M9 20h22M9 27h22"/>
+  </g>
+</svg>
