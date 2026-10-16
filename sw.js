@@ -9,7 +9,7 @@ const CORE = [
   'play/', 'play/index.html', 'styles.css', 'app.js',
   'assets/landing/storybook-meadow.webp', 'assets/landing/journey-guide.webp',
   'assets/brand/web/logo-icon-96.webp', 'assets/brand/web/logo-icon-96.png', 'assets/brand/web/logo-icon-256.webp',
-  'assets/icons/icon-192.png', 'assets/icons/apple-touch-icon.png', 'assets/icons/favicon.svg', 'assets/icons/favicon-32.png',
+  'assets/icons/icon-192.png', 'assets/icons/apple-touch-icon.png', 'assets/icons/favicon.svg', 'assets/icons/favicon-32.png', 'assets/icons/favicon-16.png', 'favicon.ico',
 ];
 
 self.addEventListener('install', (e) => {
