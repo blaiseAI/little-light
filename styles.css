@@ -415,3 +415,8 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
   .lesson.reading .l-foot.story .in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--s3); }
   .lesson.reading .l-foot .btn { width: 100%; min-height: 52px; padding: 0 var(--s3); font-size: 17px; line-height: 1.2; white-space: normal; text-align: center; }
 }
+
+/* The game page only ever shows a story (the map is the journey on the landing page), so the old
+   night-sky page behind the sound check and the reader stays hidden. Tests still use its markup. */
+body.story-only > header, body.story-only > main, body.story-only > footer { display: none; }
+body.story-only { background: #fff; min-height: 100svh; }

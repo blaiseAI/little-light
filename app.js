@@ -452,7 +452,7 @@ $('#hear-play').addEventListener('click', (e) => {
 });
 $('#hear-yes').addEventListener('click', () => closeHear(true));
 // Closing the check cancels the story; the child can open it again from the sky
-$('#hear-close').addEventListener('click', () => { hush(); hearEl.hidden = true; hearThen = null; });
+$('#hear-close').addEventListener('click', () => { hush(); hearEl.hidden = true; hearThen = null; if (JOURNEY && !lessonEl.classList.contains('open')) location.href = JOURNEY; });
 $('#hear-skip').addEventListener('click', () => { Sound.set(false); closeHear(true); });
 
 /* ---------- Safari 26 floats its toolbar over the bottom of the page ----------
