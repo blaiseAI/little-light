@@ -58,7 +58,7 @@ function setup(){
   });
 }
 // The invitation matches where the child is: first story, or the next one
-try{ const saved=JSON.parse(localStorage.getItem('little-light')||'{}'); if((saved.done||[]).length) document.getElementById('verse-cta-label').textContent='Continue my journey'; }catch{}
+try{ const saved=JSON.parse(localStorage.getItem('little-light')||'{}'); if((saved.done||[]).length){ document.getElementById('verse-cta-label').textContent='Continue my journey'; document.getElementById('verse-cta-icon').innerHTML='<svg class="action-icon" data-icon="book" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C9 4.5 5.5 4.2 3 5v14c2.5-.8 6-.5 9 1.5 3-2 6.5-2.3 9-1.5V5c-2.5-.8-6-.5-9 1.5Zm0 0v14"/></svg>'; } }catch{}
 setup();
 document.getElementById('reset').onclick=setup;
 })();

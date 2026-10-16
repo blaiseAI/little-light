@@ -413,3 +413,4 @@ html:has(.story-reader[open]),body:has(.story-reader[open]){overflow:hidden;over
 .verse-cta[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){.verse-slots .slot.filled,.word-bank .word.wobble{animation:none}.star-progress svg.lit{transform:none}}
 .verse-game.complete .word-bank{display:none}
+.verse-cta-icon{display:inline-flex}
