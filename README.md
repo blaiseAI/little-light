@@ -49,3 +49,23 @@ npm install                        # Playwright for tools/check.mjs (uses your i
   by Biblica, Inc.™ Used by permission. All rights reserved worldwide.
 - Narration voice: Kokoro-82M "Heart" (Apache 2.0).
 - Sound effects are synthesised in code (recipes adapted from motion-studio's `score.mjs`).
+
+
+## Scenery assets
+
+The home scene keeps Pip in SVG and loads two transparent scenery layers (distant hills and moon) from
+`assets/scene/phone` (up to 640 CSS pixels) or `assets/scene/desktop`.
+Both load together before replacing the inline fallback hills. The scene
+retains its original drawing if an image cannot load, including without JavaScript.
+Pause motion and the system reduced-motion preference stop layer movement.
+
+Unmodified ImageGen originals and generation prompts are in `assets/raw`.
+To rebuild the cropped, exact-palette PNGs, install Pillow and NumPy in the local
+Python environment and run `python tools/prepare_scenery.py`.
+`assets/scene/manifest.json` records sizes, palette, crops, and byte totals.
+The build copies only optimized scenery into `dist/assets/scene`.
+
+The revised welcome shares Pip's character geometry with lessons, but places a
+separate lantern on the ground. Pip, the lantern, the path and contact marks are
+stationary. Only the distant hills move during sunset. The other generated layers
+remain in the asset library but are not loaded on the homepage.

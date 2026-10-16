@@ -1,0 +1,16 @@
+{
+  "method": "Built-in image_gen; model selection managed by tool",
+  "style": "Flat 2D children's storybook illustration in a sticker style. Bold, even outlines in dark plum #2b2250. Flat colour fills only: no gradients, no texture, no soft shading (one flat darker tone per shape at most). Rounded, friendly shapes. Use only these colours: #221a48, #322a6b, #463d8a, #3bb3a6, #d4f3ee, #f2c48a, #e8a24a, #fff8ec, #ffc94a, #ff7a45, #b9a6ff. Transparent background PNG. No text, no people, no logos.",
+  "subjects": {
+    "hills-far": "A long range of gentle rolling hills across the full width, with a small hilltop village of simple flat-roofed stone houses like old Bethlehem, a few windows glowing gold #ffc94a. Hills in #463d8a and #322a6b. Content only in bottom 45%; top fully transparent. Left and right edges line up so it can repeat. Canvas 1536x1024. No opaque sky.",
+    "hills-mid": "Closer rolling hills in teal #3bb3a6 with a few round olive trees and a low stone sheepfold. Content only in bottom 40%, top transparent, left and right edges line up. Canvas 1536x1024. No opaque sky or characters.",
+    "ground-near": "A foreground grassy bank with a winding sandy path #f2c48a entering from left edge and curving to centre, small coral and lilac flowers, a few pebbles. Content only in bottom 30%, top transparent. Canvas 1536x1024. No sky, no characters.",
+    "moon": "One friendly crescent moon in cream #fff8ec with a lilac #b9a6ff shading shape. No face. Centred with lots of empty space around it. Canvas 1024x1024. This is a single isolated scenery asset for Little Light, no stars or extra decoration.",
+    "clouds": "Three separate small puffy night clouds in #463d8a with lilac #b9a6ff rims, spread out horizontally with clear space between them. 1536x1024 transparent canvas. Absolutely no gradients/shading/glow/texture. Flat fills and dark plum outline."
+  },
+  "notes": [
+    "Originals preserved unchanged. Web derivatives trimmed and snapped to exact palette plus outline ink.",
+    "Moon tool output is 1254x1254; requested 1024x1024.",
+    "Landscape edges are approximate; integration uses single non-repeating layers."
+  ]
+}

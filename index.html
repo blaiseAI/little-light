@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=scenery-3">
 </head>
 <body>
 
@@ -16,6 +16,7 @@
   <defs>
     <!-- Pip the lamb, holding a lantern -->
     <symbol id="pip" viewBox="0 0 240 230">
+      <g id="pip-character">
       <g stroke="#2b2250" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
         <rect x="70" y="158" width="20" height="44" rx="10" fill="#2b2250"/>
         <rect x="132" y="158" width="20" height="44" rx="10" fill="#2b2250"/>
@@ -32,6 +33,15 @@
         <ellipse cx="112" cy="104" rx="31" ry="34" fill="#f3d9bf"/>
         <g fill="#fffdf7" stroke="none"><circle cx="104" cy="66" r="12"/><circle cx="120" cy="64" r="11"/><circle cx="112" cy="72" r="12"/></g>
         <path d="M100 68a12 12 0 0 1 22-4" fill="none" stroke-width="5"/>
+
+      </g>
+
+      <ellipse cx="101" cy="102" rx="8" ry="10" fill="#2b2250"/><ellipse cx="123" cy="102" rx="8" ry="10" fill="#2b2250"/>
+      <circle cx="104" cy="98" r="3" fill="#fff"/><circle cx="126" cy="98" r="3" fill="#fff"/>
+      <path d="M104 120q8 7 16 0" fill="none" stroke="#2b2250" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="90" cy="116" rx="7" ry="4.5" fill="#ff7a45" opacity=".55"/><ellipse cx="134" cy="116" rx="7" ry="4.5" fill="#ff7a45" opacity=".55"/>
+      </g>
+      <g stroke="#2b2250" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
         <path d="M150 140q22 2 36-6" fill="none" stroke-width="9"/>
         <path d="M186 126v-10" stroke-width="5"/>
         <rect x="172" y="132" width="30" height="40" rx="9" fill="#ffc94a"/>
@@ -39,10 +49,6 @@
         <rect x="176" y="126" width="22" height="8" rx="3" fill="#2b2250"/>
       </g>
       <circle cx="187" cy="152" r="34" fill="#ffc94a" opacity=".25"/>
-      <ellipse cx="101" cy="102" rx="8" ry="10" fill="#2b2250"/><ellipse cx="123" cy="102" rx="8" ry="10" fill="#2b2250"/>
-      <circle cx="104" cy="98" r="3" fill="#fff"/><circle cx="126" cy="98" r="3" fill="#fff"/>
-      <path d="M104 120q8 7 16 0" fill="none" stroke="#2b2250" stroke-width="5" stroke-linecap="round"/>
-      <ellipse cx="90" cy="116" rx="7" ry="4.5" fill="#ff7a45" opacity=".55"/><ellipse cx="134" cy="116" rx="7" ry="4.5" fill="#ff7a45" opacity=".55"/>
     </symbol>
 
     <symbol id="star5" viewBox="0 0 64 64"><path d="M32 5l8 17 18.5 2.3-13.6 12.7 3.6 18.4L32 46.3 15.5 55.4l3.6-18.4L5.5 24.3 24 22z" stroke-width="4" stroke-linejoin="round"/></symbol>
@@ -145,26 +151,49 @@
           <button class="btn paper" id="quick">Play today's story</button>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 500 430">
-          <circle class="scene-sky" cx="330" cy="190" r="150" fill="#ffe1d3"/>
-          <circle class="scene-sun" cx="330" cy="190" r="104" fill="#fff1c7"/><path class="scene-moon" d="M397 85a35 35 0 1 0 22 52A30 30 0 0 1 397 85z" fill="#fff8ec" stroke="#2b2250" stroke-width="4" opacity="0"/>
-          <g stroke="#2b2250" stroke-width="5" stroke-linejoin="round">
-            <path d="M-10 330q130-70 260-30t270-20v170H-10z" fill="#3bb3a6"/>
-            <path d="M-10 380q160-40 300-6t230-14v90H-10z" fill="#d4f3ee"/>
+      <div class="hero-art">
+        <svg viewBox="0 0 500 430" aria-hidden="true">
+          <defs>
+            <clipPath id="scene-window"><path d="M30 240a220 220 0 0 1 440 0v110q0 60-220 60T30 350z"/></clipPath>
+          </defs>
+          <g clip-path="url(#scene-window)">
+            <rect class="scene-sky" x="30" y="20" width="440" height="390" fill="#f2c48a"/>
+            <circle class="scene-sun" cx="380" cy="125" r="40" fill="#ffc94a"/>
+            <g class="fallback-scenery">
+              <path class="scene-moon" d="M390 78a30 30 0 1 0 18 45A27 27 0 0 1 390 78z" fill="#fff8ec"/>
+              <path d="M0 270Q150 180 275 250T520 230V430H0z" fill="#463d8a"/>
+            </g>
+            <g class="painted-scenery">
+              <image class="scene-moon" data-scenery="moon" x="354" y="74" width="49" height="53"/>
+              <image class="scene-far" data-scenery="hills-far" x="-20" y="192" width="540" height="160" preserveAspectRatio="none"/>
+            </g>
+            <g class="scene-stars" fill="#fff8ec">
+              <circle cx="130" cy="106" r="2"/><circle cx="227" cy="66" r="2"/><circle cx="302" cy="141" r="2"/>
+              <path d="M172 148v12m-6-6h12" fill="none" stroke="#fff8ec" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <!-- The feet, light and path share this stationary ground plane. -->
+            <path d="M0 290Q115 263 260 286T500 274V430H0z" fill="#3bb3a6" stroke="#2b2250" stroke-width="4"/>
+            <path d="M279 284Q367 303 307 330T331 410H191Q205 361 283 339T279 284z" fill="#f2c48a"/>
+            <ellipse class="lantern-pool" cx="319" cy="352" rx="63" ry="18" fill="#ffc94a"/>
+            <ellipse cx="192" cy="349" rx="55" ry="9" fill="#2b2250" opacity=".22"/>
+            <ellipse cx="319" cy="350" rx="26" ry="6" fill="#2b2250" opacity=".25"/>
+            <svg class="hero-pip" x="87" y="160" width="225" height="216" viewBox="0 0 240 230"><use href="#pip-character"/></svg>
+            <g class="ground-lantern" stroke="#2b2250" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M309 289v-7a10 10 0 0 1 20 0v7" fill="none"/>
+              <path d="M302 298l7-9h20l7 9z" fill="#463d8a"/>
+              <rect x="303" y="298" width="32" height="44" rx="3" fill="#fff8ec"/>
+              <path class="lantern-flame" d="M319 309c-1 7-8 10-8 17a8 8 0 0 0 16 0c0-7-5-9-8-17z" fill="#ffc94a" stroke="#e8a24a" stroke-width="2"/>
+              <path d="M303 298v44m32-44v44"/>
+              <path d="M299 342h40v7h-40z" fill="#463d8a"/>
+            </g>
+            <g stroke="#2b2250" stroke-width="3" stroke-linecap="round" fill="none">
+              <path d="M116 359l-4-7m4 7 5-4M383 339l-4-7m4 7 5-4"/>
+            </g>
           </g>
-          <path d="M60 404q60-14 130-4" fill="none" stroke="#3bb3a6" stroke-width="5" stroke-linecap="round"/>
-          <g fill="#ffc94a" stroke="#2b2250" stroke-width="4" stroke-linejoin="round">
-            <use href="#star5" x="40" y="40" width="44" height="44" class="twinkle"/>
-            <use href="#star5" x="440" y="70" width="30" height="30" class="twinkle"/>
-            <use href="#star5" x="120" y="150" width="24" height="24" class="twinkle"/>
-          </g>
-          <circle cx="470" cy="230" r="7" fill="#ffb3c7" stroke="#2b2250" stroke-width="3" class="twinkle"/>
-          <g class="pip-arrival"><svg class="hero-pip" x="130" y="130" width="260" height="250" viewBox="0 0 240 230"><use href="#pip"/></svg></g><g class="fireflies" fill="#ffc94a" stroke="#2b2250" stroke-width="2"><circle cx="95" cy="320" r="4"/><circle cx="415" cy="290" r="4"/><circle cx="450" cy="355" r="3"/><circle cx="75" cy="245" r="3"/></g>
         </svg>
+        <div class="motion-tools"><button id="motion-toggle" class="motion-toggle" aria-pressed="false" hidden>Pause motion</button></div>
       </div>
     </div>
-    <div class="wrap motion-tools"><button id="motion-toggle" class="motion-toggle" aria-pressed="false" hidden>Pause motion</button></div>
     <svg class="scallop" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 48V24q25-24 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0V48z" fill="#221a48"/>
     </svg>
@@ -269,6 +298,6 @@
 <script src="stories/week-1.js"></script>
 <script src="stories/week-2.js"></script>
 <script src="stories/week-3.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=scenery-3"></script>
 </body>
 </html>

@@ -489,18 +489,33 @@ if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next
   let paused = false, queued = 0, visible = true;
   try { paused = localStorage.getItem('little-light-motion') === 'off'; } catch {}
   const active = () => !paused && !preference.matches;
-  // Reuse the lesson drawing verbatim, exposing just its articulated parts in the hero.
+  // Load one responsive set atomically. Old code-drawn hills remain if any asset fails.
+  const phoneScenery = matchMedia('(max-width: 640px)');
+  let sceneryRequest = 0;
+  async function loadScenery() {
+    const request = ++sceneryRequest;
+    const variant = phoneScenery.matches ? 'phone' : 'desktop';
+    const layers = [...art.querySelectorAll('[data-scenery]')];
+    try {
+      const sources = await Promise.all(layers.map(async layer => {
+        const src = `assets/scene/${variant}/${layer.dataset.scenery}.png`;
+        const image = new Image(); image.src = src;
+        await image.decode();
+        return src;
+      }));
+      if (request !== sceneryRequest) return;
+      layers.forEach((layer, i) => layer.setAttribute('href', sources[i]));
+      art.dataset.scenery = variant;
+      art.classList.add('scenery-ready');
+    } catch {
+      // Keep either the previous complete set or the original inline artwork.
+    }
+  }
+  phoneScenery.addEventListener('change', loadScenery);
+  loadScenery();
+  // Share Pip's character geometry with lessons; the welcome lantern stands separately.
   const pip = $('.hero-pip');
-  pip.replaceChildren(...[...$('#pip').children].map(n => n.cloneNode(true)));
-  const body = pip.firstElementChild;
-  [...body.children].slice(0, 2).forEach(n => n.classList.add('pip-leg'));
-  const lantern = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  lantern.classList.add('pip-lantern');
-  [...body.children].slice(-4).forEach(n => lantern.append(n));
-  body.append(lantern);
-  const glow = pip.querySelector('circle[cx="187"]');
-  glow.setAttribute('stroke', 'none');
-  lantern.append(glow);
+  pip.replaceChildren(...[...$('#pip-character').children].map(n => n.cloneNode(true)));
   const eyes = document.createElementNS('http://www.w3.org/2000/svg', 'g');
   eyes.classList.add('pip-eyes');
   pip.querySelectorAll('ellipse[cy="102"], circle[cy="98"][r="3"]').forEach(n => eyes.append(n));
@@ -514,7 +529,11 @@ if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next
     const start = Math.max(0, rect.top + scrollY - innerHeight * .5);
     const progress = active() ? Math.max(0, Math.min(1, (scrollY - start) / Math.max(1, rect.height * .9))) : .85;
     art.style.setProperty('--nightfall', progress.toFixed(3));
-    $('.scene-sky', art).setAttribute('fill', blend([255,225,211], [50,42,107], progress));
+    art.style.setProperty('--scene-travel', active() ? progress.toFixed(3) : '0');
+    const skyColor = progress < .45
+      ? blend([242,196,138], [185,166,255], progress / .45)
+      : blend([185,166,255], [50,42,107], (progress - .45) / .55);
+    $('.scene-sky', art).setAttribute('fill', skyColor);
   }
   function schedule() { if (!queued && visible && !document.hidden) queued = requestAnimationFrame(paint); }
   const entrances = new Set();
@@ -553,7 +572,6 @@ if (m) { openLesson(+m[1]); if (m[3]) { L.queue = []; L.answered = L.total; next
       if (el === art) { visible = entry.isIntersecting; if (visible) schedule(); }
       if (!entry.isIntersecting || seen.has(el)) return;
       seen.add(el);
-      if (el === art && active()) el.classList.add('motion-ready');
       // Draw each path once, leaving every story control available throughout.
       const target = el.matches('.week-sky') ? el.querySelector('.lines') : el.matches('.panel') ? el.querySelector('svg') : null;
       if (target && active()) {

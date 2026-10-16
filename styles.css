@@ -125,7 +125,7 @@ button { font: inherit; color: inherit; }
 .hero h1 { font-size: clamp(42px, 6vw, 76px); max-width: 11ch; }
 .hero p { color: var(--ink-soft); margin-top: var(--s5); max-width: 27em; font-size: 19px; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: var(--s4); margin-top: var(--s6); }
-.hero-art svg { width: 100%; height: auto; overflow: visible; display: block; }
+.hero-art > svg { width: 100%; height: auto; overflow: visible; display: block; }
 .scallop { display: block; width: 100%; height: 48px; margin-top: var(--s7); }
 
 .bob { animation: bob 3.4s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
@@ -330,29 +330,36 @@ footer p { color: var(--lilac); font-size: 16px; margin-top: var(--s5); }
   html { scroll-behavior: auto; }
 }
 /* The lantern journey: a warm welcome becomes a quiet night sky. */
-.motion-tools { margin-top: 16px; }
+.motion-tools { display: flex; justify-content: flex-end; margin-top: 8px; }
 .motion-toggle { justify-self: end; min-height: 44px; padding: 8px 14px; border: 2px solid var(--ink); border-radius: var(--r-pill); background: var(--paper); color: var(--ink); font: 500 14px var(--text); cursor: pointer; }
 .motion-toggle:hover { background: var(--gold-wash); }
 .hero-art { --nightfall: 0; }
 .hero-art > svg { overflow: hidden; }
-.scene-sun { transform: translateY(calc(var(--nightfall) * 140px)); opacity: calc(1 - var(--nightfall)); }
-.scene-moon { opacity: var(--nightfall); }
+.scene-sun { transform: translateY(calc(var(--nightfall) * 140px)); opacity: calc(1 - var(--nightfall) * 2.2); }
+.scene-moon { opacity: calc((var(--nightfall) - .45) * 1.82); }
 .fireflies { opacity: var(--nightfall); }
 .fireflies circle { animation: firefly-drift 5s ease-in-out infinite alternate; }
 .fireflies circle:nth-child(2n) { animation-delay: -2s; animation-duration: 6s; }
 .hero-pip .pip-eyes { transform-origin: 112px 102px; animation: pip-blink 6s infinite; }
-.hero-pip .pip-lantern { transform-origin: 186px 116px; animation: lantern-swing 3.8s ease-in-out infinite; }
-.motion-ready .pip-arrival { animation: pip-arrive 800ms cubic-bezier(.16,1,.3,1) both; }
-.motion-ready .hero-pip .pip-leg { transform-box: fill-box; transform-origin: top; animation: pip-step 200ms ease-in-out 4 alternate; }
-.motion-ready .hero-pip .pip-leg:nth-child(2) { animation-direction: alternate-reverse; }
 .motion-off *, .motion-sleep *, .motion-outside * { animation-play-state: paused !important; }
 .motion-off { scroll-behavior: auto; }
-@keyframes pip-arrive { from { transform: translateX(-65px); } to { transform: translateX(0); } }
-@keyframes pip-step { from { transform: rotate(-12deg); } to { transform: rotate(12deg); } }
-@keyframes lantern-swing { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(5deg); } }
 @keyframes pip-blink { 0%,43%,47%,100% { transform: scaleY(1); } 45% { transform: scaleY(.08); } }
 @keyframes firefly-drift { from { transform: translate(0,0); } to { transform: translate(10px,-16px); } }
 ::selection { background: var(--gold); color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   .scene-sun { transform: none; }
 }
+
+/* Compressed scenery layers; small offsets add depth without moving the controls. */
+.painted-scenery { visibility: hidden; pointer-events: none; }
+.scenery-ready .painted-scenery { visibility: visible; }
+.scenery-ready .fallback-scenery { display: none; }
+.scene-far { transform: translateY(calc(var(--scene-travel, 0) * -6px)); }
+@media (prefers-reduced-motion: reduce) {
+}
+
+/* Stable foreground: Pip and lantern never move relative to their contact marks. */
+.hero-pip { overflow: visible; }
+.scene-stars { opacity: calc((var(--nightfall) - .45) * 1.82); }
+.lantern-pool { opacity: calc(.12 + var(--nightfall) * .35); }
+.ground-lantern { animation: none; }

@@ -1,0 +1,138 @@
+{
+  "palette": [
+    "#2b2250",
+    "#221a48",
+    "#322a6b",
+    "#463d8a",
+    "#3bb3a6",
+    "#d4f3ee",
+    "#f2c48a",
+    "#e8a24a",
+    "#fff8ec",
+    "#ffc94a",
+    "#ff7a45",
+    "#b9a6ff"
+  ],
+  "assets": {
+    "hills-far": {
+      "original": [
+        1536,
+        1024
+      ],
+      "crop": [
+        0,
+        568,
+        1536,
+        1024
+      ],
+      "variants": {
+        "phone": {
+          "width": 768,
+          "height": 228,
+          "bytes": 11411
+        },
+        "desktop": {
+          "width": 1536,
+          "height": 456,
+          "bytes": 27846
+        }
+      }
+    },
+    "hills-mid": {
+      "original": [
+        1536,
+        1024
+      ],
+      "crop": [
+        0,
+        501,
+        1536,
+        1024
+      ],
+      "variants": {
+        "phone": {
+          "width": 768,
+          "height": 262,
+          "bytes": 14836
+        },
+        "desktop": {
+          "width": 1536,
+          "height": 523,
+          "bytes": 34849
+        }
+      }
+    },
+    "ground-near": {
+      "original": [
+        1536,
+        1024
+      ],
+      "crop": [
+        0,
+        574,
+        1536,
+        1024
+      ],
+      "variants": {
+        "phone": {
+          "width": 768,
+          "height": 225,
+          "bytes": 16940
+        },
+        "desktop": {
+          "width": 1536,
+          "height": 450,
+          "bytes": 40523
+        }
+      }
+    },
+    "moon": {
+      "original": [
+        1254,
+        1254
+      ],
+      "crop": [
+        270,
+        241,
+        1015,
+        1040
+      ],
+      "variants": {
+        "phone": {
+          "width": 160,
+          "height": 172,
+          "bytes": 2211
+        },
+        "desktop": {
+          "width": 256,
+          "height": 275,
+          "bytes": 3505
+        }
+      }
+    },
+    "clouds": {
+      "original": [
+        1536,
+        1024
+      ],
+      "crop": [
+        22,
+        367,
+        1514,
+        635
+      ],
+      "variants": {
+        "phone": {
+          "width": 512,
+          "height": 92,
+          "bytes": 3113
+        },
+        "desktop": {
+          "width": 960,
+          "height": 172,
+          "bytes": 5978
+        }
+      }
+    }
+  }
+}
