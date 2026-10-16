@@ -2,14 +2,14 @@
 //  - Pages, code and story files: network first (up to 3 s), the saved copy when offline or slow.
 //  - Recordings and fonts: the saved copy first, refreshed quietly in the background.
 //  - iPhone Safari asks for audio in byte ranges; saved audio is answered with proper 206 slices.
-const SHELL = 'll-shell-v1', MEDIA = 'll-media-v1';
+const SHELL = 'll-shell-v2', MEDIA = 'll-media-v1';
 const CORE = [
   './', 'index.html', 'landing.css', 'landing.js', 'sound.js', 'pwa.js', 'manifest.webmanifest',
   'stories/week-1.js', 'stories/week-2.js', 'stories/week-3.js',
   'play/', 'play/index.html', 'styles.css', 'app.js',
   'assets/landing/storybook-meadow.webp', 'assets/landing/journey-guide.webp',
-  'assets/landing/logo-lantern.svg', 'assets/landing/closing-lantern.svg',
-  'assets/icons/icon-192.png', 'assets/icons/apple-touch-icon.png',
+  'assets/brand/web/logo-icon-96.webp', 'assets/brand/web/logo-icon-96.png', 'assets/brand/web/logo-icon-256.webp',
+  'assets/icons/icon-192.png', 'assets/icons/apple-touch-icon.png', 'assets/icons/favicon.svg', 'assets/icons/favicon-32.png',
 ];
 
 self.addEventListener('install', (e) => {

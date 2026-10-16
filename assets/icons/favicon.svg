@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Little Light favicon: a flat, small-size version of the Story Star logo (star over an open book) -->
+  <g stroke="#2b2250" stroke-width="3.6" stroke-linejoin="round">
+    <path d="M5 41 L31 47 L33 47 L59 41 L57 51 L33 57 L31 57 L7 51 Z" fill="#3bb3a6"/>
+    <path d="M8 35 Q20 30 31 37.5 L31 51.5 Q20 45.5 8 48.5 Z" fill="#fff8ec"/>
+    <path d="M56 35 Q44 30 33 37.5 L33 51.5 Q44 45.5 56 48.5 Z" fill="#fff8ec"/>
+    <path d="M32.0 5.0 L36.1 15.3 L47.2 16.1 L38.7 23.2 L41.4 33.9 L32.0 28.0 L22.6 33.9 L25.3 23.2 L16.8 16.1 L27.9 15.3 Z" fill="#ffc94a"/>
+  </g>
+</svg>
