@@ -85,14 +85,46 @@ $('#quick')?.addEventListener('click', () => {
 let L = null;
 const lessonEl = $('#lesson'), stage = $('#stage'), foot = $('#foot'), checkBtn = $('#check');
 
-function openLesson(i) {
-  // The first time on this device, Pip checks the sound is audible before the story starts
+/* ---------- picking up where the child left off ----------
+   Saved at every story page and question, on this device next to the stars. Cleared when the story is
+   finished, or after a week, so a child isn't dropped into the middle of something they've forgotten. */
+const RESUME_KEY = 'little-light-resume', RESUME_DAYS = 7;
+function readResume() {
+  try { const r = JSON.parse(localStorage.getItem(RESUME_KEY) || 'null'); return r && Date.now() - r.savedAt < RESUME_DAYS * 864e5 ? r : null; }
+  catch { return null; }
+}
+function saveResume(where) { if (!L) return; try { localStorage.setItem(RESUME_KEY, JSON.stringify({ id: L.story.id, savedAt: Date.now(), ...where })); } catch {} }
+function clearResume() { try { localStorage.removeItem(RESUME_KEY); } catch {} }
+const exIndex = (ex) => L.story.ex.indexOf(ex);
+function usableResume(r, story) {
+  if (!r || r.id !== story.id) return null;
+  if (r.phase === 'story') return Number.isInteger(r.page) && story.pages && r.page >= 0 && r.page < story.pages.length ? r : null;
+  if (r.phase === 'answer') return Array.isArray(r.queue) && r.queue.every((k) => Number.isInteger(k) && k >= 0 && k < story.ex.length)
+    && Number.isInteger(r.answered) && r.answered >= 0 && r.answered <= story.ex.length ? r : null;
+  return null;
+}
+function showResumeNote(i) {
+  const note = $('#resume-note'); if (!note) return;
+  note.hidden = false;
+  // stays until the child moves on (no timer, so the page never jumps while they read)
+  const hide = () => { note.hidden = true; checkBtn.removeEventListener('click', hide); $('#skip').removeEventListener('click', hide); };
+  checkBtn.addEventListener('click', hide); $('#skip').addEventListener('click', hide);
+  $('#resume-over').onclick = () => { note.hidden = true; clearResume(); openLesson(i, true); };
+}
+
+function openLesson(i, fresh) {
   const story = STORIES[i];
+  const resume = fresh ? null : usableResume(readResume(), story);
+  if (fresh) clearResume();
+  const note = $('#resume-note'); if (note) note.hidden = true;
   L = { story, queue: story.ex.slice(), total: story.ex.length, answered: 0, phase: 'answer' };
   $('#trail').innerHTML = story.ex.map(() => `<svg viewBox="0 0 32 32" aria-hidden="true">${STAR}</svg>`).join('');
   $('#trail').setAttribute('aria-valuemax', story.ex.length);
   lessonEl.classList.add('open'); closePanel(); Sound.play('whoosh');
-  if (story.pages) { L.phase = 'story'; L.page = 0; renderPage(); } else next();
+  if (resume && resume.phase === 'story') { L.phase = 'story'; L.page = resume.page; renderPage(); }
+  else if (resume) { L.answered = resume.answered; L.queue = resume.queue.map((k) => story.ex[k]); next(); }
+  else if (story.pages) { L.phase = 'story'; L.page = 0; renderPage(); } else next();
+  if (resume) showResumeNote(i);
   // Once per visit, Pip checks the sound over the first page, so the child sees the story waiting behind it
   if (Sound.isOn() && !heardBefore()) openHear(null);
 }
@@ -167,6 +199,7 @@ function renderPage() {
   $('#skip').textContent = L.page ? 'Back' : 'Skip the story';
   checkBtn.textContent = last ? 'Start the questions' : 'Next page';
   checkBtn.disabled = false;
+  saveResume({ phase: 'story', page: L.page });
 }
 function closeLesson() { hush(); lessonEl.classList.remove('open', 'reading'); L = null; }
 // The journey on the landing page is the map now: leaving a story (or finishing one) goes back there.
@@ -200,6 +233,7 @@ function next() {
   setProgress();
   if (!L.queue.length) return finish();
   L.current = L.queue.shift(); L.phase = 'answer'; lessonEl.classList.remove('reading');
+  saveResume({ phase: 'answer', answered: L.answered, queue: [L.current, ...L.queue].map(exIndex) });
   setFoot(''); checkBtn.textContent = 'Check'; checkBtn.disabled = true; $('#skip').textContent = 'Skip for now';
   const ex = L.current, [kicon, klabel] = KIND[ex.type];
   let html = `<div class="l-head"><span class="l-kind"><svg><use href="#${kicon}"/></svg>${klabel}</span><button class="qplay" id="qplay" aria-label="Hear the question"><svg aria-hidden="true"><use href="#i-sound"/></svg></button></div><h2 class="l-q" id="l-q">${esc(ex.q)}</h2>`;
@@ -288,6 +322,8 @@ checkBtn.addEventListener('click', () => {
   if (r.ok) { Sound.play('right', L.answered); L.answered++; setProgress(); setFoot('right', PRAISE[Math.floor(Math.random() * PRAISE.length)], ''); }
   else { Sound.play('retry'); L.queue.push(L.current); setFoot('retry', 'Almost! We\'ll try this one again.', 'The answer is: ' + r.right); }
   checkBtn.textContent = 'Continue'; checkBtn.disabled = false; checkBtn.focus();
+  // Answered: leaving now resumes at the next question (a missed one stays queued for later)
+  saveResume({ phase: 'answer', answered: L.answered, queue: L.queue.map(exIndex) });
 });
 
 function finish() {
@@ -295,6 +331,7 @@ function finish() {
   lessonEl.classList.remove('reading');   // the finish screen is never story time
   const s = L.story, gained = s.ex.length;
   if (!state.done.includes(s.id)) state.done.push(s.id);
+  clearResume();
   state.xp += gained;
   const today = new Date().toDateString();
   if (state.last !== today) {
