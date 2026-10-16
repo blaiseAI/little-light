@@ -426,3 +426,6 @@ html:has(.story-reader[open]),body:has(.story-reader[open]){overflow:hidden;over
 .logo img.logo-mark{width:42px;height:42px}
 .closing img.closing-mark{width:112px;height:auto}
 @media (max-width:640px){.closing img.closing-mark{width:92px}}
+
+/* footer: feedback + app links, and the NIV notice Biblica requires */
+.pagefoot .foot-links{display:flex;flex-wrap:wrap;gap:var(--gap-md)}.pagefoot .foot-links a{display:inline-flex;align-items:center;min-height:44px}.pagefoot .niv-note{margin:var(--gap-md) 0 0;max-width:75ch;font-size:12px;line-height:1.55}.light-feedback{margin:8px 0 0;font-size:14px}.light-feedback a{text-decoration:underline;text-underline-offset:3px}
