@@ -17,7 +17,7 @@ Parents set it up; children tap through it, often before they can read well, so 
   `little-light-sound`, `little-light-install`). There are no accounts.
 - It is a **PWA**: installable, works offline after the first visit, with "Save all stories for offline".
 
-Live site: https://blaiseai.github.io/little-light/ · Repo: this folder (`main` branch).
+Live site: https://littlelight.kids/ · Repo: this folder (`main` branch).
 
 ## Setup
 

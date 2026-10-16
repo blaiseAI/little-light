@@ -66,7 +66,7 @@ server that serves a folder's index.html, as GitHub Pages does.
 1. Edit `stories/week-N.js` (a new week: add `stories/week-N.js` and a `<script>` tag in `index.html`).
 2. `node tools/record.mjs` records only the clips whose words changed (`--dry` to preview, `--prune` to delete unused clips).
 3. `node tools/check.mjs` plays every story in Chrome and checks every clip loads. It must say `CHECK PASSED`.
-   Against the live site: `node tools/check.mjs --url https://blaiseai.github.io/little-light/play/`.
+   Against the live site: `node tools/check.mjs --url https://littlelight.kids/play/`.
 4. `node tools/build.mjs` writes `dist/` for publishing.
 
 ## Recording narration: one-time setup
