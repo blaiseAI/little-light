@@ -438,3 +438,7 @@ html:has(.story-reader[open]),body:has(.story-reader[open]){overflow:hidden;over
 .foot-legal{display:grid;gap:8px;max-width:72ch;font-size:13px;line-height:1.6}.foot-legal p{margin:0}.foot-legal .niv-note{font-size:12px}
 @media(max-width:580px){.pagefoot .foot-top{flex-direction:column;align-items:flex-start;gap:12px}.foot-nav{gap:0 20px}}
 .light-feedback{margin:8px 0 0;font-size:14px}.light-feedback a{text-decoration:underline;text-underline-offset:3px}
+/* journey: a locked stop wobbles when tapped, and its note says what opens it */
+.journey-node.nudge .stop-symbol{animation:stop-nudge .45s ease}.journey-node.nudge .stop-state{color:var(--fg);font-weight:600}
+@keyframes stop-nudge{20%{transform:rotate(-9deg)}45%{transform:rotate(8deg)}70%{transform:rotate(-4deg)}100%{transform:none}}
+@media(prefers-reduced-motion:reduce){.journey-node.nudge .stop-symbol{animation:none}}
