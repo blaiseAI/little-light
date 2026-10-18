@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <title>Little Light</title>
-  <rect width="32" height="32" rx="8" fill="#2b2250"/>
-  <!-- A large star and two clean pages retain the Story Star identity at 16px. -->
-  <path d="m16 3 3.1 6.2 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1Z" fill="#ffc94a"/>
-  <path d="M5 23q5-2 10 1v4q-5-3-10-1Zm22 0q-5-2-10 1v4q5-3 10-1Z" fill="#fff8ec"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>Little Light</title><rect width="32" height="32" fill="#2b2250" rx="8"/><path fill="#ffc94a" d="m16 3 3.1 6.2 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1Z"/><path fill="#fff8ec" d="M5 23q5-2 10 1v4q-5-3-10-1Zm22 0q-5-2-10 1v4q5-3 10-1Z"/></svg>
